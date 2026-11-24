@@ -115,6 +115,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* 2026-10-20: 漢字を日本語の字形で出す (lang="ja" と、日本語のフォントを先に) */
+    font-family: "Segoe UI", "Yu Gothic UI", "Meiryo UI", sans-serif;
   }
 }
 
@@ -181,4 +183,21 @@
   border-top: 1px solid #E4E4E4;
   font-size: 0.8rem;
   user-select: none;
+}
+
+/* 2026-11-06 (仕事 37): 外観の見本で、足りない字を □ で出すフォント (Adobe NotDef、SIL Open Font License 1.1。public/fonts/AND-Regular.otf)
+   と、そのときも絵文字を出すフォント (候補の窓の candidate.rs と同じ) */
+@font-face {
+  font-family: "HW NotDef";
+  font-display: swap;
+  src: url("/fonts/AND-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "HW Emoji";
+  font-display: swap;
+  src: local("Segoe UI Emoji");
+  unicode-range: U+00A9, U+00AE, U+203C, U+2049, U+2122, U+2139, U+2194-2199, U+21A9-21AA, U+231A-231B, U+2328, U+23CF,
+    U+23E9-23F3, U+23F8-23FA, U+24C2, U+25AA-25AB, U+25B6, U+25C0, U+25FB-25FE, U+2600-27BF, U+2934-2935,
+    U+2B05-2B07, U+2B1B-2B1C, U+2B50, U+2B55, U+3030, U+303D, U+3297, U+3299, U+FE0F, U+200D, U+20E3, U+E0020-E007F,
+    U+1F000-1FAFF;
 }

@@ -1,0 +1,23 @@
+HaniWord の方言の言い方の辞書 (dialect_dictionaries/*.tsv と、そこから作る domain/domain_dialect_*.louds ほか)
+
+設定の「方言の語尾」で選んだ人だけが使う辞書です (初期値は使わない)。関西の言い方の文の終わり・助動詞のまとまり
+(へん・ひん・はる・ねん・やん・かいな・さかい・しいや など) と、ウ音便の動詞 (買う (こう)・手伝う (てつどう)) を、かなのまま出せるように足します。
+HaniWord のプログラム (MIT License) とは別に、クリエイティブ・コモンズ 表示-継承 4.0 国際 (CC BY-SA 4.0) で配布します。
+https://creativecommons.org/licenses/by-sa/4.0/deed.ja
+
+■ 形の出典 (どれも日本語版ウィキペディア、CC BY-SA 4.0。2026-11-06 に MediaWiki の API で取得した版)
+- 「日本語の方言の比較表」 https://ja.wikipedia.org/w/index.php?oldid=110668082 (2026-08-16 の版)
+  比較の表を方言ごとにほどき (dialect_forms.tsv)、大阪弁・京言葉の列の形 (否定・過去否定・断定の強調・推定・理由・念押し・疑念・
+  軽い命令・尊敬・居る・駄目だ・よい・ウ音便 など) から、関西の辞書 (kansai.tsv) の語を選びました (編集・加工)。
+- 「役割語」 https://ja.wikipedia.org/w/index.php?oldid=110771186 (2026-08-25 の版)
+- 「お嬢様言葉」 https://ja.wikipedia.org/w/index.php?oldid=111459006 (2026-10-21 の版)
+- 「老人語」 https://ja.wikipedia.org/w/index.php?oldid=111596552 (2026-11-01 の版)
+  この 3 つは、役割語の語尾 (じゃ・ですわ・てよ・あるよ など) を形の表 (dialect_forms.tsv) に書くのに使いました (まだ辞書には入れていません)。
+各記事の著者は、記事の履歴 (https://ja.wikipedia.org/w/index.php?title=<記事名>&action=history) にあります。
+
+■ 品詞の番号・変換の重み
+品詞・意味の番号と変換の重みは、azooKey の辞書 (Apache License 2.0) の、同じ位置に付く標準語の語 (た・ます・ない・よ・ね など) にならって
+HaniWord の開発者が付けました。ウ音便の語の表記は、azooKey の辞書にある五段ワ行の動詞 (買う・手伝う) の表記です。
+
+■ 作り方
+tools/dialect/README.md にあります (記事の表をほどく parse_table.py・形の表を作る make_forms.py・辞書を作る make_kansai_dict.py)。

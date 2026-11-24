@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { toast } from "sonner"
 import { invoke } from '@tauri-apps/api/core';
+import { AiBackendStatus, describeBackend, describeReasons, fetchAiBackendStatus } from "@/lib/aiBackend";
 import {
     Tooltip,
     TooltipContent,
@@ -58,6 +59,10 @@ export const Zenzai = () => {
         vulkan: false,
     });
 
+    // 2026-11-19: 実際に動いている一式 (ai_backend.json) と、遅い CPU のために launcher が AI を切った印 (zenzai.auto_off)
+    const [backendStatus, setBackendStatus] = useState<AiBackendStatus | null>(null);
+    const [autoOff, setAutoOff] = useState("");
+
     // Load config on component mount
     useEffect(() => {
         invoke<any>("get_config")
@@ -68,10 +73,13 @@ export const Zenzai = () => {
                     profile: zenzai.profile,
                     backend: zenzai.backend,
                 });
+                setAutoOff(zenzai.auto_off ?? "");
             })
             .catch(() => {
                 // Keep default values if config fetch fails
             });
+
+        fetchAiBackendStatus().then(setBackendStatus);
 
         invoke("check_capability").then((capability: any) => {
             setCapability({
@@ -95,12 +103,16 @@ export const Zenzai = () => {
     };
 
     const handleZenzaiChange = async () => {
+        // 2026-11-19: 自分で替えたら、launcher は以後この入り切りを替えない (遅い CPU で AI を切った印も消す。知らせの表示は別の直しで)
         const data = await updateConfig((data) => {
             data.zenzai.enable = !value.enable;
+            data.zenzai.enable_chosen = true;
+            data.zenzai.auto_off = "";
         });
         
         if (data) {
             setValue((prev) => ({ ...prev, enable: data.zenzai.enable }));
+            setAutoOff("");
         }
     };
 
@@ -143,6 +155,11 @@ export const Zenzai = () => {
                     </div>
                     <Switch checked={value.enable} onCheckedChange={handleZenzaiChange} />
                 </div>
+                {autoOff === "slow_cpu" && !value.enable && (
+                    <p className="px-1 text-xs text-muted-foreground">
+                        この PC では AI の変換に時間がかかるため、AI を切っています。オンにすると、変換が遅くなることがあります
+                    </p>
+                )}
                 <div className="space-y-4 rounded-md border p-4">
                     <div className="flex items-center space-x-4 ">
                         <User />
@@ -166,6 +183,12 @@ export const Zenzai = () => {
                         <p className="text-xs text-muted-foreground">
                             Zenzaiを利用するバックエンドを選択します
                         </p>
+                        <p className="text-xs text-muted-foreground">
+                            いま動いているのは {describeBackend(backendStatus, value.enable)}
+                        </p>
+                        {describeReasons(backendStatus).map((reason) => (
+                            <p key={reason} className="text-xs text-muted-foreground">{reason}</p>
+                        ))}
                     </div>
                     <Select disabled={!value.enable} value={value.backend} onValueChange={handleBackendChange}>
                         <SelectTrigger className="w-48">

@@ -1,0 +1,7 @@
+# Explicitly encoded glyph variants; separate from registered IVS sequences.
+# Unicode Unihan 17.0.0 kSemanticVariant pairs (not all semantic variants).
+# https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip
+# Copyright 2025 Unicode, Inc.; Unicode License v3, see UNICODE_LICENSE.txt
+# Stable base first. Never infer equivalence for arbitrary semantic variants.
+9AD8 9AD9
+514E 5154

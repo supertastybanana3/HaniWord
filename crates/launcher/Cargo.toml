@@ -6,3 +6,22 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0"
 shared = { path = "../shared" }
+serde_json = "1"
+
+# 2026-10-29: 新しい版の知らせ (update.rs)。GitHub への問い合わせ (WinHTTP)・通知 (トースト)・通知の差出人の登録 (HKCU)
+[dependencies.windows]
+version = "0.58.0"
+features = [
+    "Win32_Foundation",
+    "Win32_Networking_WinHttp",
+    "Win32_Security",
+    "Win32_System_Registry",
+    # 2026-11-05 (仕事 29): 記録の時刻 (GetLocalTime) と、ログオフ・シャットダウン中か (GetSystemMetrics の SM_SHUTTINGDOWN)
+    "Win32_System_SystemInformation",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_System_WinRT",
+    "Foundation",
+    "Foundation_Collections",
+    "Data_Xml_Dom",
+    "UI_Notifications",
+]

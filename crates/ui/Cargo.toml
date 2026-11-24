@@ -3,10 +3,14 @@ name = "ui"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+security-probe = []
+
 [dependencies]
 anyhow = "1.0.95"
+base64 = "0.22"
 tao = "0.31.0"
-wry = "0.47.2"
+wry = "0.55.0"
 tokio = { version = "1.42.0", features = ["full"] }
 tonic = "0.12.3"
 shared = { path = "../shared" }
@@ -18,5 +22,15 @@ serde_json = "1.0"
 version = "0.58.0"
 features = [
     "Win32_System_Diagnostics_ToolHelp",
-    "Win32_System_Environment"
+    "Win32_System_Environment",
+    # 2026-10-13: 入力モードの表示 (CaretCue 移植)。カーソル位置 (UI オートメーション・GetGUIThreadInfo)、Caps Lock、塗る色、画面の作業領域
+    "Win32_Foundation",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_UI_Accessibility",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_System_Com",
+    "Win32_System_Ole",
+    "Win32_System_Variant",
+    "Win32_Graphics_Gdi",
+    "Win32_Graphics_Dwm",
 ]

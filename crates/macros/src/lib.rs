@@ -44,7 +44,8 @@ fn extract_ok_type(return_type: &ReturnType) -> Result<&Type, TokenStream> {
 /// // will be converted to
 ///
 /// fn some_func() -> windows::core::Result<Sometype> {
-///   let result: anyhow::Result<Sometype> = (|| Ok(Sometype))();
+///   // パニックは catch_unwind で受け止めて Err にする (crate::guard::caught を呼ぶ)
+///   let result: anyhow::Result<Sometype> = catch_unwind(|| Ok(Sometype));
 ///   match result {
 ///     Ok(v) => Ok(v),
 ///     Err(e) => {
@@ -83,12 +84,20 @@ pub fn anyhow(_: TokenStream, input: TokenStream) -> TokenStream {
     // generate the new function
     let generated = quote! {
         fn #fn_name(#fn_inputs) -> windows::core::Result<#output> {
-            let result: Result<#output> = (|| #fn_body)();
+            // 2026-10-14: パニックがこの入口を越えるとアプリごと落ちるので、ここで受け止めてエラー (E_FAIL) にする
+            let result: Result<#output> = match std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| -> Result<#output> #fn_body)) {
+                Ok(result) => result,
+                Err(_) => {
+                    let _ = std::panic::catch_unwind(|| crate::guard::caught(stringify!(#fn_name)));
+                    Err(::anyhow::anyhow!("panic caught in {}", stringify!(#fn_name)))
+                }
+            };
 
             match result {
                 Ok(v) => Ok(v),
                 Err(e) => {
                     tracing::error!("Error: {:?}", e);
+                    crate::debug_log::write(&format!("ERROR in {}: {:?}", stringify!(#fn_name), e));
                     Err(windows::core::Error::from(windows::Win32::Foundation::E_FAIL))
                 }
             }

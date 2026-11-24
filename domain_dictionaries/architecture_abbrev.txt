@@ -1,0 +1,17 @@
+# 建築の英字の略語 (よく打つ分野に選んだ人の英字の判定に足す)。tools/domain/abbrev.py が書く。
+# 材料: 日本語版ウィキペディアの建築の記事の冒頭 (CC BY-SA 4.0) と JMdict (CC BY-SA 4.0)。6.1-sol で建築の略語かを判定した
+BCS
+BIM
+CIAM
+CR
+DIY
+FRP
+JAS
+JIS
+LDPE
+MDF
+NATM
+PVC
+RC
+UNESCO
+UR

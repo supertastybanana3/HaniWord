@@ -1,0 +1,21 @@
+{
+  "source": "https://github.com/en-wl/wordlist",
+  "release": "rel-2026.02.25",
+  "commit": "7e99edab8e32f9f9ea2b15f249ca8d4d67237410",
+  "command": [
+    "./scowl",
+    "word-list",
+    "60",
+    "A,B,Z",
+    "1"
+  ],
+  "scope": "English sentence context or explicit initial capitals; not lowercase English priority",
+  "license": "SCOWLv2 MIT-like permission notice; copyright notice retained",
+  "baseline_words": 39095,
+  "upstream_lexemes": 110838,
+  "curated_lexemes": 50,
+  "supplement_words": 71889,
+  "source_copyright_sha256": "090575a131b4260926c7a6b30a90aca0f5db5fbb5c46778e0c5855227bf6ebc3",
+  "curated_sha256": "e65bf88c18ebf2cdc26c8889f8163ff44f8045ee0292e66eac2841c89d329b6a",
+  "wordlist_sha256": "7de64cd2d6afc3240041fbb162caf7c537bc557be5410ccb21e7cd8c59fd5ab6"
+}

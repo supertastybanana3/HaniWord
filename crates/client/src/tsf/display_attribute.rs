@@ -12,7 +12,11 @@ use windows::{
 
 use anyhow::Result;
 
-use crate::globals::{DISPLAY_ATTRIBUTE, GUID_DISPLAY_ATTRIBUTE};
+use crate::globals::{
+    display_attribute_converted, display_attribute_input, display_attribute_live_draft,
+    DISPLAY_ATTRIBUTE, GUID_DISPLAY_ATTRIBUTE, GUID_DISPLAY_ATTRIBUTE_CONVERTED,
+    GUID_DISPLAY_ATTRIBUTE_INPUT, GUID_DISPLAY_ATTRIBUTE_LIVE_DRAFT,
+};
 
 use super::factory::TextServiceFactory_Impl;
 
@@ -101,10 +105,12 @@ pub struct EnumDisplayAttributeInfo {
 #[allow(clippy::new_without_default)]
 impl EnumDisplayAttributeInfo {
     pub fn new() -> Self {
-        let attributes = vec![DisplayAttributeInfo::new(
-            GUID_DISPLAY_ATTRIBUTE,
-            DISPLAY_ATTRIBUTE,
-        )];
+        let attributes = vec![
+            DisplayAttributeInfo::new(GUID_DISPLAY_ATTRIBUTE, DISPLAY_ATTRIBUTE),
+            DisplayAttributeInfo::new(GUID_DISPLAY_ATTRIBUTE_INPUT, display_attribute_input()),
+            DisplayAttributeInfo::new(GUID_DISPLAY_ATTRIBUTE_LIVE_DRAFT, display_attribute_live_draft()),
+            DisplayAttributeInfo::new(GUID_DISPLAY_ATTRIBUTE_CONVERTED, display_attribute_converted()),
+        ];
 
         EnumDisplayAttributeInfo {
             attributes,

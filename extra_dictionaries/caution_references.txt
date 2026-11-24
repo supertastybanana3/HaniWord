@@ -1,0 +1,293 @@
+# HaniWord の注意の注記の参考文献 (extra_dictionaries/caution_notes.txt と misuse_notes.tsv の 差別・言い換え の行の注記の番号 [n])。tools/caution/refs.py で作る
+参考文献 (SIST 02 の Web の形。番号は語の表の「文献」の番号)
+
+[1] HojiChar. “HojiChar/HojiChar hojichar/dict/discrimination_keywords_ja.txt”. GitHub. 2026-10-23. https://github.com/HojiChar/HojiChar/blob/2df85ad6b1ba86752a36e0513e4d334caddbc355/hojichar/dict/discrimination_keywords_ja.txt, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261107010533/https://github.com/HojiChar/HojiChar/blob/2df85ad6b1ba86752a36e0513e4d334caddbc355/hojichar/dict/discrimination_keywords_ja.txt (写しの日時 UTC 2026-11-07 01:05)
+[2] MosasoM (LICENSE の著作権者: K Hashimoto). “MosasoM/inappropriate-words-ja Offensive.txt”. GitHub. 2020-08-20. https://github.com/MosasoM/inappropriate-words-ja/blob/b93b76d61cbc80542da4e16c4a5925256344fdee/Offensive.txt, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20261106164215/https://github.com/MosasoM/inappropriate-words-ja/blob/b93b76d61cbc80542da4e16c4a5925256344fdee/Offensive.txt (写しの日時 UTC 2026-11-06 16:42)
+[3] Nextremer. “Nextremer/minarai-cs-chat-webui blackWords.js”. GitHub. 2018-04-13. https://github.com/Nextremer/minarai-cs-chat-webui/blob/79db06f0946977266d316adfebebb56d3f18ba32/src/js/conf/blackWords.js, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20220906130926/https://github.com/Nextremer/minarai-cs-chat-webui/blob/79db06f0946977266d316adfebebb56d3f18ba32/src/js/conf/blackWords.js (写しの日時 UTC 2022-09-06 13:09)
+[4] YukimaruGit (LICENSE: 放課後クロニクル 学生証ジェネレーター). “YukimaruGit/student-id-generator app.js (NGワードリスト)”. GitHub. 2025-08-31. https://github.com/YukimaruGit/student-id-generator/blob/8e1020fca8e53bd7f638ec603d2c844018991aba/public/assets/js/app.js#L573-L612, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20261107011123/https://github.com/YukimaruGit/student-id-generator/blob/8e1020fca8e53bd7f638ec603d2c844018991aba/public/assets/js/app.js (写しの日時 UTC 2026-11-07 01:11)
+[5] ZachHandley. “ZachHandley/ContentShield data/languages/ja/profanity.json”. GitHub. 2025-10-01. https://github.com/ZachHandley/ContentShield/blob/a0e7c6eb66ef5c28ca84701d71e8d41c2c2cd43e/data/languages/ja/profanity.json, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20261107011657/https://github.com/ZachHandley/ContentShield/blob/a0e7c6eb66ef5c28ca84701d71e8d41c2c2cd43e/data/languages/ja/profanity.json (写しの日時 UTC 2026-11-07 01:16)
+[6] yomiplush (LICENSE: YomiPlush). “yomiplush/outrage-mute src/lib/lexicon.curated.js (attack)”. GitHub. 2026-09-30. https://github.com/yomiplush/outrage-mute/blob/8dc2583d04e2e7f79fdfae8c82872548189b4638/src/lib/lexicon.curated.js, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20261106164250/https://github.com/yomiplush/outrage-mute/blob/8dc2583d04e2e7f79fdfae8c82872548189b4638/src/lib/lexicon.curated.js (写しの日時 UTC 2026-11-06 16:42)
+[7] yomiplush (LICENSE: YomiPlush). “yomiplush/outrage-mute src/lib/lexicon.vendor.js (EXTRA)”. GitHub. 2026-09-29. https://github.com/yomiplush/outrage-mute/blob/2c2974a51d60a11b18ac1b9f19afd2df9d48543d/src/lib/lexicon.vendor.js, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20261107012233/https://github.com/yomiplush/outrage-mute/blob/2c2974a51d60a11b18ac1b9f19afd2df9d48543d/src/lib/lexicon.vendor.js (写しの日時 UTC 2026-11-07 01:22)
+[8] “「ぽかぽか」、不適切発言を謝罪＆取り消し　高畑淳子の「牛の屠殺みたいに」発言が「職業差別を助長するおそれ」”. J-CASTニュース（株式会社ジェイ・キャスト）. 2024-09-12. https://www.j-cast.com/2024/09/12493317.html?p=all, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20251114175517/https://www.j-cast.com/2024/09/12493317.html?p=all (写しの日時 UTC 2025-11-14 17:55)
+[9] 政治班. “参政党・神谷代表、街頭演説で「バカだ、チョンだ」→直後に訂正　批判受けXでも釈明「差別や侮辱の意図で発言したわけではない」”. J-CASTニュース（株式会社ジェイ・キャスト）. 2025-07-18. https://www.j-cast.com/2025/07/18506089.html, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20251003095749/https://www.j-cast.com/2025/07/18506089.html (写しの日時 UTC 2025-10-03 09:57)
+[10] “差別表現「びっこ」使ったとTBSラジオ番組が謝罪　ネットでは「言葉狩りだ」と疑問の声”. J-CASTニュース（株式会社ジェイ・キャスト）. 2014-11-10. https://www.j-cast.com/2014/11/10220439.html?p=all, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20241103223115/https://www.j-cast.com/2014/11/10220439.html?p=all (写しの日時 UTC 2024-11-03 22:31)
+[11] “日テレ、出演者の差別発言で謝罪　アフリカ一部民族への蔑称使用、深夜の生放送番組で”. J-CASTニュース（株式会社ジェイ・キャスト）. 2022-03-24. https://www.j-cast.com/2022/03/24433759.html?p=all, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20251129161309/https://www.j-cast.com/2022/03/24433759.html?p=all (写しの日時 UTC 2025-11-29 16:13)
+[12] “立花隆「めくら」発言にNHKが謝罪　「文脈から判断すべき」「言葉狩り」と疑問の声”. J-CASTニュース（株式会社ジェイ・キャスト）. 2015-12-04. https://www.j-cast.com/2015/12/04252399.html?p=all, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20250217234645/https://www.j-cast.com/2015/12/04252399.html?p=all (写しの日時 UTC 2025-02-17 23:46)
+[13] 砂古口早苗. “笠置シヅ子の｢買物ブギー｣から消えた2つの不適切ワード…昭和25年の原曲に障害者差別の意図はなかった 作品のオリジナリティーを否定する｢言葉狩り｣になっていないか (4ページ目)”. PRESIDENT Online（プレジデント社）. 2024-03-02. https://president.jp/articles/-/79091?page=4, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20250803092428/https://president.jp/articles/-/79091?page=4 (写しの日時 UTC 2025-08-03 09:24)
+[14] アルテイシア. “｢あなたにも子育ての喜びを知ってほしい｣善意のお節介ハラスメントをやらかす人の共通点 自分と他人はまったく別の人間だという"バウンダリー"がわかっていない”. PRESIDENT Online（プレジデント社）. 2023-02-24. https://president.jp/articles/-/66593?page=1, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20230331062639/https://president.jp/articles/-/66593?page=1 (写しの日時 UTC 2023-03-31 06:26)
+[15] 李琴峰. “あなたが私を外人と呼ぶ前に（3ページ目）”. nippon.com（公益財団法人ニッポンドットコム）. 2020-05-24. https://www.nippon.com/ja/articles/-/6172?page=3, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20261107012814/https://www.nippon.com/ja/articles/-/6172?page=3 (写しの日時 UTC 2026-11-07 01:28)
+[16] 李琴峰. “あなたが私を外人と呼ぶ前に（4ページ目）”. nippon.com（公益財団法人ニッポンドットコム）. 2020-05-24. https://www.nippon.com/ja/articles/-/6172?page=4, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20261107013451/https://www.nippon.com/ja/articles/-/6172?page=4 (写しの日時 UTC 2026-11-07 01:34)
+[17] “機動隊員が差別暴言/撤退と謝罪求める/沖縄選出の野党国会議員”. しんぶん赤旗（日本共産党中央委員会）. 2016-10-20. https://www.jcp.or.jp/akahata/aik16/2016-10-20/2016102015_01_1.html, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20260311153807/https://www.jcp.or.jp/akahata/aik16/2016-10-20/2016102015_01_1.html (写しの日時 UTC 2026-03-11 15:38)
+[18] ウィキペディアの執筆者. “DQN”. ウィキペディア日本語版. 2026-10-25T16:00:35Z. https://ja.wikipedia.org/w/index.php?oldid=111517887, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[19] ウィキペディアの執筆者. “おかちめんこ”. ウィキペディア日本語版. 2023-09-30T04:21:43Z. https://ja.wikipedia.org/w/index.php?oldid=97174493, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[20] ウィキペディアの執筆者. “おかま”. ウィキペディア日本語版. 2026-02-25T07:29:10Z. https://ja.wikipedia.org/w/index.php?oldid=108530466, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[21] ウィキペディアの執筆者. “おたく”. ウィキペディア日本語版. 2026-11-01T06:59:44Z. https://ja.wikipedia.org/w/index.php?oldid=111598721, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[22] ウィキペディアの執筆者. “かたわ”. ウィキペディア日本語版. 2026-09-02T08:59:36Z. https://ja.wikipedia.org/w/index.php?oldid=110868889, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[23] ウィキペディアの執筆者. “かったい”. ウィキペディア日本語版. 2025-08-25T01:58:42Z. https://ja.wikipedia.org/w/index.php?oldid=106168863, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[24] ウィキペディアの執筆者. “きちがい”. ウィキペディア日本語版. 2026-11-02T16:10:33Z. https://ja.wikipedia.org/w/index.php?oldid=111616564, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[25] ウィキペディアの執筆者. “ごみ”. ウィキペディア日本語版. 2026-07-09T02:03:33Z. https://ja.wikipedia.org/w/index.php?oldid=110211418, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[26] ウィキペディアの執筆者. “さす九”. ウィキペディア日本語版. 2026-09-25T07:16:08Z. https://ja.wikipedia.org/w/index.php?oldid=111145915, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[27] ウィキペディアの執筆者. “ちゃんころ”. ウィキペディア日本語版. 2026-09-23T15:03:52Z. https://ja.wikipedia.org/w/index.php?oldid=111122778, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[28] ウィキペディアの執筆者. “でもしか先生”. ウィキペディア日本語版. 2025-09-19T00:38:45Z. https://ja.wikipedia.org/w/index.php?oldid=106517998, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[29] ウィキペディアの執筆者. “アサヒる問題”. ウィキペディア日本語版. 2026-11-01T10:20:27Z. https://ja.wikipedia.org/w/index.php?oldid=111601443, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[30] ウィキペディアの執筆者. “アベガー”. ウィキペディア日本語版. 2026-09-30T08:45:07Z. https://ja.wikipedia.org/w/index.php?oldid=111216077, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[31] ウィキペディアの執筆者. “アメ公”. ウィキペディア日本語版. 2026-07-29T10:04:43Z. https://ja.wikipedia.org/w/index.php?oldid=110454167, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[32] ウィキペディアの執筆者. “エビフリャー”. ウィキペディア日本語版. 2026-08-15T19:02:45Z. https://ja.wikipedia.org/w/index.php?oldid=110658572, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[33] ウィキペディアの執筆者. “ガキ”. ウィキペディア日本語版. 2026-02-04T01:23:31Z. https://ja.wikipedia.org/w/index.php?oldid=108267316, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[34] ウィキペディアの執筆者. “キラキラネーム”. ウィキペディア日本語版. 2026-09-27T07:58:07Z. https://ja.wikipedia.org/w/index.php?oldid=111179491, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[35] ウィキペディアの執筆者. “キリシタン”. ウィキペディア日本語版. 2026-11-04T13:13:51Z. https://ja.wikipedia.org/w/index.php?oldid=111641129, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[36] ウィキペディアの執筆者. “コイコイ人”. ウィキペディア日本語版. 2026-10-12T02:42:28Z. https://ja.wikipedia.org/w/index.php?oldid=111358102, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[37] ウィキペディアの執筆者. “サンボ”. ウィキペディア日本語版. 2026-07-15T11:37:14Z. https://ja.wikipedia.org/w/index.php?oldid=110286293, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[38] ウィキペディアの執筆者. “ジプシー”. ウィキペディア日本語版. 2026-02-04T05:32:58Z. https://ja.wikipedia.org/w/index.php?oldid=108269549, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[39] ウィキペディアの執筆者. “ダウン症候群”. ウィキペディア日本語版. 2026-10-30T13:47:08Z. https://ja.wikipedia.org/w/index.php?oldid=111578172, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[40] ウィキペディアの執筆者. “ダ埼玉”. ウィキペディア日本語版. 2026-10-19T14:33:04Z. https://ja.wikipedia.org/w/index.php?oldid=111442393, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[41] ウィキペディアの執筆者. “チョン (蔑称)”. ウィキペディア日本語版. 2026-04-25T00:41:47Z. https://ja.wikipedia.org/w/index.php?oldid=109273664, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[42] ウィキペディアの執筆者. “チーズ牛丼 (ネットスラング)”. ウィキペディア日本語版. 2026-06-11T09:48:09Z. https://ja.wikipedia.org/w/index.php?oldid=109892020, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[43] ウィキペディアの執筆者. “ツイフェミ”. ウィキペディア日本語版. 2026-10-22T22:06:47Z. https://ja.wikipedia.org/w/index.php?oldid=111478348, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[44] ウィキペディアの執筆者. “デブ”. ウィキペディア日本語版. 2026-01-02T08:50:11Z. https://ja.wikipedia.org/w/index.php?oldid=107842277, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[45] ウィキペディアの執筆者. “ドパガキ”. ウィキペディア日本語版. 2026-11-03T11:07:57Z. https://ja.wikipedia.org/w/index.php?oldid=111626634, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[46] ウィキペディアの執筆者. “ニート”. ウィキペディア日本語版. 2026-08-27T05:49:52Z. https://ja.wikipedia.org/w/index.php?oldid=110793747, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[47] ウィキペディアの執筆者. “ヌタウナギ”. ウィキペディア日本語版. 2026-05-18T10:11:36Z. https://ja.wikipedia.org/w/index.php?oldid=109566282, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[48] ウィキペディアの執筆者. “バカチョン”. ウィキペディア日本語版. 2026-06-30T14:15:17Z. https://ja.wikipedia.org/w/index.php?oldid=110114605, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[49] ウィキペディアの執筆者. “ババア”. ウィキペディア日本語版. 2023-12-23T12:37:59Z. https://ja.wikipedia.org/w/index.php?oldid=98574490, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[50] ウィキペディアの執筆者. “パヨク”. ウィキペディア日本語版. 2026-10-17T02:08:43Z. https://ja.wikipedia.org/w/index.php?oldid=111411035, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[51] ウィキペディアの執筆者. “パラサイト中年”. ウィキペディア日本語版. 2026-02-14T03:28:25Z. https://ja.wikipedia.org/w/index.php?oldid=108390472, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[52] ウィキペディアの執筆者. “パンパン”. ウィキペディア日本語版. 2026-10-18T15:58:34Z. https://ja.wikipedia.org/w/index.php?oldid=111431246, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[53] ウィキペディアの執筆者. “プロ市民”. ウィキペディア日本語版. 2026-10-12T05:10:03Z. https://ja.wikipedia.org/w/index.php?oldid=111359753, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[54] ウィキペディアの執筆者. “ポコペン”. ウィキペディア日本語版. 2026-05-18T18:12:48Z. https://ja.wikipedia.org/w/index.php?oldid=109575235, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[55] ウィキペディアの執筆者. “マスゴミ”. ウィキペディア日本語版. 2026-08-25T15:01:59Z. https://ja.wikipedia.org/w/index.php?oldid=110776596, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[56] ウィキペディアの執筆者. “ヤンキー”. ウィキペディア日本語版. 2026-09-05T18:01:03Z. https://ja.wikipedia.org/w/index.php?oldid=110910251, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[57] ウィキペディアの執筆者. “ロートル”. ウィキペディア日本語版. 2022-08-28T09:45:43Z. https://ja.wikipedia.org/w/index.php?oldid=91196974, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[58] ウィキペディアの執筆者. “ワナビー”. ウィキペディア日本語版. 2024-01-27T13:46:14Z. https://ja.wikipedia.org/w/index.php?oldid=99019460, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[59] ウィキペディアの執筆者. “上杉聰”. ウィキペディア日本語版. 2026-10-04T11:08:38Z. https://ja.wikipedia.org/w/index.php?oldid=111265661, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[60] ウィキペディアの執筆者. “上級国民”. ウィキペディア日本語版. 2026-07-04T22:41:04Z. https://ja.wikipedia.org/w/index.php?oldid=110163654, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[61] ウィキペディアの執筆者. “人権屋”. ウィキペディア日本語版. 2026-09-10T03:55:04Z. https://ja.wikipedia.org/w/index.php?oldid=110961659, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[62] ウィキペディアの執筆者. “侮蔑”. ウィキペディア日本語版. 2026-07-05T21:49:39Z. https://ja.wikipedia.org/w/index.php?oldid=110176075, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[63] ウィキペディアの執筆者. “公衆便所 (隠語)”. ウィキペディア日本語版. 2026-09-30T18:06:29Z. https://ja.wikipedia.org/w/index.php?oldid=111221003, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[64] ウィキペディアの執筆者. “卑語”. ウィキペディア日本語版. 2025-08-11T15:03:44Z. https://ja.wikipedia.org/w/index.php?oldid=105956065, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[65] ウィキペディアの執筆者. “原子力村”. ウィキペディア日本語版. 2026-06-08T12:35:15Z. https://ja.wikipedia.org/w/index.php?oldid=109857930, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[66] ウィキペディアの執筆者. “厨房 (ネット用語)”. ウィキペディア日本語版. 2026-07-11T12:49:21Z. https://ja.wikipedia.org/w/index.php?oldid=110241103, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[67] ウィキペディアの執筆者. “四つ (日本語の表現)”. ウィキペディア日本語版. 2026-09-25T16:11:13Z. https://ja.wikipedia.org/w/index.php?oldid=111153117, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[68] ウィキペディアの執筆者. “土人”. ウィキペディア日本語版. 2026-07-07T03:03:35Z. https://ja.wikipedia.org/w/index.php?oldid=110189235, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[69] ウィキペディアの執筆者. “売国奴”. ウィキペディア日本語版. 2026-08-17T20:41:16Z. https://ja.wikipedia.org/w/index.php?oldid=110684101, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[70] ウィキペディアの執筆者. “外道”. ウィキペディア日本語版. 2022-06-27T04:49:43Z. https://ja.wikipedia.org/w/index.php?oldid=90218409, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[71] ウィキペディアの執筆者. “小僧”. ウィキペディア日本語版. 2025-06-13T12:39:20Z. https://ja.wikipedia.org/w/index.php?oldid=105213535, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[72] ウィキペディアの執筆者. “岸田文雄”. ウィキペディア日本語版. 2026-11-04T17:05:07Z. https://ja.wikipedia.org/w/index.php?oldid=111643179, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[73] ウィキペディアの執筆者. “差別用語”. ウィキペディア日本語版. 2026-09-20T23:37:33Z. https://ja.wikipedia.org/w/index.php?oldid=111089875, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[74] ウィキペディアの執筆者. “意識高い系”. ウィキペディア日本語版. 2026-08-10T15:05:28Z. https://ja.wikipedia.org/w/index.php?oldid=110597148, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[75] ウィキペディアの執筆者. “愛国ポルノ”. ウィキペディア日本語版. 2025-09-20T14:28:20Z. https://ja.wikipedia.org/w/index.php?oldid=106538021, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[76] ウィキペディアの執筆者. “支那”. ウィキペディア日本語版. 2026-10-16T16:36:14Z. https://ja.wikipedia.org/w/index.php?oldid=111407715, (参照 2026-11-07).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[77] ウィキペディアの執筆者. “放送禁止”. ウィキペディア日本語版. 2026-10-08T11:19:49Z. https://ja.wikipedia.org/w/index.php?oldid=111316375, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[78] ウィキペディアの執筆者. “政見放送削除事件”. ウィキペディア日本語版. 2026-03-22T23:58:01Z. https://ja.wikipedia.org/w/index.php?oldid=108863859, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[79] ウィキペディアの執筆者. “新平民”. ウィキペディア日本語版. 2023-06-23T12:36:52Z. https://ja.wikipedia.org/w/index.php?oldid=95732260, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[80] ウィキペディアの執筆者. “板額御前”. ウィキペディア日本語版. 2026-09-12T07:08:23Z. https://ja.wikipedia.org/w/index.php?oldid=110991554, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[81] ウィキペディアの執筆者. “毛唐”. ウィキペディア日本語版. 2026-09-29T06:37:20Z. https://ja.wikipedia.org/w/index.php?oldid=111203811, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[82] ウィキペディアの執筆者. “活字中毒”. ウィキペディア日本語版. 2021-10-10T23:51:03Z. https://ja.wikipedia.org/w/index.php?oldid=85986388, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[83] ウィキペディアの執筆者. “特定アジア”. ウィキペディア日本語版. 2026-07-06T15:24:12Z. https://ja.wikipedia.org/w/index.php?oldid=110185166, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[84] ウィキペディアの執筆者. “田舎っぺ”. ウィキペディア日本語版. 2023-11-28T13:50:06Z. https://ja.wikipedia.org/w/index.php?oldid=98203088, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[85] ウィキペディアの執筆者. “番太”. ウィキペディア日本語版. 2024-10-20T10:48:07Z. https://ja.wikipedia.org/w/index.php?oldid=102278246, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[86] ウィキペディアの執筆者. “白河以北一山百文”. ウィキペディア日本語版. 2026-08-18T06:40:44Z. https://ja.wikipedia.org/w/index.php?oldid=110688737, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[87] ウィキペディアの執筆者. “穢多”. ウィキペディア日本語版. 2026-05-22T02:01:56Z. https://ja.wikipedia.org/w/index.php?oldid=109641535, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[88] ウィキペディアの執筆者. “肌色”. ウィキペディア日本語版. 2026-09-01T18:46:10Z. https://ja.wikipedia.org/w/index.php?oldid=110862639, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[89] ウィキペディアの執筆者. “腐女子”. ウィキペディア日本語版. 2026-07-11T12:54:50Z. https://ja.wikipedia.org/w/index.php?oldid=110241194, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[90] ウィキペディアの執筆者. “藪医者”. ウィキペディア日本語版. 2026-09-02T03:23:41Z. https://ja.wikipedia.org/w/index.php?oldid=110865665, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[91] ウィキペディアの執筆者. “表現の自主規制”. ウィキペディア日本語版. 2026-10-26T04:30:08Z. https://ja.wikipedia.org/w/index.php?oldid=111524756, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[92] ウィキペディアの執筆者. “表現の自由戦士”. ウィキペディア日本語版. 2026-11-04T04:16:35Z. https://ja.wikipedia.org/w/index.php?oldid=111634340, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[93] ウィキペディアの執筆者. “裏日本”. ウィキペディア日本語版. 2026-10-14T16:49:39Z. https://ja.wikipedia.org/w/index.php?oldid=111388451, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[94] ウィキペディアの執筆者. “視覚障害者”. ウィキペディア日本語版. 2026-10-09T23:39:42Z. https://ja.wikipedia.org/w/index.php?oldid=111331417, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[95] ウィキペディアの執筆者. “認知症”. ウィキペディア日本語版. 2026-07-24T11:54:51Z. https://ja.wikipedia.org/w/index.php?oldid=110391725, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[96] ウィキペディアの執筆者. “部落問題”. ウィキペディア日本語版. 2026-11-05T10:08:36Z. https://ja.wikipedia.org/w/index.php?oldid=111650829, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[97] ウィキペディアの執筆者. “阿呆”. ウィキペディア日本語版. 2026-08-26T11:56:54Z. https://ja.wikipedia.org/w/index.php?oldid=110785991, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[98] ウィキペディアの執筆者. “隠亡”. ウィキペディア日本語版. 2026-07-12T08:32:23Z. https://ja.wikipedia.org/w/index.php?oldid=110251144, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[99] ウィキペディアの執筆者. “雲助”. ウィキペディア日本語版. 2026-10-29T00:45:32Z. https://ja.wikipedia.org/w/index.php?oldid=111558315, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[100] ウィキペディアの執筆者. “露助”. ウィキペディア日本語版. 2026-11-04T02:19:44Z. https://ja.wikipedia.org/w/index.php?oldid=111633160, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[101] ウィキペディアの執筆者. “非国民”. ウィキペディア日本語版. 2026-03-30T22:23:08Z. https://ja.wikipedia.org/w/index.php?oldid=108968527, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[102] ウィキペディアの執筆者. “馬鹿”. ウィキペディア日本語版. 2026-10-21T06:12:33Z. https://ja.wikipedia.org/w/index.php?oldid=111460095, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[103] ウィキペディアの執筆者. “鬼畜”. ウィキペディア日本語版. 2025-10-19T13:39:21Z. https://ja.wikipedia.org/w/index.php?oldid=106895223, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[104] ウィキペディアの執筆者. “黒ん坊”. ウィキペディア日本語版. 2024-08-18T05:50:23Z. https://ja.wikipedia.org/w/index.php?oldid=101520490, (参照 2026-11-06).
+     (ウィキペディアの版の固定リンク。版は残るので写しは作っていない)
+[105] “フジテレビ『ぽかぽか』トーク中に“不適切な表現”　山本賢太アナが謝罪「訂正してお詫びさせていただきます」”. オリコンニュース（ORICON NEWS）. 2025-02-26. https://www.oricon.co.jp/news/2371103/full/, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20260708102050/https://www.oricon.co.jp/news/2371103/full/ (写しの日時 UTC 2026-07-08 10:20)
+[106] 神永曉. “第472回 「小間使い」が動詞になる？”. ジャパンナレッジ（日本語、どうでしょう？）. https://japanknowledge.com/articles/blognihongo/entry.html?entryid=473, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20261106164338/https://japanknowledge.com/articles/blognihongo/entry.html?entryid=473 (写しの日時 UTC 2026-11-06 16:43)
+[107] 神永曉. “第482回 「阿婆擦（あばずれ）」の「あば」って何？”. ジャパンナレッジ（日本語、どうでしょう？）. https://japanknowledge.com/articles/blognihongo/entry.html?entryid=484, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20260609121832/https://japanknowledge.com/articles/blognihongo/entry.html?entryid=484 (写しの日時 UTC 2026-06-09 12:18)
+[108] 浅川澄一. “なぜ「痴呆症」と呼ぶのをやめたことがよかったのか”. ダイヤモンド・オンライン（ダイヤモンド社）. 2015-12-09. https://diamond.jp/articles/-/82923, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20260419021308/https://diamond.jp/articles/-/82923 (写しの日時 UTC 2026-04-19 02:13)
+[109] “フジテレビ、保毛尾田保毛男を謝罪　番組ＨＰで”. デイリースポーツ online（デイリースポーツ）. 2017-10-16. https://www.daily.co.jp/gossip/2017/10/16/0010647819.shtml, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20240614062523/https://www.daily.co.jp/gossip/2017/10/16/0010647819.shtml (写しの日時 UTC 2024-06-14 06:25)
+[110] 日本魚類学会. “日本産魚類の差別的標準和名の改名最終勧告（2007年1月31日，日本魚類学会評議員会により承認）”. 一般社団法人日本魚類学会. 2007-01-31. https://www.fish-isj.jp/wp-content/uploads/070201.pdf, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20251108074456/https://www.fish-isj.jp/wp-content/uploads/070201.pdf (写しの日時 UTC 2025-11-08 07:44)
+[111] 日本魚類学会 会長. “標準和名の改名について（差別的語を含む標準和名の改名とお願い）”. 一般社団法人日本魚類学会. 2007-02-01. https://www.fish-isj.jp/message/guideline/j070201/, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20251113151440/https://www.fish-isj.jp/message/guideline/j070201/ (写しの日時 UTC 2025-11-13 15:14)
+[112] 中野区 総務課長. “不快・差別用語の考え方（57中総総第115号 各課(所)長あて総務課長通知）”. 中野区. 昭和57年（1982年）5月12日. https://www.city.tokyo-nakano.lg.jp/reiki/reiki_honbun/q600RG00000685.html, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20250427080229/https://www.city.tokyo-nakano.lg.jp/reiki/reiki_honbun/q600RG00000685.html (写しの日時 UTC 2025-04-27 08:02)
+[113] 八尾市人権ふれあい部人権政策課. “資料６『よりよい言葉づかいを意識してみませんか 誰もが安心して幸せに暮らすために』について（添付: 市ホームページ「よりよい言葉づかいを意識してみませんか〜誰もが安心して幸せに暮らすために〜」の印刷）”. 八尾市. 添付の市ホームページは 2024年10月23日付（PDF の作成日 2025-08-21）. https://www.city.yao.osaka.jp/_res/projects/default_project/_page_/001/020/187/r7-1shiryo6.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261107014105/https://www.city.yao.osaka.jp/_res/projects/default_project/_page_/001/020/187/r7-1shiryo6.pdf (写しの日時 UTC 2026-11-07 01:41)
+[114] 八戸市 総合政策部 市民連携推進課 男女共同参画推進室. “八戸市職員にじいろガイドライン（多様な性のあり方に関する八戸市職員ガイドライン）”. 八戸市. 令和5年3月. https://www.city.hachinohe.aomori.jp/material/files/group/4/staff_guideline_202303_hachinohe.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261107014644/https://www.city.hachinohe.aomori.jp/material/files/group/4/staff_guideline_202303_hachinohe.pdf (写しの日時 UTC 2026-11-07 01:46)
+[115] 障がい者制度改革推進会議（意見は久松委員）. “障がい者制度改革推進会議 第5回(H22.3.19) 資料3 障害の表記に関する意見一覧”. 内閣府. 平成22年（2010年）3月19日. https://www8.cao.go.jp/shougai/suishin/kaikaku/s_kaigi/k_5/pdf/s3.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261107015305/https://www8.cao.go.jp/shougai/suishin/kaikaku/s_kaigi/k_5/pdf/s3.pdf (写しの日時 UTC 2026-11-07 01:53)
+[116] 「痴呆」に替わる用語に関する検討会. “「痴呆」に替わる用語に関する検討会報告書”. 厚生労働省. 平成16年（2004年）12月24日. https://www.mhlw.go.jp/shingi/2004/12/s1224-17.html, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20260425151833/https://www.mhlw.go.jp/shingi/2004/12/s1224-17.html (写しの日時 UTC 2026-04-25 15:18)
+[117] 厚生労働省（「痴呆」に替わる用語に関する検討会 資料）. “これまでの用語変更事例（「痴呆」に替わる用語に関する検討会 資料6）”. 厚生労働省. 平成16年（2004年）6月（URL の s0621 から 6月21日の検討会資料）. https://www.mhlw.go.jp/shingi/2004/06/s0621-5f.html, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20260819174656/https://www.mhlw.go.jp/shingi/2004/06/s0621-5f.html (写しの日時 UTC 2026-08-19 17:46)
+[118] 厚生労働省主催シンポジウム（発言は長尾榮治 国立療養所大島青松園長）. “第１回ハンセン病問題に関するシンポジウム（議事録）”. 厚生労働省. 平成17年3月14日（ページ内の日付）. https://www.mhlw.go.jp/topics/bukyoku/kenkou/hansen/rikai/5.html, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20260515204514/https://www.mhlw.go.jp/topics/bukyoku/kenkou/hansen/rikai/5.html (写しの日時 UTC 2026-05-15 20:45)
+[119] 和歌山大学. “SOGIの理解と対応リーフレット（和歌山大学における SOGI の多様性に関する基本方針）”. 基本方針は令和元年11月22日決定（PDF の更新日 2020-09-16）. https://www.wakayama-u.ac.jp/_files/00705141/SOGIleaflet.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20241211070151/https://www.wakayama-u.ac.jp/_files/00705141/SOGIleaflet.pdf (写しの日時 UTC 2024-12-11 07:01)
+[120] 和歌山大学. “大学におけるSOGIの理解と対応（和歌山大学 リーフレット 2024）”. PDF の作成日 2024-03-27. https://www.wakayama-u.ac.jp/_files/00711593/SOGI2024.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20260119200157/https://www.wakayama-u.ac.jp/_files/00711593/SOGI2024.pdf (写しの日時 UTC 2026-01-19 20:01)
+[121] 埼玉県県民生活部人権・男女共同参画課. “県職員のための多様な性のあり方に関する対応ハンドブック”. 埼玉県. 令和8年2月 改訂版. https://www.pref.saitama.lg.jp/documents/223558/kensyokuinhandbook_2.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261107015848/https://www.pref.saitama.lg.jp/documents/223558/kensyokuinhandbook_2.pdf (写しの日時 UTC 2026-11-07 01:58)
+[122] 墨田区総務部人権同和・男女共同参画課. “性の多様性について＜職員ハンドブック＞”. 墨田区. 令和5年3月. https://www.city.sumida.lg.jp/kuseijoho/jinken_danzyo/jinken/tayouseihandbook.files/sumida_handbook.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20240614164404/https://www.city.sumida.lg.jp/kuseijoho/jinken_danzyo/jinken/tayouseihandbook.files/sumida_handbook.pdf (写しの日時 UTC 2024-06-14 16:44)
+[123] 多摩市くらしと文化部平和・人権課. “多様な性と生を尊重するまちづくりのための職員ガイドライン”. 多摩市. 令和4年3月. https://www.city.tama.lg.jp/_res/projects/default_project/_page_/001/003/317/guideline.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20260512095540/https://www.city.tama.lg.jp/_res/projects/default_project/_page_/001/003/317/guideline.pdf (写しの日時 UTC 2026-05-12 09:55)
+[124] 大阪市人権行政推進本部（事務局 市民局ダイバーシティ推進室人権企画課）. “人権の視点からの情報発信の手引き”. 大阪市. 平成25（2013）年3月発行、令和6（2024）年1月改訂. https://www.city.osaka.lg.jp/shimin/cmsfiles/contents/0000004/4594/48_9.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20260306002446/https://www.city.osaka.lg.jp/shimin/cmsfiles/contents/0000004/4594/48_9.pdf (写しの日時 UTC 2026-03-06 00:24)
+[125] 沖縄県宜野湾市議会. “高江での警察、機動隊の「土人」発言を差別発言と認めない鶴保庸介沖縄及び北方対策担当大臣への抗議決議”. 宜野湾市議会. 平成28年（2016年）12月2日. https://www.city.ginowan.lg.jp/material/files/group/61/ketugian12.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20240523222519/https://www.city.ginowan.lg.jp/material/files/group/61/ketugian12.pdf (写しの日時 UTC 2024-05-23 22:25)
+[126] 島根県政策企画局女性活躍推進課. “男女共同参画の視点からの表現ガイドライン（旧：公的広報のための手引き）”. 島根県. 令和6年3月（改訂版）. https://www.pref.shimane.lg.jp/josei_katsuyaku/index.data/danjohyougenngaidorain.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20250926112619/https://www1.pref.shimane.lg.jp/josei_katsuyaku/index.data/danjohyougenngaidorain.pdf (写しの日時 UTC 2025-09-26 11:26)
+[127] 島田市 市民協働課. “職員向けガイドライン～「多様な性に対する理解を深める」編～”. 島田市. 令和5年9月. https://www.city.shimada.shizuoka.jp/fs/9/0/4/7/3/1/_/tishikihen.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20250111121749/https://www.city.shimada.shizuoka.jp/fs/9/0/4/7/3/1/_/tishikihen.pdf (写しの日時 UTC 2025-01-11 12:17)
+[128] 石井光太. “「キモイ」「うざい」「死ね」「ガイジ」……17歳の高校生を死に追いやった教室で“日常的に飛び交っていた言葉”とは（3ページ目）”. 文春オンライン（文藝春秋）. 2022-08-20. https://bunshun.jp/articles/-/52310?page=3, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20251011222400/https://bunshun.jp/articles/-/52310?page=3 (写しの日時 UTC 2025-10-11 22:24)
+[129] Moment Joon. “「私は“在日”なんでしょうか」韓国出身、大阪在住…“移民”として生きるラッパーが辿り着いた“チョン”という蔑称への思い《大衆音楽の差別語を分析》”. 文春オンライン（文藝春秋）. 2022-02-15. https://bunshun.jp/articles/-/51652, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20251216194025/https://bunshun.jp/articles/-/51652 (写しの日時 UTC 2025-12-16 19:40)
+[130] Moment Joon. “「私は“在日”なんでしょうか」韓国出身、大阪在住…“移民”として生きるラッパーが辿り着いた“チョン”という蔑称への思い《大衆音楽の差別語を分析》（4ページ目）”. 文春オンライン（文藝春秋）. 2022-02-15. https://bunshun.jp/articles/-/51652?page=4, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20251016011809/https://bunshun.jp/articles/-/51652?page=4 (写しの日時 UTC 2025-10-16 01:18)
+[131] 新宿区子ども家庭部男女共同参画課. “新宿区性自認・性的指向に関する職員のためのハンドブック”. 新宿区. 令和4年3月発行、令和5年3月改訂、令和7年3月改訂. https://www.city.shinjuku.lg.jp/content/000333212.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261019152354/https://www.city.shinjuku.lg.jp/content/000333212.pdf (写しの日時 UTC 2026-10-19 15:23)
+[132] 田口ゆう. “知的障害の妹を持つ“きょうだい児”の悩み「姉の私は“いい子でいなきゃ”と思い続けてた」”. 日刊SPA!（扶桑社）. 2025-01-18. https://nikkan-spa.jp/2064225, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20260513215453/https://nikkan-spa.jp/2064225 (写しの日時 UTC 2026-05-13 21:54)
+[133] 東京都（総務局のサイトに掲載。文書中の主体は「当館」）. “ご利用にあたって（所蔵の絵図・地図類の差別的な表現について）”. 東京都. PDF の作成日 2026-06-05. https://www.soumu.metro.tokyo.lg.jp/documents/d/soumu/03032riyou, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261107020510/https://www.soumu.metro.tokyo.lg.jp/documents/d/soumu/03032riyou (写しの日時 UTC 2026-11-07 02:05)
+[134] 松岡宗嗣. “保毛尾田ネタ炎上､鎮火しても残る｢違和感｣ 賛否両論で見えてきた｢問題の現在位置｣”. 東洋経済オンライン（東洋経済新報社）. 2017-10-04. https://toyokeizai.net/articles/-/191609, (参照 2026-11-06).
+     Internet Archive の写し: https://web.archive.org/web/20260713034742/https://toyokeizai.net/articles/-/191609 (写しの日時 UTC 2026-07-13 03:47)
+[135] 松戸市総務部行政経営課・松戸市教育委員会教育企画課. “松戸市職員・教職員のための多様な性に関する対応ガイドライン～職員（教職員等）が理解を深めるために～”. 松戸市. 令和元年8月. https://www.city.matsudo.chiba.jp/kurashi/jinken_danjo/jinken/lgbt.files/lgbtguidliner1.8.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20241204083417/https://www.city.matsudo.chiba.jp/kurashi/jinken_danjo/jinken/lgbt.files/lgbtguidliner1.8.pdf (写しの日時 UTC 2024-12-04 08:34)
+[136] 橿原市 人権政策課. “【改めてもう一度】 言葉づかいを考えてみませんか～人権尊重のために～”. 橿原市. 更新日：2025年11月13日. https://www.city.kashihara.nara.jp/soshiki/1057/gyomu/3/4/1066.html, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20260308141244/https://www.city.kashihara.nara.jp/soshiki/1057/gyomu/3/4/1066.html (写しの日時 UTC 2026-03-08 14:12)
+[137] 浜松市 市民部 ＵＤ・男女共同参画課. “多様な性への理解を深め行動するための職員ハンドブック”. 浜松市. 2021年12月発行（2024年1月改訂）. https://www.city.hamamatsu.shizuoka.jp/documents/129315/syokuinhandbook2024.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20250218192046/https://www.city.hamamatsu.shizuoka.jp/documents/129315/syokuinhandbook2024.pdf (写しの日時 UTC 2025-02-18 19:20)
+[138] 盛岡市市民部市民協働推進課 男女共同参画推進室・もりおか女性センター. “性の多様性を理解するためのガイドブック”. 盛岡市. 令和3年3月. https://www.city.morioka.iwate.jp/_res/projects/default_project/_page_/001/034/550/LGBTgaidobukku.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20250912185626/https://www.city.morioka.iwate.jp/_res/projects/default_project/_page_/001/034/550/LGBTgaidobukku.pdf (写しの日時 UTC 2025-09-12 18:56)
+[139] 神奈川県福祉子どもみらい局共生推進本部室人権・同和グループ. “職員向け性的マイノリティサポートブック～自分らしく生き、笑顔あふれる共生社会をめざして～”. 神奈川県. 令和7年1月. https://www.pref.kanagawa.jp/documents/92203/supportbook_1.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20250418131819/https://www.pref.kanagawa.jp/documents/92203/supportbook_1.pdf (写しの日時 UTC 2025-04-18 13:18)
+[140] 網走市企画総務部企画調整課. “網走市レインボーガイドブック 誰もが個性と能力を発揮できる豊かなまちを実現するための職員向けガイドブック”. 網走市. 令和5年3月. https://www.city.abashiri.hokkaido.jp/uploaded/attachment/8615.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261107021127/https://www.city.abashiri.hokkaido.jp/uploaded/attachment/8615.pdf (写しの日時 UTC 2026-11-07 02:11)
+[141] 習志野市 協働経済部多様性社会推進課. “性的指向及び性自認・性別違和に関する対応指針”. 習志野市. 平成31年1月作成、令和7年3月改定. https://www.city.narashino.lg.jp/material/files/group/73/r7_10taioushishin.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261107021704/https://www.city.narashino.lg.jp/material/files/group/73/r7_10taioushishin.pdf (写しの日時 UTC 2026-11-07 02:17)
+[142] 茨城県保健福祉部福祉指導課. “多様な性のあり方を知り，行動するための職員ガイドライン～ＬＧＢＴをはじめ多様な性的指向・性自認（ＳＯＧＩ）について理解を深める～（第１版）”. 茨城県. 令和2年2月（第1版）. https://www.pref.ibaraki.jp/hokenfukushi/fukushi/jinken/documents/gaidrain.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20250218093318/https://www.pref.ibaraki.jp/hokenfukushi/fukushi/jinken/documents/gaidrain.pdf (写しの日時 UTC 2025-02-18 09:33)
+[143] 長野県県民文化部人権・男女共同参画課. “WE ARE “ALLY” 性の多様性を尊重するための職員ガイドライン”. 長野県. 2020年3月. https://www.pref.nagano.lg.jp/jinken-danjo/sogi/documents/ally_guideline.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20260515142236/https://www.pref.nagano.lg.jp/jinken-danjo/sogi/documents/ally_guideline.pdf (写しの日時 UTC 2026-05-15 14:22)
+[144] 関西学院大学. “関西学院大学 教職員向けインクルーシブ・コミュニケーション・ガイド（性的指向・性自認(SOGI)の多様性に配慮した教育・研究活動のためのガイドライン）”. PDF の作成日 2025-04-18. https://www.kwansei.ac.jp/assets/SOGI_guideline.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20261014200408/https://www.kwansei.ac.jp/assets/SOGI_guideline.pdf (写しの日時 UTC 2026-10-14 20:04)
+[145] 静岡市（男女共同参画・人権政策課）. “静岡市職員のための人権ハンドブック”. 静岡市. 2024年5月（令和6年9月18日審議会資料「参考資料４」として掲載）. https://www.city.shizuoka.lg.jp/documents/8371/sankoshiryo4.pdf, (参照 2026-11-07).
+     Internet Archive の写し: https://web.archive.org/web/20260207072035/https://www.city.shizuoka.lg.jp/documents/8371/sankoshiryo4.pdf (写しの日時 UTC 2026-02-07 07:20)

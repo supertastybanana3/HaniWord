@@ -1,0 +1,31 @@
+# 地理の英字の略語 (よく打つ分野に選んだ人の英字の判定に足す)。tools/domain/abbrev.py が書く。
+# 材料: 日本語版ウィキペディアの地理の記事の冒頭 (CC BY-SA 4.0) と JMdict (CC BY-SA 4.0)。6.1-sol で地理の略語かを判定した
+AGS
+ASTM
+BS
+CBD
+CGIAR
+ECDIS
+EEZ
+ENC
+ET
+GDP
+GIS
+GNSS
+IAG
+IERS
+IMF
+IPCC
+IR
+IUCN
+JAMSTEC
+JMA
+NIES
+OGC
+RGS
+SAR
+UNESCO
+VHF
+WebGIS
+WMO
+WWF

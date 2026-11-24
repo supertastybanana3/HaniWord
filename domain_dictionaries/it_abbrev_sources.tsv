@@ -1,0 +1,556 @@
+# 略語<TAB>出どころ (Wikipedia:<記事名> は冒頭にその略語が出てくる記事の 1 つ、JMdict:<番号> は JMdict の見出し)
+ACK	Wikipedia:肯定応答
+ACL	Wikipedia:TCP Wrapper
+ACM	Wikipedia:ALGOL
+ADC	Wikipedia:DC++
+ADL	Wikipedia:アーキテクチャ記述言語
+ADPCM	JMdict:2285400
+ADSL	Wikipedia:V.92
+AES	Wikipedia:AES-NI
+AFP	Wikipedia:Apple Filing Protocol
+AFS	Wikipedia:DCE Distributed File System
+AIFF	Wikipedia:非圧縮
+ALGOL	Wikipedia:ALGOL
+ALOHA	Wikipedia:ALOHA
+AMD64	Wikipedia:X64
+ANK	Wikipedia:ANK
+APIs	Wikipedia:WASAPI
+APL	Wikipedia:A+
+AppleTalk	Wikipedia:Apple Filing Protocol
+ARIB	Wikipedia:ARIB外字
+ARP	Wikipedia:Address Resolution Protocol
+ARPANET	Wikipedia:CYCLADES
+ASCII	Wikipedia:Blit
+ASIC	Wikipedia:LANスイッチ
+ASPI	Wikipedia:Advanced SCSI Programming Interface
+ATL	Wikipedia:ATLAS Transformation Language
+ATM	Wikipedia:Metropolitan Area Network
+ATS	Wikipedia:依存型
+ATX	Wikipedia:80 PLUS
+AVIF	JMdict:2866551
+AWT	Wikipedia:Abstract Window Toolkit
+BBS	Wikipedia:バイラルCM
+BCD	Wikipedia:3増し符号
+BCH	Wikipedia:Berlekamp–Masseyアルゴリズム
+BCP	Wikipedia:S-CAST
+BCPL	Wikipedia:BCPL
+BER	Wikipedia:BER試験
+BGP	Wikipedia:AnoNet
+BIM	Wikipedia:Tekla Structures
+BIOS	Wikipedia:BIOS割り込みルーチン
+BitBLT	JMdict:2321430
+BLAS	Wikipedia:Math.NET Numerics
+BMP	Wikipedia:非圧縮
+BNF	Wikipedia:バッカス・ナウア記法
+BOOTP	Wikipedia:Bootstrap Protocol
+BSC	Wikipedia:Synchronous Data Link Control
+BSD	Wikipedia:Pure Data
+BTO	Wikipedia:BTO
+BWA	Wikipedia:WILLCOM CORE XGP
+CAPTCHA	Wikipedia:CAPTCHA
+CardBus	JMdict:2290740
+CAV	JMdict:2299720
+CBT	Wikipedia:AI実装検定
+CCITT	Wikipedia:CHILL
+CDDA	JMdict:2300000
+CDF	Wikipedia:CDF Player
+CDMA	Wikipedia:あんしんGPS
+CDMA2000	Wikipedia:REX OS
+CDR	Wikipedia:クロック・データ・リカバリ
+CERT	Wikipedia:CERT Secure Coding Standards
+CFD	Wikipedia:数値流体力学
+CFG	Wikipedia:文脈自由文法
+CG	Wikipedia:Cg (プログラミング言語)
+CGA	JMdict:2299930
+CGI	Wikipedia:PersistentPerl
+CIFS	Wikipedia:OpenMediaVault
+CISC	Wikipedia:MPE
+CJK	Wikipedia:IICORE
+CLR	Wikipedia:C++/CLI
+CMOS	Wikipedia:65816 (コンピュータ)
+CNN	Wikipedia:R-CNN
+COBOL	Wikipedia:COBOL
+CODASYL	Wikipedia:CODASYL
+COFF	Wikipedia:A.outフォーマット
+COM	Wikipedia:Component Object Model
+CORBA	Wikipedia:Data Distribution Service
+CPE	Wikipedia:カスタマ構内設備
+CPL	Wikipedia:BCPL
+CPM	Wikipedia:クリティカルパス法
+CPS	Wikipedia:インダストリー4.0
+CRC	Wikipedia:巡回冗長検査
+CRM	Wikipedia:シルヴィオ・サヴァレーゼ
+CRS	Wikipedia:SABRE
+CRT	Wikipedia:V9958
+CRUD	Wikipedia:CRUD
+CRYPTREC	Wikipedia:危殆化
+CSA	Wikipedia:世界コンピュータ将棋選手権
+CSIRT	Wikipedia:CERT Coordination Center
+CSMA	Wikipedia:CSMA/CA
+CTO	Wikipedia:BTO
+CUG	JMdict:2300130
+CVE	Wikipedia:2014年シェルショック脆弱性
+CWE	Wikipedia:共通脆弱性タイプ一覧
+DARPA	Wikipedia:X10 (プログラミング言語)
+DASD	Wikipedia:ランダムアクセス
+DAW	Wikipedia:ヴェイパーウェイヴ
+DB	Wikipedia:OLE DB
+DBMS	Wikipedia:Platform as a service
+DCE	Wikipedia:DCE/RPC
+DDoS	Wikipedia:グレート・キャノン
+DDP	Wikipedia:AppleTalk
+DDR	Wikipedia:デュアルチャネル
+DDR2	Wikipedia:デュアルチャネル
+DDR3	Wikipedia:デュアルチャネル
+DDR4	Wikipedia:デュアルチャネル
+DDS	Wikipedia:Data Distribution Service
+DES	Wikipedia:FASCINATOR
+DevOps	Wikipedia:MLOps
+DFA	Wikipedia:差分故障解析
+DFP	Wikipedia:BFGS法
+DFT	Wikipedia:高速フーリエ変換
+DHCP	Wikipedia:Botan
+DHT	Wikipedia:分散ハッシュテーブル
+DHTML	Wikipedia:Yahoo!ユーザーインターフェイスライブラリ
+DKIM	Wikipedia:オーセンティケーテッド・レシーブド・チェーン
+DLNA	Wikipedia:DiXiM
+DMA	Wikipedia:周辺DMAコントローラ
+DMTF	Wikipedia:Windows Management Instrumentation
+DOM	Wikipedia:Document Object Model
+DP	Wikipedia:動的計画法
+DRAM	Wikipedia:ザ・マシン (コンピュータ・アーキテクチャ)
+DRM	Wikipedia:OpenMG
+DS	Wikipedia:データサイエンス
+DSA	Wikipedia:楕円曲線暗号
+DSDL	Wikipedia:文書スキーマ定義言語
+DSL	Wikipedia:ドメイン固有言語
+DSP	Wikipedia:キャッシュ (コンピュータシステム)
+DSU	JMdict:2311150
+DTE	Wikipedia:LAPB
+DTLS	Wikipedia:GnuTLS
+DTM	Wikipedia:DTMステーション
+DTP	Wikipedia:VLANホッピング
+E2E	Wikipedia:エンドツーエンド暗号化
+E2EE	Wikipedia:エンドツーエンド暗号化
+EBCDIC	Wikipedia:EBCDIC
+EBNF	Wikipedia:バッカス・ナウア記法
+ebXML	Wikipedia:EbXML Message Service
+ECC	Wikipedia:SECG
+ECDH	Wikipedia:Curve25519
+ECMA	Wikipedia:Excelize
+ECMAScript	Wikipedia:DMDScript
+ECP	JMdict:2825950
+EDIFACT	JMdict:2286320
+EDR	Wikipedia:Endpoint Detection and Response
+EEPROM	Wikipedia:PBASIC
+EJB	Wikipedia:EAR
+EMS	Wikipedia:要素管理
+EOF	Wikipedia:/dev/null
+EOS	JMdict:2282030
+EPROM	Wikipedia:Intel HEX
+EPS	Wikipedia:JFreeChart
+EPUB	Wikipedia:Re:VIEW
+EPWING	Wikipedia:EPWING
+ER	Wikipedia:進化ロボティクス
+ES	Wikipedia:進化戦略
+ESB	Wikipedia:Java Business Integration
+ESP	Wikipedia:実行保護
+ETL	Wikipedia:Extract/Transform/Load
+EUC	Wikipedia:エンドユーザー・デベロプメント
+EWS	JMdict:2282160
+EXE	Wikipedia:依存ファイル
+EXPTIME	Wikipedia:E (計算複雑性理論)
+FAQ	Wikipedia:FAQ
+FAX	Wikipedia:ダイレクトSMTP
+FCC	Wikipedia:8P8C
+FD	Wikipedia:関数従属性
+FDD	Wikipedia:シュガートアソシエイツ
+FDDI	Wikipedia:Metropolitan Area Network
+FDMA	Wikipedia:AMPS
+FEM	Wikipedia:FreeFem++
+FEP	Wikipedia:日本語入力システムの一覧
+FFT	Wikipedia:FFTPACK
+FIDO2	Wikipedia:FIDO (認証技術)
+FIPS	Wikipedia:Digital Signature Algorithm
+FLAC	Wikipedia:MusicFab
+FM	Wikipedia:FM音源
+FOSS	Wikipedia:V言語
+FP	Wikipedia:ファンクションポイント法
+FPGA	Wikipedia:組み込みスーパーコンピューティング
+FPS	Wikipedia:キャプチャー・ザ・フラッグ
+FPU	Wikipedia:IBM ViVA
+FQDN	Wikipedia:ドッペルゲンガー・ドメイン
+FSDG	Wikipedia:PureOS
+FSF	Wikipedia:GNU Cライブラリ
+FSM	Wikipedia:有限オートマトン
+FTP	Wikipedia:Archie
+FTPS	Wikipedia:FTPS
+FTTC	JMdict:2323060
+FTTH	Wikipedia:ユーザ・網インタフェース
+FTTx	JMdict:2159770
+GDI	Wikipedia:Graphics Device Interface
+GDPR	Wikipedia:EU一般データ保護規則
+GDS	Wikipedia:アマデウス (CRS)
+GF	Wikipedia:多項式基底
+GHC	Wikipedia:Guarded Horn Clauses
+GLSL	Wikipedia:GLSL
+GML	Wikipedia:Generalized Markup Language
+GP	Wikipedia:遺伝的プログラミング
+GPGPU	Wikipedia:Nvidia テスラ パーソナル スーパーコンピュータ
+GPL	Wikipedia:FreeBASIC
+GPLv2	Wikipedia:CUBRID
+GPLv3	Wikipedia:CGAL
+GRE	Wikipedia:Point to Point Tunneling Protocol
+GSM	Wikipedia:IPマルチメディアサブシステム
+gTLD	Wikipedia:地理的トップレベルドメイン
+HaaS	JMdict:2864878
+HAL	Wikipedia:Hardware Abstraction Layer
+HCI	Wikipedia:デジタルウェルビーイング
+HDFS	Wikipedia:Apache HBase
+HDL	Wikipedia:ハードウェア記述言語
+HDLC	Wikipedia:High-Level Data Link Control
+HDSL	JMdict:2158200
+HFS	Wikipedia:B*木
+HMA	JMdict:2285520
+HMAC	Wikipedia:HMAC
+HMD	Wikipedia:Microsoft HoloLens
+HMM	Wikipedia:隠れマルコフモデル
+HN	Wikipedia:ハンドルネーム
+HPC	Wikipedia:スーパーコンピュータ
+HSPA	Wikipedia:FOMAハイスピード
+HSV	JMdict:2285510
+HTML5	Wikipedia:なでしこ (プログラミング言語)
+HTTPD	JMdict:2285540
+IaaS	Wikipedia:Everything as a Service
+iCalendar	Wikipedia:ICalendar
+ICMP	Wikipedia:Internet Control Message Protocol
+ICT	Wikipedia:情報技術
+IdP	Wikipedia:OpenAthens
+IEC	Wikipedia:IEC 61131-3
+IETF	Wikipedia:Multi-Protocol Label Switching
+IGP	Wikipedia:EIGRP
+IGRP	Wikipedia:EIGRP
+IIOP	Wikipedia:GIOP
+IMAP	Wikipedia:メールサーバ
+IMAP4	Wikipedia:Mobileimap
+IMS	Wikipedia:IPマルチメディアサブシステム
+IMT	Wikipedia:第5世代移動通信システム
+INCITS	Wikipedia:Common Lisp
+InfiniBand	Wikipedia:スイッチドファブリック
+IoC	Wikipedia:セキュリティ侵害インジケーター
+IoT	Wikipedia:実世界情報学科
+IP	Wikipedia:ラグハック
+IPC	Wikipedia:UNIXドメインソケット
+IPS	Wikipedia:情報システム
+IPsec	Wikipedia:Amazon Virtual Private Cloud
+IPv4	Wikipedia:Type of Service
+IPv6	Wikipedia:V6プラス
+IRC	Wikipedia:IIP (プログラム)
+IrDA	Wikipedia:IrDA
+IRQ	Wikipedia:XTバス
+ISAM	Wikipedia:Btrieve
+iSCSI	Wikipedia:Drobo
+ISDN	Wikipedia:ISDN
+ISP	Wikipedia:帯域制御
+ITRON	Wikipedia:Smallest Set Profile
+ITX	Wikipedia:Mini-ITX
+IVR	Wikipedia:植田大樹
+J2EE	Wikipedia:JAX-RPC
+JCL	Wikipedia:CANO-AID
+JDBC	Wikipedia:Java Database Connectivity
+JIS	Wikipedia:計算機科学
+JIT	Wikipedia:Julia (プログラミング言語)
+JMS	Wikipedia:Java Message Service
+JRE	Wikipedia:Java Runtime Environment
+JS	Wikipedia:ジェンセン・シャノン・ダイバージェンス
+JSP	Wikipedia:ジャクソンの構造化プログラミング
+JSR	Wikipedia:Connected Device Configuration
+JTC	Wikipedia:MHEG-5
+KDE	Wikipedia:KDE Frameworks
+KL	Wikipedia:カルバック・ライブラー情報量
+KMP	Wikipedia:パターンマッチング
+KVM	Wikipedia:Karesansui
+KWIC	JMdict:2861681
+LA	Wikipedia:LA音源
+LAPM	JMdict:2336270
+LDA	Wikipedia:マージン分類器
+LDAP	Wikipedia:LDAP
+LGPL	Wikipedia:Csound
+LIFO	Wikipedia:スタック
+LOD	Wikipedia:LODチャレンジ
+LPI	Wikipedia:Linux Professional Institute Certification
+LR	Wikipedia:識別的モデル
+LSB	Wikipedia:最下位ビット
+LSI	Wikipedia:CPUソケット
+LSTM	Wikipedia:勾配消失問題
+LTS	Wikipedia:ロングタームサポート
+LUT	JMdict:2872029
+LZ77	Wikipedia:Lempel–Ziv–Storer–Szymanski
+LZH	Wikipedia:LHA
+LZMA	Wikipedia:Lzip
+LZSS	Wikipedia:Lempel–Ziv–Storer–Szymanski
+LZW	Wikipedia:Gzip
+M2M	Wikipedia:OMA LWM2M
+MathML	Wikipedia:MathJax
+MD4	Wikipedia:Hashcat
+MD5	Wikipedia:ノンス
+MDA	Wikipedia:モデル駆動型アーキテクチャ
+MDP	Wikipedia:部分観測マルコフ決定過程
+MFA	Wikipedia:多要素認証
+MIPS	Wikipedia:MMIX
+MLS	Wikipedia:Messaging Layer Security
+MMORPG	Wikipedia:Corrupted Blood事件
+MMS	Wikipedia:VCard
+MNO	JMdict:2864558
+MOF	Wikipedia:Meta-Object Facility
+MOSFET	Wikipedia:デナード則
+MP3	Wikipedia:Recuva
+MPI	Wikipedia:OpenMP
+MPU	Wikipedia:65816 (コンピュータ)
+MR	Wikipedia:Apple Vision Pro
+MSI	Wikipedia:Advanced Installer
+MSX	Wikipedia:MSX-ENGINE
+MTA	Wikipedia:ネットワークエンジニア
+MVNO	Wikipedia:IoTコンサルティング
+NAK	Wikipedia:否定応答
+NAS	Wikipedia:Drobo
+NAT	Wikipedia:NAT Port Mapping Protocol
+NBS	Wikipedia:DYSEAC
+NCP	Wikipedia:NetWare Core Protocol
+NCSA	Wikipedia:Blue Waters
+NetBIOS	Wikipedia:NetBEUI
+NFC	Wikipedia:VCard
+NFS	Wikipedia:FTAM
+NFT	Wikipedia:ウィキペディア最初の編集
+NIC	Wikipedia:仮想スイッチ
+NICT	Wikipedia:フローティングタッチディスプレイ
+NIS	Wikipedia:データ通信サービス
+NIST	Wikipedia:ポール・クリスティアーノ
+NL	Wikipedia:L (計算複雑性理論)
+NLP	Wikipedia:自然言語処理
+NNTP	Wikipedia:DeleGate
+NOS	Wikipedia:ネットワークオペレーティングシステム
+NP	Wikipedia:シーケンスペア
+NSS	Wikipedia:Name Service Switch
+NTFS	Wikipedia:Encrypting File System
+NTP	Wikipedia:Network Time Protocol
+NUL	Wikipedia:ヌル終端文字列
+NumLock	JMdict:2315290
+NVMe	Wikipedia:CFexpress
+NX	Wikipedia:自己書き換えコード
+OAuth	Wikipedia:OAuth
+OCaml	Wikipedia:SWIG
+ODBC	Wikipedia:OLE DB
+ODF	Wikipedia:LibreOffice Base
+ODMG	Wikipedia:Object Data Management Group
+OEM	Wikipedia:EComStation
+OLAP	Wikipedia:MDX (問い合わせ言語)
+OLE	Wikipedia:OLE DB
+OLPC	Wikipedia:OLPC
+OLTP	Wikipedia:オンライントランザクション処理
+OMG	Wikipedia:Meta-Object Facility
+OMT	Wikipedia:オブジェクトモデル
+ONC	Wikipedia:Open Network Computing Remote Procedure Call
+OpenCL	Wikipedia:Quartz Composer
+OpenFlow	Wikipedia:CloudNaaS
+OpenGL	Wikipedia:抽象化レイヤー
+OpenID	Wikipedia:ラーニング ツールズ インターオペラビリティ
+OpenMP	Wikipedia:OpenACC
+OpenPGP	Wikipedia:Enigmail
+OpenType	Wikipedia:Glyph Bitmap Distribution Format
+OpenURL	Wikipedia:COinS
+ORDBMS	Wikipedia:Illustra
+OS	Wikipedia:Foreign function interface
+OSF	Wikipedia:ECOFF
+OSS	Wikipedia:オープンソースソフトウェアとクローズドソースソフトウェアの比較
+OT	Wikipedia:Lumada
+PaaS	Wikipedia:Everything as a Service
+PAC	Wikipedia:確率的で近似的に正しい学習
+PAM	Wikipedia:Privileged access management
+PC	Wikipedia:Intel Core Ultra
+PCB	Wikipedia:プロセス制御ブロック
+PCI	Wikipedia:Myrinet
+PCM	Wikipedia:互換機
+PCS	Wikipedia:パンチカードシステム
+PDA	Wikipedia:グラフィティ (Palm)
+PDC	Wikipedia:周辺DMAコントローラ
+PDM	JMdict:2322470
+PDP	Wikipedia:PDPモデル
+PDS	Wikipedia:オンラインソフトウェア
+PDU	Wikipedia:Internet Wide Area RDMA Protocol
+PEM	Wikipedia:Base64
+PGP	Wikipedia:PGPワードリスト
+PHS	Wikipedia:アットフリード
+PIAFS	Wikipedia:アットフリード
+PIM	Wikipedia:Chandler (ソフトウェア)
+PKCS	Wikipedia:PKCS
+PKI	Wikipedia:公開鍵基盤
+PLC	Wikipedia:IEC 61131-3
+PLD	Wikipedia:In-System Programming
+PM	Wikipedia:プロジェクトマネジャー
+PnP	Wikipedia:プラグアンドプレイ
+POS	Wikipedia:ポータブルデータターミナル
+POSIX	Wikipedia:PicoLisp
+PPP	Wikipedia:L2F
+PRNG	Wikipedia:暗号論的擬似乱数生成器
+PSK	Wikipedia:事前共有鍵
+PSL	Wikipedia:Probabilstic soft logic
+PSTN	Wikipedia:K56flex
+PTP	Wikipedia:画像転送プロトコル
+QML	Wikipedia:QML
+QoS	Wikipedia:ポリシーベース管理
+QP	Wikipedia:逐次最小問題最適化法
+QR	Wikipedia:定性推論
+QUIC	Wikipedia:MsQuic
+RAD	Wikipedia:C++ Builder
+RAMDAC	JMdict:2336410
+RAR	Wikipedia:ACE (ファイルフォーマット)
+RAS	Wikipedia:Remote Access Service
+RC2	Wikipedia:RC2
+RC4	Wikipedia:RC4
+RC5	Wikipedia:RC2
+RC6	Wikipedia:RC2
+RCS	Wikipedia:リッチコミュニケーションサービス
+RDBMS	Wikipedia:Dma2.0
+RDF	Wikipedia:Resource Description Framework
+RDMA	Wikipedia:Internet Wide Area RDMA Protocol
+RDO	Wikipedia:ActiveX Data Objects
+RDP	Wikipedia:FreeRDP
+REPL	Wikipedia:REPL
+RFC	Wikipedia:スループット
+RFID	Wikipedia:Auto-IDラボ
+RGB	Wikipedia:データキューブ
+RIR	Wikipedia:Number Resource Organization
+RISC	Wikipedia:MPE
+RISS	Wikipedia:情報処理安全確保支援士
+RL	Wikipedia:強化学習
+RLHF	Wikipedia:人間のフィードバックによる強化学習
+RNN	Wikipedia:回帰型ニューラルネットワーク
+ROM	Wikipedia:RPL (プログラミング言語)
+RPA	Wikipedia:AI JIMY Paperbot
+RPG	Wikipedia:思考ルーチン
+RPM	Wikipedia:RPM Package Manager
+RPN	Wikipedia:逆ポーランド記法
+RSA	Wikipedia:RCシリーズ
+RTF	Wikipedia:DITA Open Toolkit
+RTL	Wikipedia:Diode–transistor logic
+RTOS	Wikipedia:TRONプロジェクト
+RTT	Wikipedia:ラウンドトリップタイム
+SaaS	Wikipedia:Everything as a Service
+SAML	Wikipedia:XML署名
+SBC	Wikipedia:シングルボードコンピュータ
+SCM	Wikipedia:企業アプリケーション
+SCP	Wikipedia:WinSCP
+SCSI	Wikipedia:World Wide Name
+SDH	Wikipedia:Plesiochronous Digital Hierarchy
+SDL	Wikipedia:仕様及び記述言語
+SDN	Wikipedia:CloudNaaS
+SDRAM	Wikipedia:デュアルチャネル
+SDSL	JMdict:2158210
+SEM	Wikipedia:サーチエンジンマーケティング
+SES	Wikipedia:IoTコンサルティング
+SFA	Wikipedia:営業支援システム
+SFC	Wikipedia:シーケンシャル・ファンクション・チャート
+SFTP	Wikipedia:Beyond Compare
+SGML	Wikipedia:スキーマ言語
+SIEM	Wikipedia:Security information and event management
+SIG	Wikipedia:Special Interest Group on Management of Data
+SIGGRAPH	Wikipedia:マーチングキューブ法
+SIMD	Wikipedia:ILLIAC III
+SJIS	Wikipedia:Shift JIS
+SMB	Wikipedia:Server Message Block
+SMP	Wikipedia:Linuxクラスター
+SMT	Wikipedia:F* (プログラミング言語)
+SMTP	Wikipedia:T.37
+SNA	Wikipedia:VTAM
+SNOBOL	Wikipedia:Icon
+SNS	Wikipedia:オープンバッジ
+SoC	Wikipedia:Intel Core Ultra
+SPARC	Wikipedia:DS/90 7000シリーズ
+SPF	Wikipedia:オーセンティケーテッド・レシーブド・チェーン
+SPI	Wikipedia:EUROMAP63
+SPN	Wikipedia:Feistel構造
+SPOF	Wikipedia:単一障害点
+SRAM	Wikipedia:VRAM
+SRI	Wikipedia:ダグラス・エンゲルバート
+SRL	Wikipedia:Probabilstic soft logic
+SSP	Wikipedia:Smallest Set Profile
+ST	Wikipedia:ストラクチャード・テキスト
+STL	Wikipedia:テンプレート (プログラミング)
+STM	Wikipedia:STM-1
+SUS	Wikipedia:UNIXユーティリティの一覧
+SVGA	JMdict:2286110
+SVM	Wikipedia:サポートベクターマシン
+SYN	Wikipedia:SYN cookies
+TC	Wikipedia:Optimized Link State Routing Protocol
+TDE	Wikipedia:透過的データ暗号化
+TLD	Wikipedia:オルタネートルート
+TOPPERS	Wikipedia:Smallest Set Profile
+TP	Wikipedia:ISO 15765-2
+TRS	Wikipedia:項書き換え
+TSS	Wikipedia:RSTS/E
+TTL	Wikipedia:Time to live
+TTS	Wikipedia:TROPO
+TTY	Wikipedia:ASR-33
+TWAIN	Wikipedia:TWAIN
+UART	Wikipedia:周辺DMAコントローラ
+UGC	JMdict:2864637
+UML	Wikipedia:Eclipse Modeling Framework
+UMTS	Wikipedia:High-Speed Downlink Packet Access
+UTM	Wikipedia:FortiGate
+UWB	Wikipedia:超広帯域無線
+VBA	Wikipedia:Visual Basic for Applications
+VBScript	Wikipedia:PerlScript
+VCPI	Wikipedia:Virtual Control Program Interface
+VCS	Wikipedia:バージョン管理システム
+VDP	Wikipedia:TMS9918
+VDSL	Wikipedia:デジタル加入者線
+VDT	Wikipedia:VDT作業
+VFX	Wikipedia:レンダーファーム
+VGA	Wikipedia:Mini-VGA
+VHDL	Wikipedia:Doxygen
+VLAN	Wikipedia:Virtual Local Area Network
+VLSI	Wikipedia:ニューロモルフィック・エンジニアリング
+VME	Wikipedia:DINコネクタ
+VNC	Wikipedia:RFB Protocol
+VOD	Wikipedia:ネットフォレスト
+VoIP	Wikipedia:WIRES-II
+VPN	Wikipedia:AnoNet
+VPS	Wikipedia:仮想専用サーバ
+VR	Wikipedia:メタバース
+VRAM	Wikipedia:ビットプレーン
+VRML	Wikipedia:X3D
+VSS	Wikipedia:検証可能秘密分散法
+VST	Wikipedia:ReWire
+WAF	Wikipedia:Web Application Firewall
+WAP	Wikipedia:WMLScript
+WebDAV	Wikipedia:CardDAV
+WebGL	Wikipedia:PixiJS
+WebVR	Wikipedia:WebXR
+WebXR	Wikipedia:WebXR Device API
+WEP	Wikipedia:SpoonWep
+WG	Wikipedia:MHEG-5
+WHATWG	Wikipedia:Shadow DOM
+WiMAX	Wikipedia:Centrino
+WML	Wikipedia:WMLScript
+WPA	Wikipedia:Wi-Fi Protected Access
+WS	Wikipedia:ワークステーション
+WSGI	Wikipedia:Mod wsgi
+WSIS	Wikipedia:インターネットガバナンス作業部会
+WWW	Wikipedia:ウェブ指向アーキテクチャ
+WYSIWYG	Wikipedia:WorldWideWeb
+WYSIWYS	JMdict:2284230
+xDSL	JMdict:2158180
+XHTML	Wikipedia:BBコード
+XMODEM	Wikipedia:バイナリ転送プロトコル
+XMPP	Wikipedia:Interactive Connectivity Establishment
+XOR	Wikipedia:XOR交換アルゴリズム
+XPath	Wikipedia:XQuery
+XPCOM	Wikipedia:XPCOM
+XQuery	Wikipedia:XQuery
+XR	Wikipedia:村上将太郎
+XSL	Wikipedia:Emmet
+XSLT	Wikipedia:Apache Xalan
+XUL	Wikipedia:XUL
+XZ	Wikipedia:Lempel-Ziv-Markov chain-Algorithm
+ZFS	Wikipedia:ZFS

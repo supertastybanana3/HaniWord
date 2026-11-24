@@ -1,0 +1,385 @@
+# HaniWord のソフト・アプリ・サービスの製品名の表 (かなモードで小文字の英数字を続けて打った綴り aftereffects を、この表記 After Effects にする)。1 行 1 表記
+# 空白を含む表記は、打った英数字の並び全体が表記の英数字 (小文字) と同じときだけ。1 語の表記は表記直しの表 (english_case.txt) と同じ扱い
+# 出典: 日本語版ウィキペディア (CC BY-SA 4.0) の、ソフトウェア・アプリケーション・ウェブサービスのカテゴリの記事の題と転送の題
+#   (2026-11 のダンプ)。記事の月の閲覧数の平均 (4 か月) が 300 以上。作り方は tools/core_products/README.md
+1Password
+365 Copilot
+386BSD
+Ableton Live
+AdBlock Plus
+Adobe Acrobat
+Adobe After Effects
+Adobe AIR
+Adobe Creative Cloud
+Adobe Creative Suite
+Adobe Dreamweaver
+Adobe Flash
+Adobe Illustrator
+Adobe InDesign
+Adobe Photoshop
+Adobe Premiere
+Adobe Premiere Elements
+Adobe Premiere Pro
+Advanced Comprehensive Operating System
+Affero General Public License
+Affinity Designer
+After Effects
+Alibaba Cloud
+Alpine Linux
+Amazon Music
+Amazon Web Services
+Android 12
+Android 13
+Android 14
+Android 15
+Android 16
+Android 17
+Android Auto
+Android Studio
+Android TV
+Apache HTTP Server
+Apache License
+Apache Struts
+Apache Subversion
+Apache Tomcat
+App Store
+Apple File System
+Apple Intelligence
+Apple Music
+Apple Store
+Apps Script
+Avast Antivirus
+Berkeley Software Distribution
+Big Sur
+BitTorrent
+Boot Camp
+C Sharp
+CASL
+ChromeOS Flex
+Cisco Webex
+Clam AntiVirus
+Classic Mac OS
+CLIP STUDIO PAINT
+COBOL
+ColorOS
+Common Lisp
+Concurrent Versions System
+Craving Explorer
+Creative Suite
+CRUD
+CrystalDiskInfo
+DaVinci Resolve
+Debian Enterprise
+DevOps
+DirectX
+DMM TV
+DVD Decrypter
+DVD Shrink
+ECMAScript
+Elementary OS
+ELIZA
+EPWING
+ESXi
+Exact Audio Copy
+F Sharp
+Facebook Home
+FFmpeg
+File Allocation Table
+Final Cut Pro
+Final Cut Pro X
+Find Hub
+Fire HD 10
+Fire OS
+Firefox OS
+FL Studio
+FOSS
+Free Documentation License
+FreeCAD
+General Public License
+Gentoo Linux
+GIMP
+GitHub Copilot
+GLOVIA
+GNU Affero General Public License
+GNU Emacs
+GNU Free Documentation License
+GNU General Public License
+GNU GRUB
+GNU Hurd
+GNU Lesser General Public License
+GNU Octave
+GNU Privacy Guard
+GNU Wget
+GOM Player
+Google Analytics
+Google Antigravity
+Google Apps Script
+Google Chrome
+Google Classroom
+Google Cloud
+Google Earth
+Google Earth Plus
+Google Earth Pro
+Google Fit
+Google Keep
+Google Meet
+Google One
+Google Pay
+Google Play
+Google Play Games
+Google Play Music
+Google Workspace
+Googlebook OS
+GrapheneOS
+HandBrake
+HCL Domino
+Hot Soup Processor
+HTML5
+HTTP Server
+IBM Db2
+ImageMagick
+ImgBurn
+Intel Quick Sync Video
+IntelliJ IDEA
+Internet Explorer
+Internet Explorer 11
+Internet Explorer Mobile
+iOS 10
+iOS 12
+iOS 13
+iOS 14
+iOS 15
+iOS 16
+iOS 17
+iOS 18
+iOS 26
+iOS 27
+iOS 7
+iPadOS 15
+iPadOS 16
+iPadOS 17
+iPadOS 18
+iPadOS 26
+iPadOS 27
+iTunes
+iTunes Mobile
+iTunes Store
+Jakarta EE
+Java Development Kit
+JUST Office
+KeePassXC
+KH Coder
+KiCad
+KKday
+Lesser General Public License
+LibreCAD
+LibreOffice
+LibreWolf
+LINE MUSIC
+LINE WORKS
+LineageOS
+Linux Foundation
+Linux Mint
+Liquid Glass
+LISMO
+ListenRadio
+Live2D
+Logic Pro
+Logic Pro X
+Mac App Store
+Mac OS 9
+Mac OS X Lion
+macOS Big Sur
+macOS Catalina
+macOS Golden Gate
+macOS High Sierra
+macOS Mojave
+macOS Monterey
+macOS Sequoia
+macOS Server
+macOS Tahoe
+macOS Ventura
+macOS X
+MANGA Plus
+MariaDB
+Media Player Classic
+MediBang Paint
+Microsoft 365
+Microsoft 365 Copilot
+Microsoft Access
+Microsoft Azure
+Microsoft DirectX
+Microsoft Edge
+Microsoft Excel
+Microsoft Forms
+Microsoft IME
+Microsoft Multiplan
+Microsoft Office
+Microsoft OneDrive
+Microsoft OneNote
+Microsoft Outlook
+Microsoft Paint
+Microsoft PowerPoint
+Microsoft PowerToys
+Microsoft Publisher
+Microsoft SharePoint
+Microsoft Silverlight
+Microsoft SQL Server
+Microsoft Teams
+Microsoft Visio
+Microsoft Visual Studio
+Microsoft Windows
+Microsoft Windows 10
+Microsoft Windows 10 IoT
+Microsoft Windows 10 Mobile
+Microsoft Windows 11
+Microsoft Windows 2000
+Microsoft Windows 2000 Professional
+Microsoft Windows 2000 Server
+Microsoft Windows 7
+Microsoft Windows 8
+Microsoft Windows 95
+Microsoft Windows 98
+Microsoft Windows Embedded CE
+Microsoft Windows Millennium Edition
+Microsoft Windows NT
+Microsoft Windows Server 2003
+Microsoft Windows Server 2012
+Microsoft Windows Server 2016
+Microsoft Windows Server 2019
+Microsoft Windows Server 2022
+Microsoft Windows Server 2025
+Microsoft Windows Vista
+Microsoft Windows XP
+Microsoft Word
+Model View Controller
+Model View ViewModel
+Movable Type
+Mozilla Firefox
+Mozilla Foundation
+Mozilla Thunderbird
+MuseScore
+MuseScore Studio
+Music Lovers
+Native Instruments
+NCSA Mosaic
+NetBSD
+Netscape Navigator
+Network Time Protocol
+NHK ONE
+Nintendo Music
+Nintendo Switch
+OBS Studio
+OCaml
+OpenAI Codex
+OpenCV
+OpenDocument
+OpenJDK
+OpenSSL
+Oracle Database
+OS 9
+OS X El Capitan
+OS X Lion
+OS X Mavericks
+OS X Mountain Lion
+OS X Yosemite
+Pale Moon
+PCSX2
+Perfect Dark
+PowerToys
+Premiere Pro
+Pretendo Network
+Pretty Good Privacy
+Privacy Guard
+Pro Tools
+Proton Mail
+Proton VPN
+Proxmox VE
+PS2 Linux
+Quick Sync Video
+ReactOS
+Red Hat Enterprise Linux
+Red Hat Linux
+ReFS
+Representational State Transfer
+Robot Operating System
+RPCS3
+SAS Institute
+Second Life
+Secure Shell
+SharePoint
+SIL Open Font License
+SimulRadio
+SketchUp Pro
+Snipping Tool
+SonicStage Premium
+SonicStage Server
+Source Engine
+Spring Framework
+SQL Server
+SQLite
+Stable Diffusion
+Sublime Text
+Symbian OS
+Synthesizer V
+System V
+Tailwind CSS
+TeamViewer
+Tera Term
+Tera Term Pro
+The Long Dark
+Tor Browser
+Ubuntu Server
+Ubuntu Touch
+UNIX
+UNIX System V
+Unreal Engine
+VeraCrypt
+VHDL
+Vine Linux
+Visual Basic
+Visual Studio
+Visual Studio Code
+VMware ESXi
+VoIP
+VZ Editor
+Wear OS
+WESTER
+Windows 10
+Windows 10 IoT
+Windows 10 Mobile
+Windows 11
+Windows 2000
+Windows 2000 Professional
+Windows 2000 Server
+Windows 7
+Windows 8
+Windows 95
+Windows 98
+Windows Embedded
+Windows Embedded CE
+Windows Media Player Legacy
+Windows Millennium Edition
+Windows Mobile
+Windows NT
+Windows NT Server
+Windows Phone
+Windows Server 2003
+Windows Server 2012
+Windows Server 2016
+Windows Server 2019
+Windows Server 2022
+Windows Server 2025
+Windows Vista
+Windows XP
+WinMerge
+WinSCP
+WPS Office
+WZ EDITOR
+X Premium
+X Window System
+Xbox Cloud Gaming
+Xiaomi HyperOS
+XnView
+YAGNI
+YouTube Music

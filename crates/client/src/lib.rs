@@ -1,6 +1,8 @@
+pub mod debug_log;
 mod engine;
 mod extension;
 mod globals;
+mod guard;
 mod macros;
 mod register;
 mod trace;
@@ -33,18 +35,22 @@ pub extern "system" fn DllMain(
     _lpv_reserved: *mut c_void,
 ) -> bool {
     if fdw_reason == DLL_PROCESS_ATTACH {
-        let result: anyhow::Result<()> = (|| {
+        guard::install_hook();
+        let result: anyhow::Result<()> = guard::run("DllMain", || {
             let mut dll_instance = DllModule::new();
             dll_instance.hinst = Some(hinst);
             DLL_INSTANCE
                 .set(Mutex::new(dll_instance))
                 .map_err(|e| anyhow::anyhow!(format!("{:?}", e)))?;
             Ok(())
-        })();
+        });
 
-        // use unwrap only in this function
+        // 2026-10-20: 記録のスレッドは開発用のビルドだけ (配布版の setup_logger は何もしない)。
+        // DllMain で作ったスレッドは、regsvr32 が登録してすぐ DLL を手放すと、手放したあとに動き出して落ちる
+        // (インストールの「DLL/OCX の登録に失敗しました: 終了コード 0xC0000409」。制御フローガードが、もう無いコードへの呼び出しを止める)
+        #[cfg(debug_assertions)]
         std::thread::spawn(|| {
-            trace::setup_logger().unwrap();
+            let _ = trace::setup_logger();
         });
 
         tracing::debug!("DllMain");
@@ -53,16 +59,16 @@ pub extern "system" fn DllMain(
     } else if fdw_reason == DLL_PROCESS_DETACH {
         tracing::debug!("DLL_PROCESS_DETACH");
 
-        let result: anyhow::Result<()> = (|| {
+        let result: anyhow::Result<()> = guard::run("DllMain", || {
             let mut dll_instance = DllModule::get()?;
             dll_instance.hinst = None;
-            // send a signal to the tracing writer thread to exit
+            // send a signal to the tracing writer thread to exit (書き手がもう終わっていても落ちないように unwrap しない)
             if let Some(sender) = dll_instance.sender.take() {
-                sender.send(true).unwrap();
+                let _ = sender.send(true);
             }
 
             Ok(())
-        })();
+        });
 
         check_err!(result, true, false)
     } else {
@@ -84,7 +90,7 @@ pub unsafe extern "system" fn DllGetClassObject(
     // https://zenn.dev/link/comments/d918e46723da80
     tracing::debug!("DllGetClassObject");
 
-    let result: anyhow::Result<()> = (|| {
+    let result: anyhow::Result<()> = guard::run("DllGetClassObject", || {
         let rclsid = unsafe { *rclsid };
         let riid = unsafe { *riid };
         let ppv = unsafe { &mut *ppv };
@@ -107,7 +113,7 @@ pub unsafe extern "system" fn DllGetClassObject(
             _ => return Err(anyhow::anyhow!(E_UNEXPECTED)),
         };
         Ok(())
-    })();
+    });
 
     check_err!(result)
 }
@@ -118,7 +124,7 @@ pub extern "system" fn DllRegisterServer() -> HRESULT {
     // Called when the DLL is registered using regsvr32
     tracing::debug!("DllRegisterServer");
 
-    let result: anyhow::Result<()> = (|| {
+    let result: anyhow::Result<()> = guard::run("DllRegisterServer", || {
         let dll_path = DllModule::get_path()?;
 
         ProfileMgr::register(&dll_path)?;
@@ -126,7 +132,7 @@ pub extern "system" fn DllRegisterServer() -> HRESULT {
         CategoryMgr::register()?;
 
         Ok(())
-    })();
+    });
 
     // to show the error, SELFREG_E_CLASS is needed
     check_err!(result, SELFREG_E_CLASS)
@@ -138,13 +144,13 @@ pub extern "system" fn DllUnregisterServer() -> HRESULT {
     // Called when the DLL is unregistered using regsvr32
     tracing::debug!("DllUnregisterServer");
 
-    let result: anyhow::Result<()> = (|| {
+    let result: anyhow::Result<()> = guard::run("DllUnregisterServer", || {
         ProfileMgr::unregister()?;
         CLSIDMgr::unregister()?;
         CategoryMgr::unregister()?;
 
         Ok(())
-    })();
+    });
 
     check_err!(result, SELFREG_E_CLASS)
 }

@@ -59,6 +59,9 @@ message ClearTextResponse {}
 
 message SetContextRequest {
   string context = 1;
+  // 2026-11-08 (仕事 45): カーソルの右の字 (入力中の範囲の後ろ、最初の改行まで・20 字まで)。設定 input.right_context がオフ・取れないアプリでは空。
+  // 古い IME からは空で届く (今までどおり)
+  string right_context = 2;
 }
 
 message SetContextResponse {}
@@ -66,6 +69,114 @@ message SetContextResponse {}
 message UpdateConfigRequest {}
 message UpdateConfigResponse {}
 
+
+// --- Google日本語入力風の変換 ---
+
+// 読みの編集だけを行い、変換はしない
+message EditTextRequest {
+  enum Op {
+    INSERT = 0;
+    DELETE_BACKWARD = 1;
+    DELETE_FORWARD = 2;
+    MOVE_CURSOR = 3;
+    INSERT_DIRECT = 4; // ローマ字変換せずにそのまま (英語と判定した語)
+  }
+  Op op = 1;
+  string text = 2;   // INSERT のときの入力
+  int32 offset = 3;  // MOVE_CURSOR のときの移動量
+}
+
+message EditTextResponse {
+  string hiragana = 1;
+  int32 cursor = 2;
+  string raw = 3; // 打たれている文字の列 (ローマ字・英字・かな)
+}
+
+message Segment {
+  string text = 1;
+  int32 length = 2; // 読みの文字数
+}
+
+message ConvertRequest {
+  string hiragana = 1;
+  string context = 2; // 直前に置かれる文字列 (前の文節など)
+  bool fast = 3;      // ライブ変換用 (Zenzai の推論を 1 回にする)
+  bool dictionary_only = 4; // Zenzai を使わず辞書だけで変換する (ライブ変換の打鍵中)
+  bool plain = 5;     // 表記の自動変換 (ギリシャ文字・化学式の下付き) をしない (TeX を書いているとき)
+  // 2026-11-08 (仕事 52): ライブ変換の清書 (1.5 秒で切れ、遅れて届けば替える問い合わせ)。重いときに AI を休んでいる間、AI が戻ったかの試しに使ってよい。
+  // Space には付けない (利用者が待つため)。古い IME からは false で届く
+  bool refine = 6;
+}
+
+message ConvertResponse {
+  repeated Segment segments = 1;
+  // 2026-11-08 (仕事 52): 重いので AI を休み、この変換を辞書だけでした (古い IME は読まない。変換の結果はどちらでも正しい)
+  bool ai_paused = 2;
+}
+
+message ListCandidatesRequest {
+  string hiragana = 1;
+  string context = 2;
+  bool single_kanji = 3; // 「単漢字…」から開く単漢字の一覧
+  bool plain = 4;        // 表記の自動変換をしない (TeX を書いているとき)
+  bool notes = 5;        // 2026-10-22: 候補の注記 (誤用・異字同訓) が要る (IME 本体の設定でどちらかがオンのとき)。要らなければ変換サーバーは作らない
+}
+
+message ListCandidatesResponse {
+  repeated string candidates = 1;
+  // 2026-10-22: 候補ごとの注記 (candidates と同じ並び。「種類<TAB>注記」、無ければ空)。種類は 誤用 (本来は〜) か 異字同訓。出すかどうかは IME 本体の設定
+  repeated string notes = 2;
+  // 2026-11-08: 候補ごとに、学習した語を含むか (candidates と同じ並び。Ctrl+Delete で忘れられる候補。候補の窓で「Ctrl+Delete で忘れる」を出す)。
+  // 個人のデータを使わない接続・学習を使わない設定では、いつも偽
+  repeated bool learned = 3;
+}
+
+// 確定した文節 (読みと表記) を学習させる
+message LearnRequest {
+  repeated string readings = 1;
+  repeated string texts = 2;
+  string context = 3;
+}
+
+message LearnResponse {
+  int32 learned = 1;
+}
+
+// 2026-10-28: ローマ字の母音の抜けを直すときの、補った読みの候補の採点 (IME 本体が候補の読みを作って渡す)
+message ScoreReadingsRequest {
+  repeated string readings = 1;
+  string context = 2;
+}
+
+message ScoreReadingsResponse {
+  // readings と同じ並び。dict は辞書だけの変換の 1 位の点数、lm は読みだけを AI (zenz) が書く確率 (対数)。取れなければ has_* が false
+  repeated float dict = 1;
+  repeated float lm = 2;
+  repeated bool has_dict = 3;
+  repeated bool has_lm = 4;
+}
+
+// 2026-10-29: 候補の一覧で選んでいる候補 (読み → 表記) が学習した語なら忘れる (Ctrl+Delete)。辞書の語は何もしない
+message ForgetRequest {
+  string reading = 1;
+  string text = 2;
+}
+
+message ForgetResponse {
+  // 忘れた学習の語の数 (0 なら学習した語ではなかった)
+  int32 forgotten = 1;
+}
+
+// 2026-11-08: 学習をまっさらにする (設定の画面から)。消す前に %APPDATA%\HaniWord\memory_backup_<日時> へ控えを取る
+message ResetLearningRequest {
+  // 偽: 変換の学習 (azooKey の memory.*) だけ。真: HaniWord の学習の表 (表記の選び・同音語・・ と / ・英字の綴り・数え方・予測の候補 など) も一緒に
+  bool include_tables = 1;
+}
+
+message ResetLearningResponse {
+  // 控えの場所 (C:\Users\…)。空なら控えを取れず、何も消していない
+  string backup = 1;
+}
 
 // Service definition for text editing operations.
 service AzookeyService {
@@ -76,4 +187,11 @@ service AzookeyService {
   rpc ClearText (ClearTextRequest) returns (ClearTextResponse);
   rpc SetContext (SetContextRequest) returns (SetContextResponse);
   rpc UpdateConfig (UpdateConfigRequest) returns (UpdateConfigResponse);
+  rpc EditText (EditTextRequest) returns (EditTextResponse);
+  rpc Convert (ConvertRequest) returns (ConvertResponse);
+  rpc ListCandidates (ListCandidatesRequest) returns (ListCandidatesResponse);
+  rpc Learn (LearnRequest) returns (LearnResponse);
+  rpc ScoreReadings (ScoreReadingsRequest) returns (ScoreReadingsResponse);
+  rpc Forget (ForgetRequest) returns (ForgetResponse);
+  rpc ResetLearning (ResetLearningRequest) returns (ResetLearningResponse);
 }

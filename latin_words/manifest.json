@@ -1,0 +1,75 @@
+{
+  "version": "3.1.1",
+  "wheel_sha256": "4b1c6ecffc6198be3396d5cf871c4423ca71c907c231348d352dd54d62b97473",
+  "source": "https://pypi.org/project/wordfreq/3.1.1/",
+  "license": "CC-BY-SA-4.0",
+  "languages": {
+    "fr": {
+      "sources": [
+        "fr"
+      ],
+      "words": 31054,
+      "sha256": "42fb36b709164eb127a4b53fd0528c17996f8d078f70eb48c96474695f203846"
+    },
+    "de": {
+      "sources": [
+        "de"
+      ],
+      "words": 38855,
+      "sha256": "b0daa5d5f68223fc43c0afe53950eb9a751d281d43016b1c61111ba915da23b7"
+    },
+    "es": {
+      "sources": [
+        "es"
+      ],
+      "words": 34671,
+      "sha256": "e1aba1723020834baad8dc6676ed87767670677ad11755bafcb5721322ff557f"
+    },
+    "it": {
+      "sources": [
+        "it"
+      ],
+      "words": 34932,
+      "sha256": "ad737e683e17f65d6b86dd1489373d1cef8145c387f7294135e6cb0544a133b1"
+    },
+    "pt": {
+      "sources": [
+        "pt"
+      ],
+      "words": 33035,
+      "sha256": "cb3a321832f7abddb44a52a053acb15aa29da40733d1247141e5eb63721a2c5b"
+    },
+    "pl": {
+      "sources": [
+        "pl"
+      ],
+      "words": 49551,
+      "sha256": "3ef4ee790dafcb1e0bd0e40a01baf4917993c6585fd9b72ed9645c640b125bdf"
+    },
+    "cs": {
+      "sources": [
+        "cs"
+      ],
+      "words": 51638,
+      "sha256": "262c20a93871e4b99a4b7eb6a70fc88d8fad251a73a3a91446cd59085802a6b9"
+    },
+    "tr": {
+      "sources": [
+        "tr"
+      ],
+      "words": 61112,
+      "sha256": "bbea7d957e6df06362da1efd6237175f49fa0138f68f6bf68154bf720f16cd01"
+    },
+    "nordic": {
+      "sources": [
+        "da",
+        "sv",
+        "nb",
+        "is",
+        "fi"
+      ],
+      "words": 152090,
+      "sha256": "b97bfe56b06b64d24658be1c60899aac877a396cc6e994dc6bbac811e9304a1e"
+    }
+  }
+}

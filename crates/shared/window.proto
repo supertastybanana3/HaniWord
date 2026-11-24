@@ -18,6 +18,8 @@ message SetPositionRequest {
 // 変換候補を送るメッセージ
 message SetCandidateRequest {
   repeated string candidates = 1;
+  // 2026-11-08 (仕事 52): 候補の窓の下の欄に添える文言 (重いので AI を休んでいるとき「負荷がかかっているためAIがオフになっています」)。空なら何も添えない
+  string note = 2;
 }
 
 // 変換候補を選択するメッセージ
@@ -27,6 +29,8 @@ message SetSelectionRequest {
 
 message SetInputModeRequest {
   string mode = 1;
+  // 2026-11-08 (仕事 52): 重いので AI を休んでいる間は、札の右下に小さな点 (古い表示は読まない)
+  bool ai_paused = 2;
 }
 
 // 候補ウィンドウ制御に対する空のレスポンス

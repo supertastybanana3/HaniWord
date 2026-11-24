@@ -1,0 +1,15 @@
+HaniWord Latin word dictionaries
+
+Derived from wordfreq 3.1.1 by Robyn Speer, copyright 2022 Robyn Speer.
+https://github.com/rspeer/wordfreq
+https://pypi.org/project/wordfreq/3.1.1/
+
+Dictionary data and these modified lists: Creative Commons Attribution-ShareAlike 4.0 International.
+https://creativecommons.org/licenses/by-sa/4.0/
+The wordfreq code is separately licensed under Apache-2.0 (WORD_FREQ_LICENSE.txt).
+See UPSTREAM.txt for the upstream data sources, acknowledgements, and terms.
+
+Changes: common-word (small) lists filtered to Latin alphabetic tokens, 1-30 letters;
+lowercased, deduplicated and sorted. Nordic combines Danish, Swedish, Norwegian Bokmål,
+Icelandic and Finnish. Accented spellings are retained, never stripped or guessed.
+Pinyin is a transliteration system, not one of these dictionaries.

@@ -1,0 +1,41 @@
+# 行頭の / のあとで英字のまま渡すコマンドの出典（2026-10-13、Claude のエージェントが開いて確かめたもの）
+
+全領域を入れている（一般公開するので、どの領域も外さない）。全件と領域は slash_commands_all.tsv。
+
+- aider（43語）: https://aider.chat/docs/usage/commands.html
+- chatgpt-desktop（28語）: https://learn.chatgpt.com/docs/reference/slash-commands
+- claude-code（139語）: https://code.claude.com/docs/en/commands
+- cline（6語）: https://docs.cline.bot/core-workflows/using-commands
+- codex-cli（67語）: https://github.com/openai/codex/blob/main/codex-rs/tui/src/slash_command.rs https://learn.chatgpt.com/docs/developer-commands?surface=cli
+- codex-ide（22語）: https://learn.chatgpt.com/docs/developer-commands?surface=cli
+- confluence（10語）: https://support.atlassian.com/confluence-cloud/docs/insert-elements-into-a-page/
+- copilot-app（44語）: https://docs.github.com/en/copilot/reference/github-copilot-app-reference/slash-commands
+- copilot-cli（98語）: https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference
+- cursor（32語）: https://cursor.com/docs/agent/agent-review https://cursor.com/docs/agent/overview https://cursor.com/docs/cloud-agent/capabilities https://cursor.com/docs/configuration/worktrees https://cursor.com/docs/release-notes https://cursor.com/docs/skills https://cursor.com/docs/subagents
+- cursor-cli（61語）: https://cursor.com/docs/cli/changelog https://cursor.com/docs/cli/reference/slash-commands
+- discord（5語）: https://support-apps.discord.com/hc/en-us/articles/26501837786775-Slash-Commands-FAQ https://support.discord.com/hc/en-us/articles/212517297-Text-to-Speech-101 https://support.discord.com/hc/en-us/articles/219070107-Server-Nicknames https://support.discord.com/hc/en-us/articles/360022320632-Spoiler-Tags
+- gemini-cli（57語）: https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/commands.md https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/bugMemoryCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/clearCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/commandsCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/compressCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/corgiCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/exportSessionCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/footerCommand.tsx https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/gemmaStatusCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/shortcutsCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/statsCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/tasksCommand.ts https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/ui/commands/voiceCommand.ts
+- github（5語）: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/about-slash-commands
+- gitlab（88語）: https://docs.gitlab.com/user/project/quick_actions/
+- gitlab-duo-chat（12語）: https://docs.gitlab.com/user/gitlab_duo_chat/examples/
+- irc（111語）: https://irssi.org/documentation/help/ https://libera.chat/guides/basics
+- jetbrains-ai（6語）: https://www.jetbrains.com/help/ai-assistant/ai-in-jupyter-notebooks.html https://www.jetbrains.com/help/ai-assistant/chat-mode.html
+- jira（2語）: https://support.atlassian.com/jira-software-cloud/docs/add-files-images-and-other-content-to-describe-an-issue/
+- linear（7語）: https://linear.app/docs/editor
+- linear-integration（3語）: https://linear.app/docs/linear-asks https://linear.app/docs/linear-asks-slack https://linear.app/docs/slack
+- lol（70語）: https://support.riotgames.com/en-us/league-of-legends/gameplay/chat-commands https://wiki.leagueoflegends.com/en-us/Chat_commands
+- mattermost（31語）: https://docs.mattermost.com/integrations-guide/built-in-slash-commands https://raw.githubusercontent.com/mattermost/mattermost/master/server/channels/app/slashcommands/command_search.go
+- minecraft-bedrock（98語）: https://learn.microsoft.com/en-us/minecraft/creator/commands/commands?view=minecraft-bedrock-stable https://minecraft.wiki/w/Commands
+- minecraft-java（94語）: https://minecraft.wiki/w/Commands
+- notion（40語）: https://www.notion.com/help/guides/using-slash-commands https://www.notion.com/help/keyboard-shortcuts
+- osu（24語）: https://osu.ppy.sh/wiki/en/Client/Interface/Chat_console
+- roblox（16語）: https://create.roblox.com/docs/reference/engine/classes/TextChatService
+- roo-code（6語）: https://roocodeinc.github.io/Roo-Code/basic-usage/using-modes/ https://roocodeinc.github.io/Roo-Code/features/slash-commands/
+- slack（34語）: https://slack.com/intl/en-gb/help/articles/360057554553-Use-shortcuts-to-take-actions-in-Slack
+- teams（30語）: https://support.microsoft.com/en-us/teams/chat/use-commands-in-microsoft-teams
+- terraria（14語）: https://terraria.wiki.gg/wiki/Chat
+- twitch（47語）: https://help.twitch.tv/s/article/chat-commands?language=en_US
+- vscode-copilot-chat（33語）: https://code.visualstudio.com/docs/agents/reference/ai-features-cheat-sheet https://code.visualstudio.com/docs/agents/run/approvals
+- windsurf（1語）: https://docs.windsurf.com/windsurf/cascade/workflows
+- wow（151語）: https://warcraft.wiki.gg/wiki/Macro_commands
+- wow-emote（317語）: https://warcraft.wiki.gg/wiki/Macro_commands

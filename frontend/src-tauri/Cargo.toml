@@ -5,6 +5,10 @@ description = "A Tauri App"
 authors = ["you"]
 edition = "2021"
 
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
@@ -19,7 +23,7 @@ tauri-build = { version = "2", features = [] }
 
 [dependencies]
 anyhow = "1.0"
-tauri = { version = "2", features = [] }
+tauri = { version = "2.11.6", features = [] }
 tauri-plugin-opener = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
@@ -34,4 +38,7 @@ hyper-util = { version = "0.1.9", features = ["tokio"] }
 version = "0.58.0"
 features = [
     "Win32_Foundation",
+    # 2026-11-06 (仕事 37): 外観の候補のフォントを選ぶため、入っているフォントの名前を数える (EnumFontFamiliesExW)
+    "Win32_Graphics_Gdi",
+    "Win32_Graphics_Dwm",
 ]

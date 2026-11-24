@@ -1,0 +1,13 @@
+[package]
+name = "ngcount2"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rustc-hash = "2"
+
+[profile.release]
+opt-level = 3
+
+# このリポジトリの Cargo ワークスペースには入れない (単独でビルドする)
+[workspace]

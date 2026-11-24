@@ -7,3 +7,30 @@ logs/*
 *.gguf
 *.dll
 *.lib
+# 2026-10-15 (改造版): 個人用のファイル (公開しない)
+english_terms_personal.txt
+learning_ng.txt
+# 2026-11-02: 難読語の同音語の差し替えで、利用者が元の語に戻した組 (変換サーバーの memory に置く。学習と同じ扱い)
+homophone_declined.txt
+# 2026-11-02: 難読語の一覧の語で、利用者が最後に確定した語 (学習と同じく memory に置く個人のデータ)
+homophone_learned.txt
+# 2026-11-03: 表記ゆれの組で、利用者が確定した形の数 (学習と同じく memory に置く個人のデータ)
+hyouki_learned.txt
+# 2026-11-04: 利用者の単語登録 (%APPDATA%\HaniWord に置く個人のデータ) と、設定アプリで書き出した表
+user_dictionary.tsv
+HaniWord_単語登録*.tsv
+# 実行環境の写し (ビルドのときに入れる)
+llama_cpu/
+llama_cuda/
+llama_vulkan/
+# 変換器に同梱の辞書 (上流の azooKey_dictionary_storage と同じもの。改造していない)
+server-swift/LocalPackages/AzooKeyKanaKanjiConverter/Sources/KanaKanjiConverterModuleWithDefaultDictionary/azooKey_dictionary_storage/
+server-swift/LocalPackages/AzooKeyKanaKanjiConverter/Sources/KanaKanjiConverterModuleWithDefaultDictionary/azooKey_emoji_dictionary_storage/
+server-swift/LocalPackages/**/.build/
+server-swift/.build/
+# 2026-10-20 配布物 (scripts/release/package.py・installer/compile.ps1 が作る)
+/release/
+/release.pending.*/
+/release.before_*/
+/release_installer/
+*.bak_*

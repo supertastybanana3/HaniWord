@@ -75,6 +75,16 @@ pub struct TextService {
     pub display_attribute_atom: HashMap<GUID, u32>,
     pub mode: InputMode,
     pub this: Option<ITfTextInputProcessor>,
+    /// この IME の実体が登録したイベントの登録番号。explorer のように 1 つのプロセスの中でスレッドごとに実体ができるので、
+    /// プロセス全体 (IMEState) ではなく実体ごとに持つ (取り違えると登録が残り、終わった実体にイベントが届き続ける)
+    pub thread_mgr_sink_cookie: Option<u32>,
+    /// 2026-11-08 (仕事 53 の案 1、見るだけ): IME の開け閉め (GUID_COMPARTMENT_KEYBOARD_OPENCLOSE) の区画に登録した番号
+    pub openclose_sink_cookie: Option<u32>,
+    pub layout_context: Option<ITfContext>,
+    pub layout_sink_cookie: Option<u32>,
+    /// 候補ウィンドウを合わせる位置 (未確定文字列の頭からの UTF-16 の位置と、端末で数えたマス数)。変換中は注目文節の先頭、
+    /// ほかは None (文字列の頭)。画面の配置が変わったとき (OnLayoutChange) の位置合わせにも使うので、表示のたびにここへ書く
+    pub candidate_anchor: Option<(i32, i32)>,
 }
 
 impl TextService {

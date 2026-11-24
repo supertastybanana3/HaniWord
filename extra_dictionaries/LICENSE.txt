@@ -1,0 +1,269 @@
+HaniWord のオフにできない追加辞書 (extra_dictionaries/core_*.tsv と、そこから作る domain/domain_core_*.louds ほか)
+
+辞書の抜け (azooKey の辞書に無い活用形・成句・語) を補う辞書です。設定ではオフにできません。
+HaniWord のプログラム (MIT License) とは別に、次の材料ごとの条件で配布します。
+品詞・意味の番号と変換の重みは、azooKey の辞書 (Apache License 2.0) の語にならって HaniWord の開発者が付けました。
+
+■ 活用形 (core_forms)・文章で使われている抜けの語 (core_words)
+- Mozc の公開辞書 (https://github.com/google/mozc の src/data/dictionary_oss/dictionary00.txt〜dictionary09.txt、
+  commit f183d4d3a7ba139d7cb2252c05f608e9f8266aef) にある読みと表記を選びました。
+  core_forms は、azooKey の辞書に基本形だけある動詞・形容詞の活用形のうち、Mozc の公開辞書に同じ読み・表記があるものです。
+  core_words は、変換の確かめに使う文 (日本語版ウィキペディアの記事などから作った文) に出てくる語のうち、Mozc の公開辞書にあって azooKey の辞書に無いものです
+  (文そのものは入っていません)。
+
+■ 成句 (core_phrases)
+- JMdict (Electronic Dictionary Research and Development Group、https://www.edrdg.org/wiki/index.php/JMdict-EDICT_Dictionary_Project)、
+  クリエイティブ・コモンズ 表示-継承 4.0 国際 (CC BY-SA 4.0、https://creativecommons.org/licenses/by-sa/4.0/deed.ja)。
+  ライセンスと文書: https://www.edrdg.org/edrdg/licence.html。
+  表現 (exp)・慣用句 (id) の印が付いた項目の表記と読みを選び、動詞・形容詞で終わるものには活用形を足しました (編集・加工)。
+  core_phrases.tsv と、そこから作る domain_core_phrases.* は CC BY-SA 4.0 で配布します。
+  代わりの字の成句の表 (variant_pairs.txt と、そこから作る variant_spellings.tsv。本来の字を意味の違う常用漢字で代わりに書く成句) も、
+  JMdict の書き方から選んだもので、同じく CC BY-SA 4.0 です。どの字が常用漢字かは KANJIDIC2 (EDRDG、CC BY-SA 4.0) で見ました。
+  HaniWord の開発者は、JMdict から取った内容について著作権を主張しません。
+  使った JMdict: JMdict_e.gz (ファイルの中の作成日 2026-10-08、2026-10-09 に取得)。
+  更新の決まり: HaniWord の版を出す前に、使った JMdict の作成日を確かめ、3 か月より古ければ、新しい JMdict から作り直してから出します
+  (JMdict は開発者が配布のページから手で取ります)。
+  作り直す手順は tools/extra_dict/README.md にあります。
+
+■ 感動詞・つなぎの言葉 (core_interjections、2026-11-04)
+- JMdict (上の成句と同じ。CC BY-SA 4.0) の感動詞 (interjection の印が付いた項目) の、ひらがなだけの読みと、
+  HaniWord の開発者が足したよく打つ言葉 (ほーん・あーね・てか など)、それらの ー・〜・小書きの形 (あー → あ〜、まあ → まぁ) から、
+  azooKey の辞書に同じ読みと表記の無いものを選びました (編集・加工。品詞は感動詞)。core_interjections.tsv と、そこから作る
+  domain_core_interjections.* は CC BY-SA 4.0 で配布します。HaniWord の開発者は、JMdict から取った内容について著作権を主張しません。
+  使った JMdict: JMdict_e.gz (ファイルの中の作成日 2026-11-01、2026-11-01 に取得)。作り方は tools/kandou (jmdict_interjections.py → build_table.py)。
+- くだけた一言 (2026-11-06。だる・きも・おけ・りょ・わろた・ちょ など 41 語。core_interjections の行と、変換サーバーが読む casual_words.tsv):
+  RealPersonaChat (山下 紗苗 ほか、https://github.com/nu-dialogue/real-persona-chat 、CC BY-SA 4.0) の一言の発話の回数と、
+  日本語版ウィクショナリー (https://ja.wiktionary.org/ 、CC BY-SA 4.0。ダンプ jawiktionary-20261101) の若者言葉・ネットスラング・俗語の印のある見出しを材料に、
+  HaniWord の開発者が選びました (語と書き方だけ。発話の文章は入っていません)。casual_words.tsv は CC BY-SA 4.0 で配布します。
+
+■ 役割語 (core_roles、2026-11-07)
+- 日本語版ウィキペディア (CC BY-SA 4.0) の次の記事に書いてある役割語の一人称・二人称・語尾と読みを選びました (編集・加工。2026-11-06 に取得した版):
+  「役割語」 https://ja.wikipedia.org/w/index.php?oldid=110771186 ・「お嬢様言葉」 https://ja.wikipedia.org/w/index.php?oldid=111459006 ・
+  「山の手言葉」 https://ja.wikipedia.org/w/index.php?oldid=109748002 ・「廓詞」 https://ja.wikipedia.org/w/index.php?oldid=109594682 ・
+  「老人語」 https://ja.wikipedia.org/w/index.php?oldid=111596552 ・「日本語の一人称代名詞」 https://ja.wikipedia.org/w/index.php?oldid=111657016 ・
+  「日本語の二人称代名詞」 https://ja.wikipedia.org/w/index.php?oldid=111212736
+  各記事の著者は、記事の履歴にあります。core_roles.tsv と、そこから作る domain_core_roles.* は CC BY-SA 4.0 で配布します。
+  品詞の番号と値は、azooKey の辞書の同じ位置に付く語 (代名詞・です・ます など) にならいました。作り方は tools/roles/README.md にあります。
+
+■ 常用外の字の表記 (core_rare_kanji、2026-11-07)
+- JMdict (上の成句と同じ。CC BY-SA 4.0、ライセンスと文書: https://www.edrdg.org/edrdg/licence.html) の表記のうち、常用漢字でない字を含み、
+  azooKey の辞書に同じ読みで無いもの (嗾ける・揶揄う・縞々 など) と、その動詞・形容詞の活用形 (嗾け・揶揄っ) を選びました (編集・加工)。
+  どの字が常用漢字かは KANJIDIC2 (EDRDG、CC BY-SA 4.0) で見ました。品詞の番号と値は、azooKey の辞書の同じ読みの語にならいました。
+  core_rare_kanji.tsv と、そこから作る domain_core_rare_kanji.* は CC BY-SA 4.0 で配布します。HaniWord の開発者は、JMdict から取った内容について著作権を主張しません。
+  使った JMdict: JMdict_e.gz (ファイルの中の作成日 2026-11-01、2026-11-01 に取得)。KANJIDIC2: kanjidic2.xml.gz (作成日 2026-10-22)。
+  作り方は tools/extra_dict/README.md (rare_kanji_*.py) にあります。
+
+■ 固有名詞 (core_names、2026-11-07)
+- 日本語版ウィキペディア (2023-11-01 のダンプ。元は CC BY-SA 3.0 / GFDL) の記事の書き出しの名前と括弧の読み: Hugging Face の wikimedia/wikipedia の 20231101.ja
+  (2023-11-01 の日本語版ウィキペディアの全文) から、人物・グループの記事と、下の上場企業・閲覧数の上位の記事を選びました (編集・加工)。
+  各記事の著者は、記事の履歴 (https://ja.wikipedia.org/w/index.php?title=<記事名>&action=history) にあります。
+- 上場企業の一覧: Wikidata (CC0 1.0、https://www.wikidata.org/) の、日本の証券取引所に上場している項目 (2026-11-07 に MediaWiki の API で取得)。
+- 名前の選び方 (辞書には入っていない材料): Wikimedia の月ごとの閲覧数 (pageview_complete・pageviews/top、CC0 1.0) で、記事の月の閲覧数の平均 (4 か月) が 300 以上のもの。
+  競走馬の記事は、書き出しの説明 (競走馬・種牡馬・繁殖牝馬) で見分けました。
+  core_names.tsv と、そこから作る domain_core_names.* は、CC BY-SA 3.0 の 4(b) (同じ許諾要素の後の版) により、CC BY-SA 4.0 で配布します。品詞の番号と値は、azooKey の辞書の同じ種類の語にならいました。
+  作り方は tools/core_names/README.md にあります。
+
+■ ソフト・アプリ・サービスの製品名 (core_products、2026-11-11)
+- 日本語版ウィキペディア (CC BY-SA 4.0) の、ソフトウェア・アプリケーションソフトウェア・ウェブサービス・オンラインサービスのカテゴリの記事の題と、
+  その記事への転送の題 (2026-11 のダンプ) から、製品名の表記 (After Effects) とカタカナの読みを選びました (編集・加工)。
+  各記事の著者は、記事の履歴 (https://ja.wikipedia.org/w/index.php?title=<記事名>&action=history) にあります。
+- 読みの組み立てに、英単語とカタカナ語の表 english_words.tsv (JMdict (CC BY-SA 4.0, EDRDG) と CMUdict から作ったもの) を使いました。
+- 同じ読みの語を外す判定と、読みの選び方 (カタカナ語の値の順) に、azooKey の辞書 (Apache License 2.0) を使いました (中身は写していません)。
+- 語の選び方 (辞書には入っていない材料): Wikimedia の月ごとの閲覧数 (pageview_complete、CC0 1.0) で記事の月の閲覧数の平均 (4 か月) が 300 以上のもの。
+  core_products.tsv と、そこから作る domain_core_products.* は CC BY-SA 4.0 で配布します。作り方は tools/core_products/README.md にあります。
+
+■ よくある誤用の表 (M3.6。extra_dictionaries/misuse_spellings.txt・core_misreadings.tsv (と domain_core_misreadings.*)、misreading_candidates.tsv・misuse_notes.tsv)
+- 出典：「国語に関する世論調査」（文化庁）各年度の「結果について」（平成7年度〜令和7年度、
+  https://www.bunka.go.jp/tokei_hakusho_shuppan/tokeichosa/kokugo_yoronchosa/ ）を加工して作成
+- 出典：文化審議会国語分科会「「異字同訓」の漢字の使い分け例（報告）」（平成26年2月21日、
+  https://www.bunka.go.jp/seisaku/bunkashingikai/kokugo/hokoku/pdf/ijidokun_140221.pdf ）を加工して作成
+  (どちらも文部科学省ウェブサイト利用規約による。言い方・読み方の組と、漢字ごとの語義の最初の一文を取り出し、誤用の種類を付けて表にした)
+- Wikipedia 日本語版「日本語の誤用」(版 111008060、2026-09-13。https://ja.wikipedia.org/wiki/日本語の誤用 )、
+  クリエイティブ・コモンズ 表示-継承 4.0 国際 (CC BY-SA 4.0)。慣用句・重言・誤用ではないとの考えもあるものの例を取り出した。
+  これらの表は CC BY-SA 4.0 で配布します
+- 読み間違い (2026-10-30。extra_dictionaries/core_misreadings_prefer_readings.txt と、そこから作る core_misreadings.tsv・domain_core_misreadings.*):
+  - Mozc の reading_correction.tsv (https://github.com/google/mozc の src/data/dictionary_oss/reading_correction.tsv、
+    commit f183d4d3a7ba139d7cb2252c05f608e9f8266aef) から、語と誤った読みの組を選んだ (加工)。許諾は下の「Mozc の公開辞書のファイルの許諾」
+    (Files: src/data/dictionary*) と同じ
+  - Wikipedia 日本語版「音位転換」(版 107243116)・「雰囲気」(版 109579767)・「シミュレーション」(版 110118614)・「百姓読み」(版 110714231)、
+    CC BY-SA 4.0。誤った読みとして書かれている例を取り出した
+- 読み間違いの「もしかして」(2026-11-20。misreading_candidates.tsv の 3 列の行。誤った読み・本来の形・正しい読み):
+  - Mozc の reading_correction.tsv (https://github.com/google/mozc の src/data/dictionary_oss/reading_correction.tsv、
+    commit 2b1790927a4d51958b0c9e0bffd89da01132fdf0。上の f183d4d3 と同じ中身) の語・誤った読み・正しい読みの組をみな入れた
+    (読みをひらがなにそろえ、同じ組を 1 行にした。加工)。許諾は下の「Mozc の公開辞書のファイルの許諾」(Files: src/data/dictionary*) と同じ
+  - ほかの 6 行は、上の文化庁の世論調査・Wikipedia「日本語の誤用」の似た音・音の脱落の例の本来の読み
+
+■ 難読語の同音語の差し替えの表 (2026-11-02。homophone_phrases.tsv・homophone_triggers.tsv・homophone_words.tsv)
+- AI の変換が難読語を同音語にした所 (当局の慫慂 → 当局の商用、蹉跌したら → 砂鉄したら) を、変換の結果を返す前に難読語に戻すための表です。
+  文そのものは入っていません。
+  - homophone_phrases.tsv: 難読語の連語 (3 回以上・3 記事以上出たもの) のうち、同音語に置き換えた形があまり出ないものと、その置き換えた形
+  - homophone_triggers.tsv: 同音語の組ごとの、左の文脈にある字面の目印と重み (記事の本文から学習した)
+- Wikipedia 日本語版 (2023-11-01 のダンプ。Hugging Face の wikimedia/wikipedia 20231101.ja)、
+  クリエイティブ・コモンズ 表示-継承 3.0 (CC BY-SA 3.0、https://creativecommons.org/licenses/by-sa/3.0/) および GNU Free Documentation License (GFDL)。
+  記事の本文で語の並びの回数を数え、目印の重みを学習して作りました (編集・加工)。この 2 つの表は、CC BY-SA 3.0 の 4(b) (同じ許諾要素の後の版) により、
+  CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/deed.ja) で配布します。
+- 青空文庫 (https://www.aozora.gr.jp/) の、著作権の切れた作品の本文でも連語の回数を数えました。
+- 連語の表から、替えた後の語の読みが JMdict (Electronic Dictionary Research and Development Group、https://www.edrdg.org/jmdict/j_jmdict.html。
+  CC BY-SA 4.0、ライセンスと文書: https://www.edrdg.org/edrdg/licence.html) の読みに無い行を外しました (読みを照らし合わせただけで、JMdict の項目そのものは表に入っていません)。
+- homophone_words.tsv (難読語の一覧: 読み・語・勝つ語と、学習・一覧の印) は、次の 3 つから作りました。CC BY-SA 4.0 で配布します。
+  - JMdict (上と同じ。CC BY-SA 4.0): 名詞の項目の、漢字 2〜6 字の表記と読み (語と読み)。
+  - azooKey の辞書 (Apache License 2.0): 読みだけ打ったとき、同じ読みのどの名詞に負けるか (勝つ語。品詞と値で決めました)。
+  - Wikipedia 日本語版 (上と同じダンプ。CC BY-SA 3.0 および GFDL): 語の出る回数 (学習・一覧の印を決めるのに使いました。回数そのものは入っていません)。
+
+■ 助数詞の回数の表 (2026-11-02。counter_counts.tsv)
+- 候補の一覧で、数詞＋助数詞 (二丁) の後ろに同じ読みのほかの助数詞 (二挺) を足すとき、どの助数詞を足すかと並べる順を決める表です。
+  表記と回数だけで、文そのものは入っていません。
+- 助数詞の表記は、azooKey の辞書 (Apache License 2.0) で品詞が助数詞の語から選びました。
+- 回数は、Wikipedia 日本語版 (上の同音語の表と同じダンプ。CC BY-SA 3.0 および GFDL) の記事の本文で、数字か漢数字のすぐ後ろに
+  その表記が来る所を数えました (tools/counters/count_counters.py。編集・加工)。CC BY-SA 3.0 の 4(b) により、
+  CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/deed.ja) で配布します。
+
+■ よくある日本の名前のローマ字の表 (2026-11-04。japanese_names_romaji.txt。IME 本体の隣に置く)
+- Shift で打ち始めた英字を かな に戻すかを決めるとき、英字で打った名前 (Aiko・Takemoto) を割らないための表です。読みのローマ字だけで、表記は入っていません。
+- Mozc の公開辞書 (https://github.com/google/mozc の src/data/dictionary_oss/dictionary00.txt〜dictionary09.txt、
+  commit f183d4d3a7ba139d7cb2252c05f608e9f8266aef) の人名 (名・姓。左右の品詞が同じ行) の読みを、コストの低い順に名 5,000・姓 5,000 選び、
+  ヘボン式・訓令式・ん の n と nn・長音を書かない形のローマ字にしました (tools/names/build_names_romaji.py。加工)。
+  許諾は下の「Mozc の公開辞書のファイルの許諾」(Files: src/data/dictionary*) と同じです。
+
+■ 連濁の形の読みの語の表 (2026-11-04。rendaku_readings.tsv)
+- AI の変換で、連濁の形の読みの語 (車 ぐるま) が助詞のすぐ後ろに単独で来た所 (あとは車は) を、助詞と合わせた読みの 1 語 (あと歯車は) に
+  替えるための表です。読みと表記だけで、文そのものは入っていません。
+- 読みと表記は、azooKey の辞書 (Apache License 2.0) で、頭の 1 字が濁った読みの名詞の行のうち、同じ表記に濁らない読みの行もあるものから選びました。
+- 漢字 1 字の語は、濁らない読みが KANJIDIC2 (Electronic Dictionary Research and Development Group、
+  https://www.edrdg.org/wiki/index.php/KANJIDIC_Project。CC BY-SA 4.0、ライセンスと文書: https://www.edrdg.org/edrdg/licence.html) の
+  訓読みにあるものだけを残しました。使ったのは訓読みだけで、語を絞るのに使いました (KANJIDIC2 の文は表に入っていません)。
+  使った KANJIDIC2: kanjidic2.xml.gz (ファイルの中の file_version 4・database_version 2026-295・date_of_creation 2026-10-22、2026-10-22 に取得)。
+- Wikipedia 日本語版 (上の同音語の表と同じダンプ。CC BY-SA 3.0 および GFDL) の記事の本文の 4 分の 1 で、その表記の語が助詞のすぐ後ろか
+  文の頭に単独で来たときの読みを数え (読みの解析に SudachiDict を使用)、濁った読みがほとんど出ない語だけを残しました
+  (tools/rendaku/make_table.py。編集・加工。回数そのものは入っていません)。CC BY-SA 3.0 の 4(b) により、
+  CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/deed.ja) で配布します。
+
+■ 表記ゆれの組の表 (2026-11-04。hyouki_groups.tsv)
+- 同じ読み・同じ品詞の番号で意味の同じ書き分け (こと／事・および／及び・取り消し／取消し) の組と、形ごとのコーパスの回数の表です。
+  利用者が選び直した形とその種類の向き (かな寄り・漢字寄り) を覚えて次の変換から使うときに読みます。文そのものは入っていません。
+  作り方は tools/hyouki (build_groups.py → count_forms.py → finish_table.py → shrink_table.py)。表は CC BY-SA 4.0
+  (https://creativecommons.org/licenses/by-sa/4.0/deed.ja) で配布します。使った元の資料ごとの条件は次のとおりです。
+- azooKey の辞書 (Apache License 2.0): 読み・表記・品詞の番号 (組の材料の行)。
+- HaniWord の追加辞書 core_forms・core_words・core_phrases (上のそれぞれの節の条件): 組の材料の行。
+- JMdict (上の成句と同じ。CC BY-SA 4.0、ライセンスと文書: https://www.edrdg.org/edrdg/licence.html): 同じ語の書き分けかの確かめと、
+  JMdict の項目の番号 (表の 15 列目)。HaniWord の開発者は、JMdict から取った内容について著作権を主張しません。
+  使った JMdict: JMdict_e.gz (ファイルの中の作成日 2026-11-01、2026-11-01 に取得)。
+- SudachiDict (Apache License 2.0): 同じ語の書き分けかの確かめ (正規化表記) と、回数を数えるときの語の切り方。
+- Mozc の公開辞書 (下の Mozc の節の条件): 種類 (形式名詞・補助動詞・名詞のかな書き など) を決めるための品詞の名前。
+- Wikipedia 日本語版 (上の同音語の表と同じダンプ。CC BY-SA 3.0 および GFDL): 形ごとの回数 (表の 8 列目。編集・加工)。
+  CC BY-SA 3.0 の 4(b) により CC BY-SA 4.0 で配布します。
+- 青空文庫 (https://www.aozora.gr.jp/。著作権の切れた作品の本文、aozorahack/aozorabunko_text の 2023-03-22 の版): 形ごとの回数 (表の 9 列目)。
+  文そのものは入っていません。
+- wordfreq 3.1.1 (Robyn Speer、https://github.com/rspeer/wordfreq。データは CC BY-SA 4.0): 配る組を選ぶのに使った日本語の頻度の順位
+  (組の形のどれかが 50,000 位以内。順位そのものは表に入っていません)。
+
+■ 同音の語の組み合わせの表 (2026-11-07。colloc_choices.tsv)
+- 同じ読みの語 (機械・機会、効く・聞く) を、すぐ前後の語 (薬が効く・機械を操作) との組の回数で選び直すための表です。
+  読み・文脈の種類・前後の語・選ぶ表記とその回数・回数の近いほかの表記とその回数だけで、文そのものは入っていません。
+  作り方は tools/colloc (homophone_readings.py → count_colloc.py → build_colloc_table.py。手順は tools/colloc/README.md)。表は CC BY-SA 4.0
+  (https://creativecommons.org/licenses/by-sa/4.0/deed.ja) で配布します。使った元の資料ごとの条件は次のとおりです。
+- azooKey の辞書 (Apache License 2.0): 数える読み (同じ読みで漢字を含む語が 2 つ以上ある読み) を選ぶのに使いました。
+- SudachiDict (Apache License 2.0): 回数を数えるときの語の切り方と読み。
+- Wikipedia 日本語版 (上の同音語の表と同じダンプ。CC BY-SA 3.0 および GFDL): 記事の本文の全部で、組の回数を数えました (編集・加工)。
+  CC BY-SA 3.0 の 4(b) により CC BY-SA 4.0 で配布します。
+- 青空文庫 (https://www.aozora.gr.jp/。著作権の切れた作品の本文 (新字新仮名)、aozorahack/aozorabunko_text の 2023-03-22 の版): 組の回数。
+  文そのものは入っていません。
+
+■ 注意の注記の表 (2026-11-07。extra_dictionaries/caution_notes.txt と、そこから入れる misuse_notes.tsv の 差別・言い換え の行)
+候補はそのまま出し、設定でオンにした人の候補窓で、差別や侮辱の語とされる語・放送などで言い換えられることがある語に「注意」の注記を添えるための表です
+(設定 input.caution_slurs・input.caution_broadcast。どちらも初期値オフ)。語は、次の出どころが差別・侮辱の語、または言い換え・控え・弾きの対象として
+書いている語だけを選びました。どの語がどの文献に拠るかは、注記の末尾の番号 [n] で licenses\caution_references.txt (SIST 02 の Web の形の参考文献の一覧。
+文献ごとに Internet Archive の写しの URL も添えた) を引けます。出どころの文章 (引用の文) は入れていません。注記の文は HaniWord の開発者が書きました。
+- 日本語版ウィキペディアの記事 (「差別用語」「放送禁止用語」「侮蔑」「卑語」「表現の自主規制」とそれらの関連の記事。版は参考文献の一覧の固定リンク)、
+  クリエイティブ・コモンズ 表示-継承 4.0 国際 (CC BY-SA 4.0、https://creativecommons.org/licenses/by-sa/4.0/deed.ja)。
+- ライセンスの書かれた NG 語の一覧から、差別・侮辱の分類の語を選んだもの (編集・加工): HojiChar/HojiChar の discrimination_keywords_ja.txt (Apache License 2.0)、
+  MosasoM/inappropriate-words-ja・ZachHandley/ContentShield・yomiplush/outrage-mute・YukimaruGit/student-id-generator・Nextremer/minarai-cs-chat-webui (どれも MIT License)。
+  許諾の文は、配布物では licenses\caution_list_<持ち主>_<リポジトリ>_LICENSE.txt の 6 つ (ソースでは installer\licenses\caution_lists\) です。
+  5 つは配布元の LICENSE のファイルそのままです。Nextremer/minarai-cs-chat-webui には LICENSE のファイルが無いので、README の「License」の節の
+  MIT License の記載と、MIT License の本文を書きました。
+- 放送・新聞・出版の記事と、国・自治体・大学の手引き (参考文献の一覧)。どの語が言い換えや配慮の対象として挙がっているかという事実だけを使いました。
+  取得を断っているサイト (robots.txt や AI の取得を断る表示) のページは使っていません。
+caution_notes.txt と、misuse_notes.tsv の 差別・言い換え の行は CC BY-SA 4.0 で配布します。作り方は tools/caution/README.md にあります。
+
+■ Mozc の公開辞書のファイルの許諾 (core_forms・core_words・core_misreadings の読み間違い・misreading_candidates.tsv の読み間違い・japanese_names_romaji.txt・hyouki_groups.tsv の種類。Mozc の LICENSE の次の項を原文のまま)
+
+Files: src/data/dictionary*
+
+Copyright 2000, 2001, 2002, 2003 Nara Institute of Science
+and Technology.  All Rights Reserved.
+
+Use, reproduction, and distribution of this software is permitted.
+Any copy of this software, whether in its original form or modified,
+must include both the above copyright notice and the following
+paragraphs.
+
+Nara Institute of Science and Technology (NAIST),
+the copyright holders, disclaims all warranties with regard to this
+software, including all implied warranties of merchantability and
+fitness, in no event shall NAIST be liable for
+any special, indirect or consequential damages or any damages
+whatsoever resulting from loss of use, data or profits, whether in an
+action of contract, negligence or other tortuous action, arising out
+of or in connection with the use or performance of this software.
+
+A large portion of the dictionary entries
+originate from ICOT Free Software.  The following conditions for ICOT
+Free Software applies to the current dictionary as well.
+
+Each User may also freely distribute the Program, whether in its
+original form or modified, to any third party or parties, PROVIDED
+that the provisions of Section 3 ("NO WARRANTY") will ALWAYS appear
+on, or be attached to, the Program, which is distributed substantially
+in the same form as set out herein and that such intended
+distribution, if actually made, will neither violate or otherwise
+contravene any of the laws and regulations of the countries having
+jurisdiction over the User or the intended distribution itself.
+
+NO WARRANTY
+
+The program was produced on an experimental basis in the course of the
+research and development conducted during the project and is provided
+to users as so produced on an experimental basis.  Accordingly, the
+program is provided without any warranty whatsoever, whether express,
+implied, statutory or otherwise.  The term "warranty" used herein
+includes, but is not limited to, any warranty of the quality,
+performance, merchantability and fitness for a particular purpose of
+the program and the nonexistence of any infringement or violation of
+any right of any third party.
+
+Each user of the program will agree and understand, and be deemed to
+have agreed and understood, that there is no warranty whatsoever for
+the program and, accordingly, the entire risk arising from or
+otherwise connected with the program is assumed by the user.
+
+Therefore, neither ICOT, the copyright holder, or any other
+organization that participated in or was otherwise related to the
+development of the program and their respective officials, directors,
+officers and other employees shall be held liable for any and all
+damages, including, without limitation, general, special, incidental
+and consequential damages, arising out of or otherwise in connection
+with the use or inability to use the program or any product, material
+or result produced or otherwise obtained by using the program,
+regardless of whether they have been advised of, or otherwise had
+knowledge of, the possibility of such damages at any time during the
+project or thereafter.  Each user will be deemed to have agreed to the
+foregoing by his or her commencement of use of the program.  The term
+"use" as used herein includes, but is not limited to, the use,
+modification, copying and distribution of the program and the
+production of secondary products from the program.
+
+In the case where the program, whether in its original form or
+modified, was distributed or delivered to or received by a user from
+any person, organization or entity other than ICOT, unless it makes or
+grants independently of ICOT any specific warranty to the user in
+writing, such person, organization or entity, will also be exempted
+from and not be held liable to the user for any such damages as noted
+above as far as the program is concerned.
+
+---
+
+Files: src/data/dictionary*
+
+Public Domain Dataです。使用・変更・配布に関しては一切の制限をつけません。
+商品などに組み込むことも自由に行なってください。すでにいくつかの辞書には沖縄辞書が採用されています。
+勝手ながら、沖縄辞書に寄贈された辞書も in the Public Domain' 扱いとさせていただきます。

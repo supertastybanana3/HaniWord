@@ -37,6 +37,8 @@ impl ITfTextLayoutSink_Impl for TextServiceFactory_Impl {
             return Ok(());
         }
 
+        // 2026-10-29: 候補窓の位置を伝えるのも、待つ時間の合計は EVENT_BUDGET まで (レビュー L4)
+        let _budget = crate::engine::ipc_service::EventBudget::start();
         if let Err(error) = self.update_pos() {
             tracing::warn!("Failed to update position from OnLayoutChange: {error:?}");
         }
@@ -47,7 +49,7 @@ impl ITfTextLayoutSink_Impl for TextServiceFactory_Impl {
 
 impl TextService {
     pub fn advise_text_layout_sink(&mut self, doc_mgr: ITfDocumentMgr) -> Result<()> {
-        if IMEState::get()?.context.is_some() {
+        if self.layout_context.is_some() {
             self.unadvise_text_layout_sink()?;
         }
 
@@ -60,9 +62,8 @@ impl TextService {
                 .cast::<ITfSource>()?
                 .AdviseSink(&ITfTextLayoutSink::IID, &self.this::<ITfTextLayoutSink>()?)?;
 
-            IMEState::get()?
-                .cookies
-                .insert(ITfTextLayoutSink::IID, cookie);
+            self.layout_context = Some(context);
+            self.layout_sink_cookie = Some(cookie);
 
             Ok(())
         }
@@ -70,14 +71,9 @@ impl TextService {
 
     pub fn unadvise_text_layout_sink(&mut self) -> Result<()> {
         unsafe {
-            let mut state = IMEState::get()?;
-
-            if let Some(context) = state.context.take() {
-                if let Some(cookie) = state.cookies.remove(&ITfTextLayoutSink::IID) {
-                    context.cast::<ITfSource>()?.UnadviseSink(cookie)?;
-                }
+            if let (Some(context), Some(cookie)) = (self.layout_context.take(), self.layout_sink_cookie.take()) {
+                context.cast::<ITfSource>()?.UnadviseSink(cookie)?;
             }
-
             Ok(())
         }
     }

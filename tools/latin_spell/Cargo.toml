@@ -1,0 +1,12 @@
+[package]
+name = "latin_spell_eval"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[profile.release]
+opt-level = 3
+
+# このリポジトリの Cargo ワークスペースには入れない (単独でビルドする)
+[workspace]

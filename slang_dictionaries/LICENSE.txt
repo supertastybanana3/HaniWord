@@ -1,0 +1,104 @@
+HaniWord のくだけた言葉の辞書 (slang_dictionaries/*.tsv と、そこから作る domain/domain_slang_*.louds ほか)
+
+設定の「ネットスラング」をオンにした人だけが使う辞書です (初期値はオフ)。ネットで使われる言葉 (親ガチャ・激おこぷんぷん丸・ミャクミャク など) を変換に足します。
+HaniWord のプログラム (MIT License) とは別に、クリエイティブ・コモンズ 表示-継承 4.0 国際 (CC BY-SA 4.0) で配布します。
+https://creativecommons.org/licenses/by-sa/4.0/deed.ja
+
+■ 語の出典 (日本語版ウィキペディア、CC BY-SA 4.0。2026-11-07 に MediaWiki の API で取得した版)
+次の 3 つから語を選び、冒頭の括弧の読みを付けました (編集・加工)。
+- 「Category:日本のインターネットスラング」とその下位のカテゴリの記事の見出しの語
+- 「新語・流行語大賞」の記事の受賞語の表 (候補の語を出すのに使い、入れるかどうかは下の数で決めました)
+- 日本語版ウィキペディアの月ごとの閲覧数の上位 1,000 記事 (2015-07〜2026-10) のうち、カテゴリがインターネット・ミーム・流行語・ネットスラング・俗語の記事の見出しの語
+読みが冒頭に無いリダイレクトの記事は、並べ替えの鍵 (DEFAULTSORT) と合う読みを付けました。
+各記事の著者は、記事の履歴 (https://ja.wikipedia.org/w/index.php?title=<記事名>&action=history) にあります。辞書に入れた語の記事と版:
+- 「真夏の夜の淫夢」 https://ja.wikipedia.org/w/index.php?oldid=111661013 (2026-11-06 の版)
+- 「（笑）」 https://ja.wikipedia.org/w/index.php?oldid=110767204 (2026-08-25 の版)
+- 「阿部寛のホームページ」 https://ja.wikipedia.org/w/index.php?oldid=111547267
+- 「だいしゅきホールド」 https://ja.wikipedia.org/w/index.php?oldid=109312903 (2026-04-28 の版)
+- 「サカバンバスピス」 https://ja.wikipedia.org/w/index.php?oldid=111215626
+- 「男の娘」 https://ja.wikipedia.org/w/index.php?oldid=111619525 (2026-11-03 の版)
+- 「くぱぁ」 https://ja.wikipedia.org/w/index.php?oldid=110800955 (2026-08-27 の版)
+- 「台風コロッケ」 https://ja.wikipedia.org/w/index.php?oldid=110071905 (2026-06-27 の版)
+- 「新語・流行語大賞」 https://ja.wikipedia.org/w/index.php?oldid=111665842
+- 「エッホエッホ」 https://ja.wikipedia.org/w/index.php?oldid=111421009
+- 「ミャクミャク」 https://ja.wikipedia.org/w/index.php?oldid=111055902
+- 「ぬるぽ」 https://ja.wikipedia.org/w/index.php?oldid=110445028 (2026-07-28 の版)
+- 「インプレゾンビ」 https://ja.wikipedia.org/w/index.php?oldid=111580054 (2026-10-30 の版)
+- 「オールドメディア」 https://ja.wikipedia.org/w/index.php?oldid=111667805
+- 「フライングゲット」 https://ja.wikipedia.org/w/index.php?oldid=105959902 (2025-08-12 の版)
+- 「だめんず」 https://ja.wikipedia.org/w/index.php?oldid=108116960 (2026-01-23 の版)
+- 「ダメ男」 https://ja.wikipedia.org/w/index.php?oldid=108117275 (2026-01-23 の版)
+- 「子供部屋おじさん」 https://ja.wikipedia.org/w/index.php?oldid=111221118 (2026-09-30 の版)
+- 「童貞を殺す服」 https://ja.wikipedia.org/w/index.php?oldid=109297164 (2026-04-27 の版)
+- 「宗教2世」 https://ja.wikipedia.org/w/index.php?oldid=111485842
+- 「激おこぷんぷん丸」 https://ja.wikipedia.org/w/index.php?oldid=110001213 (2026-06-20 の版)
+- 「乳袋」 https://ja.wikipedia.org/w/index.php?oldid=109836542 (2026-06-07 の版)
+- 「嫌儲」 https://ja.wikipedia.org/w/index.php?oldid=110740659 (2026-08-22 の版)
+- 「プリウス・ミサイル」 https://ja.wikipedia.org/w/index.php?oldid=111188891 (2026-09-27 の版)
+- 「ご飯論法」 https://ja.wikipedia.org/w/index.php?oldid=110289734
+- 「チン凸」 https://ja.wikipedia.org/w/index.php?oldid=111439858 (2026-10-19 の版)
+- 「メークドラマ」 https://ja.wikipedia.org/w/index.php?oldid=111032855
+- 「食い尽くし系」 https://ja.wikipedia.org/w/index.php?oldid=111533875 (2026-10-26 の版)
+- 「さとり世代」 https://ja.wikipedia.org/w/index.php?oldid=110671707 (2026-08-16 の版)
+- 「親ガチャ」 https://ja.wikipedia.org/w/index.php?oldid=110792807 (2026-08-27 の版)
+- 「モラル・ハザード」 https://ja.wikipedia.org/w/index.php?oldid=109295896
+- 「ギュられる」 https://ja.wikipedia.org/w/index.php?oldid=111618881 (2026-11-02 の版)
+- 「こども店長」 https://ja.wikipedia.org/w/index.php?oldid=110135355
+- 「きつねダンス」 https://ja.wikipedia.org/w/index.php?oldid=110567996
+- 「大都会岡山」 https://ja.wikipedia.org/w/index.php?oldid=110197629 (2026-07-07 の版)
+- 「やおい穴」 https://ja.wikipedia.org/w/index.php?oldid=109934086 (2026-06-14 の版)
+- 「小泉劇場」 https://ja.wikipedia.org/w/index.php?oldid=110995182
+- 「アグネス論争」 https://ja.wikipedia.org/w/index.php?oldid=99191212
+- 「おじアタック」 https://ja.wikipedia.org/w/index.php?oldid=111550069 (2026-10-28 の版)
+- 「アフガン航空相撲」 https://ja.wikipedia.org/w/index.php?oldid=110666593 (2026-08-16 の版)
+- 「亭主元気で留守がいい」 https://ja.wikipedia.org/w/index.php?oldid=106311990
+- 「アッシーくん」 https://ja.wikipedia.org/w/index.php?oldid=109515009
+- 「神待ち」 https://ja.wikipedia.org/w/index.php?oldid=110759801 (2026-08-24 の版)
+- 「魔の2回生」 https://ja.wikipedia.org/w/index.php?oldid=111630829
+- 「人生オワタ」 https://ja.wikipedia.org/w/index.php?oldid=110974400 (2026-09-11 の版)
+- 「ブッチホン」 https://ja.wikipedia.org/w/index.php?oldid=109455490
+- 「デューダ」 https://ja.wikipedia.org/w/index.php?oldid=110644981
+- 「偽中国語」 https://ja.wikipedia.org/w/index.php?oldid=105478432 (2025-07-04 の版)
+- 「まじ卍」 https://ja.wikipedia.org/w/index.php?oldid=110374185 (2026-07-22 の版)
+- 「なおエ」 https://ja.wikipedia.org/w/index.php?oldid=109879532 (2026-06-10 の版)
+- 「みかか」 https://ja.wikipedia.org/w/index.php?oldid=110241150 (2026-07-11 の版)
+- 「しょこたん語」 https://ja.wikipedia.org/w/index.php?oldid=95244289 (2023-05-17 の版)
+- 「キモくて金のないおっさん」 https://ja.wikipedia.org/w/index.php?oldid=108901230 (2026-03-26 の版)
+- 「便所飯」 https://ja.wikipedia.org/w/index.php?oldid=110121997 (2026-07-01 の版)
+- 「雄っぱい」 https://ja.wikipedia.org/w/index.php?oldid=110216354 (2026-07-09 の版)
+- 「中二階」 https://ja.wikipedia.org/w/index.php?oldid=106283486
+- 「カープ女子」 https://ja.wikipedia.org/w/index.php?oldid=109938560
+- 「平成女児」 https://ja.wikipedia.org/w/index.php?oldid=109982254 (2026-06-19 の版)
+- 「ゲートキーパー問題」 https://ja.wikipedia.org/w/index.php?oldid=109452826 (2026-05-09 の版)
+- 「組閣ごっこ」 https://ja.wikipedia.org/w/index.php?oldid=109671928 (2026-05-24 の版)
+- 「のじゃロリ」 https://ja.wikipedia.org/w/index.php?oldid=104280630 (2025-03-28 の版)
+- 「喪男」 https://ja.wikipedia.org/w/index.php?oldid=111557878 (2026-10-29 の版)
+- 「計画運休」 https://ja.wikipedia.org/w/index.php?oldid=111154813
+- 「男消し構文」 https://ja.wikipedia.org/w/index.php?oldid=110870216 (2026-09-02 の版)
+- 「ダンス甲子園」 https://ja.wikipedia.org/w/index.php?oldid=88686127
+- 「イートイン脱税」 https://ja.wikipedia.org/w/index.php?oldid=107846538 (2026-01-02 の版)
+- 「スヤスヤ教」 https://ja.wikipedia.org/w/index.php?oldid=110344451 (2026-07-20 の版)
+- 「生放送主」 https://ja.wikipedia.org/w/index.php?oldid=107133621 (2025-11-06 の版)
+- 「クサチュー語」 https://ja.wikipedia.org/w/index.php?oldid=105807200 (2025-07-30 の版)
+- 「ホイ卒」 https://ja.wikipedia.org/w/index.php?oldid=109982243 (2026-06-19 の版)
+- 「昭和100年」 https://ja.wikipedia.org/w/index.php?oldid=110543437
+- 「夜食テロ」 https://ja.wikipedia.org/w/index.php?oldid=111324544 (2026-10-09 の版)
+- 「無縁社会」 https://ja.wikipedia.org/w/index.php?oldid=110765122
+- 「アベ政治を許さない」 https://ja.wikipedia.org/w/index.php?oldid=110376074
+- 「プッツン」 https://ja.wikipedia.org/w/index.php?oldid=111100281
+- 「ブーメラン効果」 https://ja.wikipedia.org/w/index.php?oldid=110934782 (2026-09-07 の版)
+- 「老人力」 https://ja.wikipedia.org/w/index.php?oldid=109609899
+
+■ HaniWord の開発者が足した語
+スピキ・ナルトダンス は、HaniWord の開発者が足しました (ウィキペディアの記事からではありません)。
+
+■ 語の選び方 (辞書には入っていない材料)
+まれな語を外すのに、記事ごとの直近 12 か月の閲覧数 (Wikimedia の pageviews API) と、日本語版ウィキペディアの全文
+(Hugging Face の wikimedia/wikipedia 20231101.ja。2023-11-01 のダンプで、元は CC BY-SA 3.0 / GFDL) で語を含む文の数を数えました。数えた結果だけを使い、文は入っていません。
+
+■ 品詞の番号・変換の重み
+品詞・意味の番号と変換の重みは、azooKey の辞書 (Apache License 2.0) の語にならって HaniWord の開発者が付けました。
+〜る で終わる動詞の活用形は、azooKey の辞書の ググる の活用形にならいました。
+
+■ 作り方
+tools/slang/README.md にあります。

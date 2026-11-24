@@ -1,0 +1,2 @@
+# 社名・製品名の英字の表 (english_brands.txt) に入れない語 (表記<TAB>理由)。collect_brands.py select が読む
+LEDE	英語の普通の語 (lede、記事の書き出し) と同じ綴り。区切りで planetscale を planets|ca|lede|su にした (A の測り 10-25 00:33)

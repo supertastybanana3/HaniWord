@@ -2,6 +2,7 @@
 #define ffi_h
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #endif /* ffi_h */
 

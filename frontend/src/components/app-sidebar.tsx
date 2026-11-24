@@ -1,4 +1,4 @@
-import { Bot, Settings, Megaphone } from "lucide-react"
+import { Bot, Settings, Megaphone, BookA, Palette } from "lucide-react"
 
 import {
     Sidebar,
@@ -19,22 +19,28 @@ const contents = [
         url: "/",
         icon: Settings,
     },
-    // {
-    //     title: "外観",
-    //     url: "/appearance",
-    //     icon: Palette,
-    // },
+    // 2026-11-06 (仕事 37): 候補の窓の外観 (フォント・大きさ・色・並べ方・足りない字の補い)
+    {
+        title: "外観",
+        url: "/appearance",
+        icon: Palette,
+    },
     {
         title: "Zenzai",
         url: "/zenzai",
         icon: Bot,
+    },
+    {
+        title: "単語登録",
+        url: "/user-dictionary",
+        icon: BookA,
     },
 ]
 
 // Footer items.
 const footer = [
     {
-        title: "Azookeyについて",
+        title: "HaniWord について",
         url: "/about",
         icon: Megaphone,
     },

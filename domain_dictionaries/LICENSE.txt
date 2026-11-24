@@ -1,0 +1,185 @@
+HaniWord の分野辞書 (domain_dictionaries/*.tsv と、そこから作る domain/domain_*.louds ほか)
+
+このフォルダの分野辞書は、HaniWord のプログラム (MIT License) とは別に、
+クリエイティブ・コモンズ 表示-継承 4.0 国際 (CC BY-SA 4.0) で配布します。
+https://creativecommons.org/licenses/by-sa/4.0/deed.ja
+
+分野辞書は、次の材料から語と読みの手がかりを集め、HaniWord の開発者が語を選び、読みを付け直し (AI で付け、ウィキペディアなどで確かめた)、
+変換の重みを決めて作ったものです (編集・加工)。材料の文章そのものは入っていません。
+
+■ 法律 (law)
+- 出典：e-Gov法令検索 (https://laws.e-gov.go.jp/) の法令データ (2026-10-20 に一括ダウンロード)、
+  公共データ利用規約 第1.0版 (PDL1.0、https://www.digital.go.jp/resources/open_data/public_data_license_v1.0)。
+  HaniWord の開発者が、法令の本文から語・条の見出し・定義された語・法令名とその読みを抜き出し、読みを付け直して加工しました。
+  PDL1.0 は CC BY 4.0 と互換です。
+- 裁判所ウェブサイトの裁判例 (https://www.courts.go.jp/hanrei/) は、どの語を入れるかを選ぶ手がかりにだけ使いました
+  (判決は著作権法第13条により権利の目的となりません)。判決の文は入っていません。
+- 日本語版ウィキペディアの法律の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_law_wikipedia.txt。
+
+■ 生物 (biology)
+- 科学技術用語形態素解析辞書 © バイオサイエンスデータベースセンター licensed under CC表示-継承4.0 国際
+  (https://dbarchive.biosciencedbc.jp/jp/mecab/lic.html)。JST シソーラス (2015 年版) の見出し語・同義語のうち生物の語を選び、読みを付け直しました。
+- 日本語版ウィキペディアの生物の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_biology_wikipedia.txt。
+
+■ 歴史 (history。日本史と世界史)
+- Wikidata (https://www.wikidata.org/、CC0) の人物・出来事・王朝などの日本語のラベルと名前のカナ表記 (P1814)。
+- 日本語版ウィキペディアの歴史の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_history_wikipedia.txt。
+
+■ 医学 (medicine)
+- 万病辞書 MANBYO_202106 (奈良先端科学技術大学院大学 ソーシャル・コンピューティング研究室、https://sociocom.naist.jp/manbyou-dic/)、
+  クリエイティブ・コモンズ 表示 4.0 国際 (CC BY 4.0、https://creativecommons.org/licenses/by/4.0/deed.ja)。
+  信頼度レベル S の行 (ICD10 対応標準病名マスター由来) と、標準病名・ICD コードの列は使っていません。出現形を選び、読みを付け直しました。
+- 科学技術用語形態素解析辞書 © バイオサイエンスデータベースセンター licensed under CC表示-継承4.0 国際
+  (https://dbarchive.biosciencedbc.jp/jp/mecab/lic.html)。JST シソーラス (2015 年版) の医学の語を選び、読みを付け直しました。
+- Wikidata (CC0) の病気・薬・症状・解剖などの日本語のラベル。
+- 日本語版ウィキペディアの医学の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_medicine_wikipedia.txt。
+
+■ 化学 (chemistry)
+- 科学技術用語形態素解析辞書 © バイオサイエンスデータベースセンター licensed under CC表示-継承4.0 国際
+  (https://dbarchive.biosciencedbc.jp/jp/mecab/lic.html)。JST シソーラス (2015 年版) の化学・化学工業の語を選び、読みを付け直しました。
+- JMdict (Electronic Dictionary Research and Development Group、https://www.edrdg.org/jmdict/j_jmdict.html)、
+  クリエイティブ・コモンズ 表示-継承 4.0 国際 (CC BY-SA 4.0)。ライセンスと文書: https://www.edrdg.org/edrdg/licence.html。
+  化学の分野の印 (chem) が付いた語を選び、読みを付け直しました。
+- Wikidata (CC0) の化学物質 (CAS 登録番号のある項目) の日本語のラベル。
+- 日本語版ウィキブックスの「高等学校化学」の本文に出てくる語 (CC BY-SA 4.0)。使ったページの一覧は domain_chemistry_wikibooks.txt。
+- 日本語版ウィキペディアの化学の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_chemistry_wikipedia.txt。
+
+■ 情報 (it)
+- 情報科全教科書用語リスト 第2版 (情報処理学会 情報入試委員会、https://sites.google.com/a.ipsj.or.jp/ipsjjn/resources/wordlist-v2)、
+  クリエイティブ・コモンズ 表示-継承 4.0 国際 (CC BY-SA 4.0)。語を選び、読みを付けました。
+- JMdict (CC BY-SA 4.0、上と同じ) の情報の分野の印 (comp) が付いた語、科学技術用語形態素解析辞書 (上と同じ) の電子計算機の語。
+- 日本語版ウィキブックスの「高等学校情報」の本文に出てくる語 (CC BY-SA 4.0)。使ったページの一覧は domain_it_wikibooks.txt。
+- 日本語版ウィキペディアの情報の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_it_wikipedia.txt。
+
+■ 地理 (geography)
+- 「地名集日本」(国土地理院、https://www.gsi.go.jp/kihonjohochousa/gazetteer.html) を加工して作成。
+  公共データ利用規約 第1.0版 (PDL1.0)。地名と読みを抜き出し、HaniWord の開発者が語を選び読みを確かめました。
+- Wikidata (CC0) の山・川・湖・島・湾・都市などの日本語のラベルと名前のカナ表記 (P1814)。
+- 日本語版ウィキブックスの「高等学校地理」「中学校社会 地理」の本文に出てくる語 (CC BY-SA 4.0)。使ったページの一覧は domain_geography_wikibooks.txt。
+- 日本語版ウィキペディアの地理の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_geography_wikipedia.txt。
+
+■ 地学 (earth。天文を含む)
+- 科学技術用語形態素解析辞書 © バイオサイエンスデータベースセンター licensed under CC表示-継承4.0 国際
+  (https://dbarchive.biosciencedbc.jp/jp/mecab/lic.html)。JST シソーラス (2015 年版) の地学・天文に当たる主題カテゴリー (GC で始まるもの) の語を選び、
+  読みを付け直しました。
+- JMdict (CC BY-SA 4.0、上と同じ) の地学・天文・鉱物・気象・地理の分野の印 (geol・astron・min・met・geogr) が付いた語。
+- 日本語版ウィキペディアの地学・天文の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_earth_wikipedia.txt。
+
+■ 建築 (architecture)
+- 科学技術用語形態素解析辞書 © バイオサイエンスデータベースセンター licensed under CC表示-継承4.0 国際
+  (https://dbarchive.biosciencedbc.jp/jp/mecab/lic.html)。JST シソーラス (2015 年版) の建築に当たる主題カテゴリー (AA で始まるもの) の語を選び、
+  読みを付け直しました。
+- JMdict (CC BY-SA 4.0、上と同じ) の建築の分野の印 (archit) が付いた語。
+- 日本語版ウィキペディアの建築の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_architecture_wikipedia.txt。
+
+■ 仏教・神道 (religion)
+- JMdict (CC BY-SA 4.0、上と同じ) の仏教・神道の分野の印 (Buddh・Shinto) が付いた語。
+- 日本語版ウィキペディアの仏教・神道の分野の記事の題名と冒頭の読み (CC BY-SA 4.0)。使った記事の一覧は domain_religion_wikipedia.txt。
+
+■ 数学 (math。中学・高校の数学と大学の基礎の数学)
+- JMdict (CC BY-SA 4.0、上と同じ) の数学・幾何の分野の印 (math・geom) が付いた語。
+- 日本語版ウィキブックスの「高等学校数学」「中学校数学」とその下のページの本文に出てくる語 (CC BY-SA 4.0)。使ったページの一覧は domain_math_wikibooks.txt。
+- 出典：「高等学校学習指導要領（平成30年告示）解説 数学編 理数編」「中学校学習指導要領（平成29年告示）解説 数学編」（文部科学省）
+  （https://www.mext.go.jp/a_menu/shotou/new-cs/1407074.htm 、https://www.mext.go.jp/a_menu/shotou/new-cs/1387016.htm ）（2026年10月30日に利用）を加工して作成
+  (本文に出る数学の用語を選び、読みを付けました。文部科学省ウェブサイト利用規約による)
+- 同音語の優遇の語 (domain_math_boost.tsv) の一部と目印の語 (domain_math_signals.txt) は、HaniWord の開発者が選びました。
+
+■ 英字の略語の表 (domain_<名前>_abbrev.txt。医学・生物・化学・情報・地学・建築・法律・地理・歴史)
+- 各分野の日本語版ウィキペディアの記事 (CC BY-SA 4.0。上の各分野と同じ記事) の冒頭に出てくる英字の略語と、JMdict (CC BY-SA 4.0、上と同じ) の英字の見出しのうち
+  分野の印が付いたものを材料に、HaniWord の開発者が選びました (AI でその分野の略語かを判定し、小文字で打つとローマ字として読める語は除いた)。
+  略語を拾った記事は domain_<名前>_wikipedia.txt に載せています。
+
+■ JMdict の版と更新
+- 使った版: JMdict_e.gz (ファイルの中の作成日「JMdict created: 2026-10-08」、2026-10-09 に取得)。
+- JMdict のライセンス (https://www.edrdg.org/edrdg/licence.html) の求めに従い、HaniWord は版を出す前に、使った JMdict の作成日を確かめ、
+  3 か月より古ければ、新しい JMdict から分野辞書を作り直してから出します (JMdict は開発者が配布のページから手で取ります)。作り直しの手順は、ソースの tools/domain/README.md の「JMdict の版を新しくする」にあります。
+
+■ 読みを確かめるために照らし合わせたもの (語そのものは上の材料から選んでいます)
+- Mozc の公開辞書 (https://github.com/google/mozc の src/data/dictionary*。奈良先端科学技術大学院大学 (IPAdic 由来) の使用許諾)、
+  mozcdic-ut-jawiki (CC BY-SA 4.0、ウィキペディア由来)。
+  語のほかの読み (別の読み方・打ち方の揺れ) の一部は、Mozc の公開辞書にある同じ表記の語の読みを採りました。
+
+(この一覧は、配布物に入れた分野のぶんだけが当てはまります。)
+
+■ Mozc の公開辞書のファイルの許諾 (ほかの読みの一部に採った読み。Mozc (https://github.com/google/mozc、commit f183d4d3) の LICENSE の次の項を原文のまま)
+
+Files: src/data/dictionary*
+
+Copyright 2000, 2001, 2002, 2003 Nara Institute of Science
+and Technology.  All Rights Reserved.
+
+Use, reproduction, and distribution of this software is permitted.
+Any copy of this software, whether in its original form or modified,
+must include both the above copyright notice and the following
+paragraphs.
+
+Nara Institute of Science and Technology (NAIST),
+the copyright holders, disclaims all warranties with regard to this
+software, including all implied warranties of merchantability and
+fitness, in no event shall NAIST be liable for
+any special, indirect or consequential damages or any damages
+whatsoever resulting from loss of use, data or profits, whether in an
+action of contract, negligence or other tortuous action, arising out
+of or in connection with the use or performance of this software.
+
+A large portion of the dictionary entries
+originate from ICOT Free Software.  The following conditions for ICOT
+Free Software applies to the current dictionary as well.
+
+Each User may also freely distribute the Program, whether in its
+original form or modified, to any third party or parties, PROVIDED
+that the provisions of Section 3 ("NO WARRANTY") will ALWAYS appear
+on, or be attached to, the Program, which is distributed substantially
+in the same form as set out herein and that such intended
+distribution, if actually made, will neither violate or otherwise
+contravene any of the laws and regulations of the countries having
+jurisdiction over the User or the intended distribution itself.
+
+NO WARRANTY
+
+The program was produced on an experimental basis in the course of the
+research and development conducted during the project and is provided
+to users as so produced on an experimental basis.  Accordingly, the
+program is provided without any warranty whatsoever, whether express,
+implied, statutory or otherwise.  The term "warranty" used herein
+includes, but is not limited to, any warranty of the quality,
+performance, merchantability and fitness for a particular purpose of
+the program and the nonexistence of any infringement or violation of
+any right of any third party.
+
+Each user of the program will agree and understand, and be deemed to
+have agreed and understood, that there is no warranty whatsoever for
+the program and, accordingly, the entire risk arising from or
+otherwise connected with the program is assumed by the user.
+
+Therefore, neither ICOT, the copyright holder, or any other
+organization that participated in or was otherwise related to the
+development of the program and their respective officials, directors,
+officers and other employees shall be held liable for any and all
+damages, including, without limitation, general, special, incidental
+and consequential damages, arising out of or otherwise in connection
+with the use or inability to use the program or any product, material
+or result produced or otherwise obtained by using the program,
+regardless of whether they have been advised of, or otherwise had
+knowledge of, the possibility of such damages at any time during the
+project or thereafter.  Each user will be deemed to have agreed to the
+foregoing by his or her commencement of use of the program.  The term
+"use" as used herein includes, but is not limited to, the use,
+modification, copying and distribution of the program and the
+production of secondary products from the program.
+
+In the case where the program, whether in its original form or
+modified, was distributed or delivered to or received by a user from
+any person, organization or entity other than ICOT, unless it makes or
+grants independently of ICOT any specific warranty to the user in
+writing, such person, organization or entity, will also be exempted
+from and not be held liable to the user for any such damages as noted
+above as far as the program is concerned.
+
+---
+
+Files: src/data/dictionary*
+
+Public Domain Dataです。使用・変更・配布に関しては一切の制限をつけません。
+商品などに組み込むことも自由に行なってください。すでにいくつかの辞書には沖縄辞書が採用されています。
+勝手ながら、沖縄辞書に寄贈された辞書も in the Public Domain' 扱いとさせていただきます。

@@ -1,0 +1,35 @@
+# 歴史の英字の略語 (よく打つ分野に選んだ人の英字の判定に足す)。tools/domain/abbrev.py が書く。
+# 材料: 日本語版ウィキペディアの歴史の記事の冒頭 (CC BY-SA 4.0) と JMdict (CC BY-SA 4.0)。6.1-sol で歴史の略語かを判定した
+AG
+APEC
+BC
+BRICS
+CEDAW
+CIS
+EEZ
+FBI
+FTA
+GATT
+GHQ
+ICJ
+ICTY
+ILO
+IMF
+ISIL
+KCIA
+KZ
+LGBT
+NAACP
+NSDAP
+OECD
+OHCHR
+OKW
+PSI
+SCAP
+SCAPIN
+SD
+SL
+SS
+THAAD
+UNCTAD
+WTO

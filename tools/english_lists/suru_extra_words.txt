@@ -1,0 +1,9 @@
+# english_suru_words.txt の元に足す語 (SCOWL・english_terms.txt に無く、「〜する」と使う git の動詞)。この表の元にだけ使い、英字の判定の語の表には入れない。
+# 出典は README.md (git 2.43.0 の git help -a の Main Porcelain Commands と、git commit -h の --fixup)。cherry-pick は - を外して打つ形
+cherrypick
+fixup
+init
+rebase
+stash
+submodule
+worktree

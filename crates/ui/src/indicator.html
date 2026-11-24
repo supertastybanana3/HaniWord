@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <!--
+    2026-10-13: 入力モードの表示を CaretCue (https://github.com/GoldAnd07/CaretCue, Apache License 2.0) の
+    IndicatorWindow に合わせて作り直した。大きさ・色・動きの値は CaretCue の IndicatorWindow.xaml / .xaml.cs / Models.cs から。
+    変更点: WPF を HTML/CSS に置き換えた、言語の代わりに あ / A を並べる、Caps Lock はオンの間ずっと出す (macOS と同じ)。
+    詳細は crates/ui/THIRD_PARTY_CaretCue.md
+    2026-11-06 (仕事 35): 設定 input.mode_indicator で 3 つから選ぶ。上の札は "badge"。
+    "compact" (下の #compact、カーソルのそばに小さく) は Mozc の renderer/win32/indicator_window.cc・win32_image_util.cc
+    (Copyright 2010-2021, Google Inc.、BSD-3-Clause) の吹き出しを移したもの。大きさ・色・ぼかし・字・出る位置・消える動きは元の値。
+    詳細とライセンス文は crates/ui/THIRD_PARTY_Mozc_indicator.md。"off" のときは Rust 側が何も出さない
+  -->
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: transparent; overscroll-behavior: none; }
+    body { display: flex; justify-content: center; align-items: flex-start; }
+    /* 窓の中の余白: 上 8px (出るときに 6px 上から下りてくる)、左右と下は影のぶん */
+    #root { margin-top: 8px; transform-origin: 50% 0; opacity: 0; }
+    .sel { translate: 0 0; }
+    main {
+      box-sizing: border-box; height: 28px; width: 70px; padding: 2px; border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.502); background: rgba(250, 250, 250, 0.949);
+      box-shadow: 1.4px 1.4px 11px rgba(0, 0, 0, 0.067);
+      position: relative;
+      font-family: "Segoe UI Variable Text", "Segoe UI", "Yu Gothic UI", sans-serif;
+    }
+    .carousel { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .labels { display: flex; height: 100%; }
+    /* 2026-10-13: 字は作者が Illustrator で描いた あ / A (client/res/mode_kana.svg・mode_latin.svg、1000×1000 の原図) */
+    .labels > span, .sel > span {
+      width: 32px; display: flex; justify-content: center; align-items: center;
+    }
+    .glyph { display: block; width: 13px; height: 13px; }
+    .glyph svg { display: block; width: 100%; height: 100%; }
+    /* 原図の線 (かなは線幅 70、A は塗り) を、前の文字版 (Segoe UI Semibold 12.5px) と同じくらいの太さに */
+    .glyph.kana svg g { stroke-width: 125px; }
+    .glyph.latin svg path { stroke: currentColor; stroke-width: 55px; stroke-linejoin: miter; }
+    [data-glyph="kana"] .glyph.latin, [data-glyph="latin"] .glyph.kana { display: none; }
+    .t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    /* 2026-11-08 (仕事 52): 重いので AI を休んでいる間の、札の右下の小さな点 */
+    .aidot { position: absolute; right: 4px; bottom: 4px; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent, #0078d4); display: none; }
+    main[data-aipaused="1"]:not(.capslock) .aidot { display: block; }
+    .labels > span { color: #454545; }
+    /* 今のモードを塗る小さな札 (32×24、内側の高さ 22 に収まらない上下 1px は CaretCue と同じく切れる) */
+    .sel {
+      position: absolute; left: 0; top: -1px; width: 32px; height: 24px; border-radius: 12px;
+      background: var(--accent, #0078d4); transform-origin: 50% 50%;
+    }
+    .sel > span { position: absolute; inset: 0; color: #fff; }
+    .caps { display: none; position: absolute; left: 50%; top: 50%; width: 15px; height: 15px; transform: translate(-50%, -50%); }
+    .caps path { fill: #fff; }
+    main.capslock { width: 28px; background: var(--accent, #0078d4); border-color: transparent; }
+    main.capslock .carousel { display: none; }
+    main.capslock .caps { display: block; }
+    .label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    /* 「小さく」: 45×45 の吹き出し (枠 1px、上の真ん中に幅 10・高さ 5 の尖り)。窓 63×68 の中で左上 (9, 14)、尖りの先 (31.5, 9)。
+       あ は枠 rgb(1,122,204) とまわりのぼかし (同じ色、σ 3 = CSS の 6px、不透明度 0.5)、A は枠 rgb(186,186,186) でぼかしなし。
+       中は白、字は黒で、メッセージ ボックスのフォントの 13pt (元の表示と同じく、明るさの設定によらない) */
+    #compact { position: absolute; left: 0; top: 0; width: 63px; height: 68px; opacity: 0; pointer-events: none; }
+    #compact .balloon { position: absolute; left: 0; top: 0; filter: drop-shadow(0 0 6px rgba(1, 122, 204, 0.5)); }
+    #compact .frame { fill: rgb(1, 122, 204); }
+    #compact .inside { fill: #fff; }
+    #compact[data-kind="latin"] .balloon { filter: none; }
+    #compact[data-kind="latin"] .frame { fill: rgb(186, 186, 186); }
+    #compact .ctext {
+      position: absolute; left: 10px; top: 15px; width: 43px; height: 43px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--cfont, "Yu Gothic UI"), "Yu Gothic UI", sans-serif; font-size: 13pt; font-weight: 400; color: #000;
+    }
+    #compact .ccaps { display: none; position: absolute; left: 24px; top: 29px; width: 15px; height: 15px; }
+    #compact .ccaps path { fill: #000; }
+    #compact[data-kind="caps"] .ccaps { display: block; }
+    #compact[data-kind="caps"] .ctext { display: none; }
+    body[data-style="compact"] #root, body:not([data-style="compact"]) #compact { display: none; }
+    @media (prefers-color-scheme: dark) {
+      main { background: rgba(38, 38, 38, 0.925); border-color: rgba(255, 255, 255, 0.216); }
+      .labels > span { color: #dcdcdc; }
+      main.capslock { background: var(--accent, #0078d4); border-color: transparent; }
+    }
+  </style>
+  <script>
+    // CaretCue の AnimationSettings と同じ値
+    const APPEAR = 180, HOLD = 470, DISAPPEAR = 150, INITIAL_SCALE = 0.88, DISAPPEAR_SCALE = 0.93,
+      APPEAR_Y = -6, DISAPPEAR_Y = -3, OVERSHOOT_SCALE = 1.015;
+    const EASE_OUT = 'cubic-bezier(0.215, 0.61, 0.355, 1)', EASE_IN = 'cubic-bezier(0.55, 0.055, 0.675, 0.19)';
+    const MODES = ['あ', 'A'];
+    let visible = false, kind = null, mode = 'あ', capsOn = false, generation = 0, holdTimer = null, seq = 0;
+    const $ = (s) => document.querySelector(s);
+    // 2026-11-08 (仕事 52): 重いので AI を休んでいるか (Rust から、出す命令の前に毎回)
+    function setAIPaused(on) { $('main').dataset.aipaused = on === true ? '1' : '0'; }
+    function setAccent(color) {
+      if (typeof color === 'string' && /^#[0-9a-fA-F]{6}$/.test(color)) document.documentElement.style.setProperty('--accent', color);
+    }
+    function stopRoot() { $('#root').getAnimations().forEach(a => a.cancel()); }
+    function solid() { const r = $('#root'); r.style.opacity = 1; r.style.scale = '1'; r.style.translate = '0 0'; }
+    // WPF と同じく、不透明度・拡大・位置を別々の動きにする (それぞれ ease-out / ease-in)
+    function appear() {
+      const r = $('#root');
+      solid();
+      r.animate([{ opacity: 0 }, { opacity: 1 }], { duration: APPEAR, easing: EASE_OUT });
+      r.animate([
+        { scale: String(INITIAL_SCALE), easing: EASE_OUT },
+        { scale: String(OVERSHOOT_SCALE), offset: 0.72, easing: EASE_OUT },
+        { scale: '1' },
+      ], { duration: APPEAR });
+      r.animate([{ translate: `0 ${APPEAR_Y}px` }, { translate: '0 0' }], { duration: APPEAR, easing: EASE_OUT });
+    }
+    function pulse() {
+      $('#root').animate([{ opacity: 1 }, { opacity: 0.72, offset: 75 / 145 }, { opacity: 1 }], { duration: 145 });
+    }
+    function disappear(gen) {
+      const r = $('#root');
+      stopRoot();
+      r.animate([{ scale: '1' }, { scale: String(DISAPPEAR_SCALE) }], { duration: DISAPPEAR, easing: EASE_IN, fill: 'forwards' });
+      r.animate([{ translate: '0 0' }, { translate: `0 ${DISAPPEAR_Y}px` }], { duration: DISAPPEAR, easing: EASE_IN, fill: 'forwards' });
+      const fade = r.animate([{ opacity: 1 }, { opacity: 0 }], { duration: DISAPPEAR, easing: EASE_IN, fill: 'forwards' });
+      fade.onfinish = () => {
+        if (gen !== generation) return;
+        stopRoot(); r.style.opacity = 0; visible = false; kind = null;
+        window.ipc && window.ipc.postMessage(JSON.stringify({ type: 'hidden', seq }));
+      };
+    }
+    // 窓を出す (Rust 側で ShowWindow) 前提で、中身を出す
+    function present(nextKind, slideFrom) {
+      generation++;
+      clearTimeout(holdTimer); holdTimer = null;
+      const continueMode = visible && kind === 'mode' && nextKind === 'mode';
+      const main = $('main');
+      main.classList.toggle('capslock', nextKind === 'caps');
+      if (nextKind === 'mode') buildCarousel(continueMode ? slideFrom : null);
+      stopRoot();
+      if (!visible) appear();
+      else { solid(); if (!continueMode) pulse(); }
+      visible = true; kind = nextKind;
+      const gen = generation;
+      if (nextKind === 'mode') {
+        // 止まったあとは、Caps Lock がオンならその表示に戻る。オフなら消える
+        holdTimer = setTimeout(() => { if (gen === generation) { if (capsOn) present('caps'); else disappear(gen); } }, APPEAR + HOLD);
+      }
+    }
+    function buildCarousel(from) {
+      const to = MODES.indexOf(mode), old = from === null || from === undefined ? to : MODES.indexOf(from);
+      const sel = $('.sel'), oldLabel = $('.sel .old'), newLabel = $('.sel .new');
+      [sel, oldLabel, newLabel].forEach(e => e.getAnimations().forEach(a => a.cancel()));
+      const glyph = (i) => (MODES[i] === 'A' ? 'latin' : 'kana');
+      oldLabel.dataset.glyph = glyph(old); newLabel.dataset.glyph = glyph(to);
+      oldLabel.querySelector('.t').textContent = MODES[old]; newLabel.querySelector('.t').textContent = MODES[to];
+      const x = (i) => i * 32;
+      sel.style.translate = `${x(to)}px 0`; sel.style.scale = '1'; oldLabel.style.opacity = 0; newLabel.style.opacity = 1;
+      if (old === to) return;
+      const overshoot = x(to) + Math.sign(x(to) - x(old));
+      sel.animate([
+        { translate: `${x(old)}px 0`, easing: EASE_OUT },
+        { translate: `${overshoot}px 0`, offset: 195 / 235, easing: EASE_OUT },
+        { translate: `${x(to)}px 0` },
+      ], { duration: 235 });
+      sel.animate([
+        { scale: '1 1', easing: EASE_OUT },
+        { scale: '1.08 1', offset: 115 / 235, easing: EASE_OUT },
+        { scale: '1 1' },
+      ], { duration: 235 });
+      oldLabel.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 125, delay: 55, fill: 'backwards' });
+      newLabel.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 125, delay: 80, fill: 'backwards' });
+    }
+    // 入力モードが変わったとき (Rust から。text は 'あ' か 'A' だけ受け付ける)
+    function updateInputMethod(text, order) {
+      if (text !== 'A' && text !== 'あ') return;
+      if (Number.isSafeInteger(order)) seq = order;
+      const previous = mode;
+      mode = text;
+      const main = $('main');
+      main.dataset.mode = text === 'A' ? 'latin' : 'kana';
+      main.setAttribute('aria-label', text);
+      $('.label').textContent = text;
+      if (style === 'compact') { cShow(text === 'A' ? 'latin' : 'kana'); return; }
+      present('mode', previous);
+    }
+    // Caps Lock のオン・オフ (Rust から)。オンの間は出しっぱなし
+    function setCapsLock(on, order) {
+      if (Number.isSafeInteger(order)) seq = order;
+      capsOn = !!on;
+      if (style === 'compact') {
+        if (capsOn) { if (!(visible && cKind && cKind !== 'caps')) cShow('caps'); }
+        else if (visible && cKind === 'caps') cFadeOut();
+        return;
+      }
+      if (capsOn) {
+        if (!(visible && kind === 'mode')) present('caps');
+      } else if (visible && kind === 'caps') {
+        generation++; disappear(generation);
+      }
+    }
+    // 候補ウィンドウが出たときなどに、動きなしですぐ消す
+    function hideNow() {
+      generation++; clearTimeout(holdTimer); holdTimer = null; stopRoot();
+      $('#root').style.opacity = 0; visible = false; kind = null;
+      cStop(); cAlpha = 0; cKind = null; $('#compact').style.opacity = 0;
+    }
+    // 2026-11-06 (仕事 35): 表示の形 (Rust から、出す命令の前に毎回)。"badge" (札) か "compact" (小さく)。font は小さくの字のフォント
+    let style = 'badge';
+    function setStyle(name, font) {
+      if (typeof font === 'string' && font.length > 0 && font.length <= 64) {
+        document.documentElement.style.setProperty('--cfont', JSON.stringify(font));
+      }
+      if ((name !== 'badge' && name !== 'compact') || name === style) return;
+      hideNow();
+      style = name;
+      document.body.dataset.style = name;
+    }
+    // 「小さく」: 出たら 2.5 秒そのまま → 16ms ごとに不透明度を 32/255 ずつ下げ、下げたぶんの 1/32 (物理ピクセル) だけ下へずらす
+    // (8 回、0.13 秒で消える)。Caps Lock の矢印はオンの間ずっと出し、モードを切り替えたら消えたあとに戻る
+    const C_DELAY = 2500, C_INTERVAL = 16, C_DELTA = 32;
+    let cAlpha = 0, cKind = null, cDelayTimer = null, cFadeTimer = null;
+    function cStop() { clearTimeout(cDelayTimer); clearInterval(cFadeTimer); cDelayTimer = cFadeTimer = null; }
+    function cApply() {
+      const c = $('#compact');
+      c.style.opacity = cAlpha / 255;
+      c.style.translate = `0 ${Math.floor((255 - cAlpha) / 32) / (window.devicePixelRatio || 1)}px`;
+    }
+    function cShow(nextKind) {
+      generation++; cStop();
+      $('#compact').dataset.kind = nextKind;
+      $('#compact .ctext').textContent = nextKind === 'latin' ? 'A' : 'あ';
+      cAlpha = 255; cApply(); visible = true; cKind = nextKind;
+      if (nextKind !== 'caps') cDelayTimer = setTimeout(() => { cDelayTimer = null; cFadeTimer = setInterval(cStep, C_INTERVAL); }, C_DELAY);
+    }
+    function cFadeOut() { cStop(); cFadeTimer = setInterval(cStep, C_INTERVAL); }
+    function cStep() {
+      cAlpha = Math.max(cAlpha - C_DELTA, 0); cApply();
+      if (cAlpha > 0) return;
+      cStop();
+      if (capsOn && cKind !== 'caps') { cShow('caps'); return; }
+      visible = false; cKind = null;
+      window.ipc && window.ipc.postMessage(JSON.stringify({ type: 'hidden', seq }));
+    }
+  </script>
+</head>
+<body>
+  <div id="root">
+    <main data-mode="kana" role="img" aria-label="あ">
+      <span class="label">あ</span>
+      <div class="carousel">
+        <div class="labels">
+          <span data-glyph="kana"><span class="glyph kana">{{KANA_SVG}}</span><i class="t">あ</i></span>
+          <span data-glyph="latin"><span class="glyph latin">{{LATIN_SVG}}</span><i class="t">A</i></span>
+        </div>
+        <div class="sel">
+          <span class="old" data-glyph="kana"><span class="glyph kana">{{KANA_SVG}}</span><span class="glyph latin">{{LATIN_SVG}}</span><i class="t"></i></span>
+          <span class="new" data-glyph="kana"><span class="glyph kana">{{KANA_SVG}}</span><span class="glyph latin">{{LATIN_SVG}}</span><i class="t">あ</i></span>
+        </div>
+      </div>
+      <i class="aidot" aria-hidden="true"></i>
+      <svg class="caps" viewBox="1 1 14 15" aria-hidden="true"><path d="M 8,1 L 15,8 L 12,8 L 12,12 L 4,12 L 4,8 L 1,8 Z M 4,14 L 12,14 L 12,16 L 4,16 Z"/></svg>
+    </main>
+  </div>
+  <div id="compact" data-kind="kana" aria-hidden="true">
+    <svg class="balloon" width="63" height="68" viewBox="0 0 63 68">
+      <path class="frame" d="M9 14H26.5L31.5 9L36.5 14H54V59H9Z"/>
+      <path class="inside" d="M10 15H26.914L31.5 10.414L36.086 15H53V58H10Z"/>
+    </svg>
+    <span class="ctext">あ</span>
+    <svg class="ccaps" viewBox="1 1 14 15"><path d="M 8,1 L 15,8 L 12,8 L 12,12 L 4,12 L 4,8 L 1,8 Z M 4,14 L 12,14 L 12,16 L 4,16 Z"/></svg>
+  </div>
+</body>
+</html>

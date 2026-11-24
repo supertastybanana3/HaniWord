@@ -1,0 +1,423 @@
+# カタカナ語の読み (ひらがな) → 英字の表記。手で足す語 (english_words.tsv は自動で作るので、そちらには足さない)。読み<TAB>表記 (| で複数)
+# 2026-10-13: geoguessr (正式な表記 GeoGuessr で登録)
+じおげっさー	GeoGuessr
+じおげっさ	GeoGuessr
+# 2026-10-13: ゲーム・SNS・アプリ・AI・開発・試験・ブランドの固有名詞 (日本語版 Wikipedia などの冒頭の「英字（カタカナ）」から集めた。普通の英単語と読みがぶつかる語は除いた)
+ゔぁろらんと	VALORANT
+ばろらんと	VALORANT
+ふぉーとないと	Fortnite
+えーぺっくすれじぇんず	Apex Legends
+まいんくらふと	Minecraft
+ろぶろっくす	Roblox
+あもんぐあす	Among Us
+あまんぐあす	Among Us
+おーばーうぉっち	Overwatch
+りーぐおぶれじぇんど	League of Legends
+ぜんれすぞーんぜろ	Zenless Zone Zero
+どーたつー	Dota 2
+ぴーゆーびーじーばとるぐらうんず	PUBG: BATTLEGROUNDS
+こーるおぶでゅーてぃ	Call of Duty
+れいんぼーしっくすしーじ	Rainbow Six Siege
+えすけーぷふろむたるこふ	Escape from Tarkov
+ろけっとりーぐ	Rocket League
+ふぉーるがいず	Fall Guys
+てらりあ	Terraria
+すたーでゅーばれー	Stardew Valley
+あんだーている	UNDERTALE
+あんだーてーる	UNDERTALE
+でるたるーん	DELTARUNE
+ほろうないと	Hollow Knight
+ほろうないとしるくそんぐ	Hollow Knight: Silksong
+かっぷへっど	Cuphead
+えるでんりんぐ	ELDEN RING
+ぐらんどせふとおーとふぁいぶ	Grand Theft Auto V
+れっどでっどりでんぷしょん2	Red Dead Redemption 2
+さいばーぱんく2077	Cyberpunk 2077
+じえるだーすくろーるずふぁいぶすかいりむ	The Elder Scrolls V: Skyrim
+ふぉーるあうと4	Fallout 4
+ばるだーずげーと3	Baldur's Gate 3
+りーさるかんぱにー	Lethal Company
+でっどばいでいらいと	Dead by Daylight
+あいでんてぃてぃふぁいぶ	Identity V
+くらっしゅろわいやる	Clash Royale
+くらっしゅおぶくらん	Clash of Clans
+ぶろすた	Brawl Stars
+ぽけもんごー	Pokémon GO
+ぽけもんゆないと	Pokémon UNITE
+きゃんでぃーくらっしゅ	Candy Crush Saga
+さぶうぇいさーふぁーず	Subway Surfers
+あんぐりーばーど	Angry Birds
+じおめとりーだっしゅ	Geometry Dash
+おす	osu!
+びーとせいばー	Beat Saber
+ぽーたる2	Portal 2
+ざしむず4	The Sims 4
+ばらとろ	Balatro
+ゔぁんぱいあさゔぁいゔぁーず	Vampire Survivors
+ばんぱいあさばいばーず	Vampire Survivors
+いっとていくすつー	It Takes Two
+おーばーくっく	Overcooked
+ひゅーまんふぉーるふらっと	Human: Fall Flat
+りーぐおぶれじぇんどわいるどりふと	League of Legends: Wild Rift
+あーくないつ	Arknights
+ふぇいとぐらんどおーだー	Fate/Grand Order
+わーどる	Wordle
+すりざー	Slither.io
+すりざーあいおー	Slither.io
+すりざりお	Slither.io
+くっきーくりっかー	Cookie Clicker
+ざらすとおぶあす	The Last of Us
+ごっどおぶうぉー	God of War
+ごーすとおぶつしま	Ghost of Tsushima
+ですすとらんでぃんぐ	DEATH STRANDING
+ほぐわーつれがしー	Hogwarts Legacy
+てとりす	Tetris
+ぽけもんすりーぷ	Pokémon Sleep
+ばんどり	BanG Dream!
+ぶるーあーかいぶ	Blue Archive
+ちぇすどっとこむ	Chess.com
+かうんたーすとらいく	Counter-Strike
+まーべるらいばるず	Marvel Rivals
+ちーむふぁいとたくてぃくす	Teamfight Tactics
+すちーむ	Steam
+すちーむでっく	Steam Deck
+えぴっくげーむずすとあ	Epic Games Store
+えぴっくげーむず	Epic Games
+いっちどっとあいおー	itch.io
+ぷれいすてーしょんふぁいぶ	PlayStation 5
+ぷれいすてーしょんねっとわーく	PlayStation Network
+にんてんどーすいっち	Nintendo Switch
+にんてんどーすいっちとぅー	Nintendo Switch 2
+えっくすぼっくすげーむぱす	Xbox Game Pass
+らいあっとげーむず	Riot Games
+ばるぶ	Valve
+もやん	Mojang
+ぶりざーどえんたーていめんと	Blizzard Entertainment
+ゆーびーあいそふと	Ubisoft
+えれくとろにっくあーつ	Electronic Arts
+みほよ	miHoYo
+ないあんてぃっく	Niantic
+めたくえすと	Meta Quest
+めたくえすとすりー	Meta Quest 3
+えっくすぼっくす	Xbox
+すーぱーせる	Supercell
+いんすたぐらむ	Instagram
+てぃっくとっく	TikTok
+でぃすこーど	Discord
+ふぇいすぶっく	Facebook
+すれっず	Threads
+ぶるーすかい	Bluesky
+みすきー	Misskey
+すなっぷちゃっと	Snapchat
+びりーる	BeReal
+びーりある	BeReal
+ぴんたれすと	Pinterest
+れでぃっと	Reddit
+てれぐらむ	Telegram
+わっつあっぷ	WhatsApp
+うぃーちゃっと	WeChat
+ずーむ	Zoom
+すかいぷ	Skype
+まいくろそふとちーむず	Microsoft Teams
+ぐーぐるみーと	Google Meet
+すらっく	Slack
+ちゃっとわーく	Chatwork
+ぱとれおん	Patreon
+ぺいとりおん	Patreon
+ぴくしぶ	pixiv
+かかおとーく	KakaoTalk
+らいん	LINE
+ますとどん	Mastodon
+のーと	note
+ついったー	Twitter
+ゆーちゅーぶ	YouTube
+ゆーちゅーぶみゅーじっく	YouTube Music
+ゆーちゅーぶしょーと	YouTube Shorts
+ねっとふりっくす	Netflix
+ふーるー	Hulu
+でぃずにーぷらす	Disney+
+ぷらいむびでお	Prime Video
+ゆーねくすと	U-NEXT
+あべま	ABEMA
+だぞーん	DAZN
+くらんちろーる	Crunchyroll
+すぽてぃふぁい	Spotify
+あっぷるみゅーじっく	Apple Music
+あまぞんみゅーじっく	Amazon Music
+さうんどくらうど	SoundCloud
+ばんどきゃんぷ	Bandcamp
+ついっち	Twitch
+ゔぃめお	Vimeo
+びめお	Vimeo
+びりびり	bilibili
+おーでぃぶる	Audible
+らじこ	radiko
+らいんみゅーじっく	LINE MUSIC
+あっぷるてぃーゔぃー	Apple TV
+あっぷるてぃーびー	Apple TV
+ぼいしー	Voicy
+しゃざむ	Shazam
+のーしょん	Notion
+ふぃぐま	Figma
+きゃんば	Canva
+えばーのーと	Evernote
+わんのーと	OneNote
+おぶしでぃあん	Obsidian
+とぅーどぅいすと	Todoist
+とれろ	Trello
+どろっぷぼっくす	Dropbox
+わんどらいぶ	OneDrive
+あいくらうど	iCloud
+じーめーる	Gmail
+あうとるっく	Outlook
+うぃきぺでぃあ	Wikipedia
+うーばー	Uber
+うーばーいーつ	Uber Eats
+えあびーあんどびー	Airbnb
+ぺいぺい	PayPay
+あまぞん	Amazon
+しーいん	SHEIN
+てむ	Temu
+ありえくすぷれす	AliExpress
+いーべい	eBay
+ぐーぐるあーす	Google Earth
+まいくろそふとわーど	Microsoft Word
+えくせる	Excel
+ぱわーぽいんと	PowerPoint
+まいくろそふと365	Microsoft 365
+ふぉとしょっぷ	Photoshop
+あどびいらすとれーたー	Adobe Illustrator
+あどびぷれみあ	Adobe Premiere
+あどびあふたーえふぇくつ	Adobe After Effects
+あどびあくろばっと	Adobe Acrobat
+らいとるーむ	Lightroom
+くりっぷすたじおぺいんと	CLIP STUDIO PAINT
+あいびすぺいんと	ibisPaint
+めでぃばんぺいんと	MediBang Paint
+ぐーぐるくろーむ	Google Chrome
+ふぁいあーふぉっくす	Firefox
+さふぁり	Safari
+まいくろそふとえっじ	Microsoft Edge
+わんぱすわーど	1Password
+ぐーぐるぺい	Google Pay
+あっぷるぺい	Apple Pay
+ぺいぱる	PayPal
+ぐらまりー	Grammarly
+でぃーぷえる	DeepL
+うぇぶりお	Weblio
+やふーじゃぱん	Yahoo! JAPAN
+びんぐ	Bing
+ぷろくりえいと	Procreate
+ぶーす	BOOTH
+ぐっどのーと	Goodnotes
+ちゃっとじーぴーてぃー	ChatGPT
+おーぷんえーあい	OpenAI
+じーぴーてぃーふぉーおー	GPT-4o
+そら	Sora
+だり	DALL-E
+くろーど	Claude
+あんそろぴっく	Anthropic
+あんすろぴっく	Anthropic
+じぇみに	Gemini
+でぃーぷまいんど	DeepMind
+あるふぁご	AlphaGo
+あるふぁふぉーるど	AlphaFold
+こぱいろっと	Copilot
+ぎっとはぶこぱいろっと	GitHub Copilot
+ぱーぷれきしてぃ	Perplexity
+すぺーすえっくすえーあい	SpaceXAI
+らま	Llama
+めたえーあい	Meta AI
+でぃーぷしーく	DeepSeek
+くうぇん	Qwen
+みっどじゃーにー	Midjourney
+すていぶるでぃふゅーじょん	Stable Diffusion
+のべるえーあい	NovelAI
+すーの	Suno
+いれぶんらぶず	ElevenLabs
+はぎんぐふぇいす	Hugging Face
+でびん	Devin
+らんぐちぇいん	LangChain
+こんふぃゆーあい	ComfyUI
+てんそるふろー	TensorFlow
+てんさーふろー	TensorFlow
+かぐる	Kaggle
+くーだ	CUDA
+こーでっくす	Codex
+じぇんすぱーく	Genspark
+ぎっとはぶ	GitHub
+ぎっとらぶ	GitLab
+ぎっとらぼ	GitLab
+ぎっと	Git
+すたっくおーばーふろー	Stack Overflow
+びじゅあるすたじおこーど	Visual Studio Code
+びじゅあるすたじお	Visual Studio
+ゔぃむ	Vim
+びむ	Vim
+ぱいちゃーむ	PyCharm
+えっくすこーど	Xcode
+あんどろいどすたじお	Android Studio
+どっかー	Docker
+くばねてぃす	Kubernetes
+くばねてす	Kubernetes
+くーべねてぃす	Kubernetes
+りなっくす	Linux
+うぶんつ	Ubuntu
+うぶんとぅ	Ubuntu
+うぃんどうず	Windows
+うぃんどうずいれぶん	Windows 11
+まっくおーえす	macOS
+あいおーえす	iOS
+あいぱっどおーえす	iPadOS
+あんどろいど	Android
+くろーむおーえす	ChromeOS
+くろーむぶっく	Chromebook
+ぱいそん	Python
+じゃばすくりぷと	JavaScript
+じゃば	Java
+じゃゔぁ	Java
+ことりん	Kotlin
+すうぃふと	Swift
+らすと	Rust
+るびー	Ruby
+るびーおんれいるず	Ruby on Rails
+ぴーえいちぴー	PHP
+しーしゃーぷ	C#
+ふらったー	Flutter
+りあくと	React
+ゔゅーじぇいえす	Vue.js
+びゅーじぇいえす	Vue.js
+あんぎゅらー	Angular
+ねくすとじぇいえす	Next.js
+のーどじぇいえす	Node.js
+じぇいくえりー	jQuery
+じゃんご	Django
+ゆにてぃ	Unity
+あんりあるえんじん	Unreal Engine
+ぶれんだー	Blender
+すくらっち	Scratch
+あるどぅいーの	Arduino
+あるでゅいーの	Arduino
+あるでぃーの	Arduino
+らずべりーぱい	Raspberry Pi
+まっとらぶ	MATLAB
+まとらぶ	MATLAB
+まとらぼ	MATLAB
+らてふ	LaTeX
+らてっく	LaTeX
+まーくだうん	Markdown
+まいえすきゅーえる	MySQL
+まいしーくぇる	MySQL
+ぽすとぐれすきゅーえる	PostgreSQL
+ふぁいあべーす	Firebase
+あまぞんうぇぶさーびす	Amazon Web Services
+あじゅーる	Azure
+ぐーぐるくらうど	Google Cloud
+くらうどふれあ	Cloudflare
+わーどぷれす	WordPress
+ているすけーる	Tailscale
+ぱわーしぇる	PowerShell
+ばっしゅ	Bash
+ませまてぃか	Mathematica
+きーた	Qiita
+ぜん	Zenn
+あっとこーだー	AtCoder
+かふーと	Kahoot!
+ですもす	Desmos
+じおじぇぶら	GeoGebra
+でゅおりんご	Duolingo
+くいずれっと	Quizlet
+あんき	Anki
+かーんあかでみー	Khan Academy
+こーせら	Coursera
+えでっくす	edX
+ぐーぐるくらするーむ	Google Classroom
+すたでぃぷらす	Studyplus
+くらっしー	Classi
+ものぐさ	Monoxer
+きゅびな	Qubena
+てっど	TED
+とーふる	TOEFL
+あいえるつ	IELTS
+じーてっく	GTEC
+えすえーてぃー	SAT
+とぐる	Toggl
+とーいっく	TOEIC
+てぃーぷ	TEAP
+ゆーでみー	Udemy
+ぷろげーと	Progate
+きんどる	Kindle
+あいふぉん	iPhone
+あいぱっど	iPad
+まっくぶっく	MacBook
+まっくぶっくえあー	MacBook Air
+まっくぶっくぷろ	MacBook Pro
+あいまっく	iMac
+あっぷるうぉっち	Apple Watch
+えあーぽっず	AirPods
+えあーぽっずぷろ	AirPods Pro
+あっぷるぺんしる	Apple Pencil
+あっぷるびじょんぷろ	Apple Vision Pro
+ぐーぐるぴくせる	Google Pixel
+さむすんぎゃらくしー	Samsung Galaxy
+まいくろそふとさーふぇす	Microsoft Surface
+しんくぱっど	ThinkPad
+あまぞんふぁいやーてぃーゔぃー	Amazon Fire TV
+あまぞんふぁいやーてぃーびー	Amazon Fire TV
+くろーむきゃすと	Chromecast
+あれくさ	Alexa
+しり	Siri
+あまぞんえこー	Amazon Echo
+すたーばっくす	Starbucks
+ないき	Nike
+あでぃだす	adidas
+ゆにくろ	UNIQLO
+しゅぷりーむ	Supreme
+ざのーすふぇいす	The North Face
+こんばーす	Converse
+ゔぁんず	Vans
+にゅーばらんす	New Balance
+ぷーま	Puma
+ざら	Zara
+えいちあんどえむ	H&M
+れご	LEGO
+でぃずにー	Disney
+ぴくさー	Pixar
+てすら	Tesla
+すたーりんく	Starlink
+れっどぶる	Red Bull
+もんすたーえなじー	Monster Energy
+はーげんだっつ	Häagen-Dazs
+るるれもん	lululemon
+くろっくす	Crocs
+だいそん	Dyson
+ごーぷろ	GoPro
+じぇーびーえる	JBL
+ろじくーる	Logicool
+れいざー	Razer
+えいすーす	ASUS
+れのぼ	Lenovo
+でる	Dell
+さむすん	Samsung
+ふぁーうぇい	Huawei
+しゃおみ	Xiaomi
+おっぽ	OPPO
+わんぷらす	OnePlus
+くあるこむ	Qualcomm
+すなっぷどらごん	Snapdragon
+いんてる	Intel
+えぬびでぃあ	NVIDIA
+じーふぉーす	GeForce
+れいでぃおん	Radeon
+らでおん	Radeon
+らいぜん	Ryzen
+まいくろそふと	Microsoft
+あっぷる	Apple
+ぐーぐる	Google
+めたぷらっとふぉーむず	Meta Platforms
+いけあ	IKEA
+さぶうぇい	SUBWAY
+すけぶ	Skeb
+てふ	TeX
+まくどなるど	McDonald's
+えいさー	Acer

@@ -1,13 +1,20 @@
 use crate::extension::VKeyExt;
 use anyhow::{Context, Result};
-use windows::Win32::UI::Input::KeyboardAndMouse::{GetKeyboardState, ToUnicode, VK_SHIFT};
+use windows::Win32::UI::Input::KeyboardAndMouse::{GetKeyboardState, MapVirtualKeyW, ToUnicode, MAPVK_VK_TO_VSC, VK_SHIFT};
 
 #[derive(Debug)]
 pub enum UserAction {
     Input(char),
     Backspace,
+    Delete,
+    Home,
+    End,
+    PageUp,
+    PageDown,
     Enter,
     Space,
+    Henkan,
+    Muhenkan,
     Tab,
     Escape,
     Unknown,
@@ -42,7 +49,14 @@ impl TryFrom<usize> for UserAction {
             0x09 => UserAction::Tab,       // VK_TAB
             0x0D => UserAction::Enter,     // VK_RETURN
             0x20 => UserAction::Space,     // VK_SPACE
+            0x1C => UserAction::Henkan,    // VK_CONVERT (変換キー)
+            0x1D => UserAction::Muhenkan,  // VK_NONCONVERT (無変換キー)
             0x1B => UserAction::Escape,    // VK_ESCAPE
+            0x2E => UserAction::Delete,    // VK_DELETE
+            0x24 => UserAction::Home,      // VK_HOME
+            0x23 => UserAction::End,       // VK_END
+            0x21 => UserAction::PageUp,    // VK_PRIOR
+            0x22 => UserAction::PageDown,  // VK_NEXT
 
             0x25 => UserAction::Navigation(Navigation::Left), // VK_LEFT
             0x26 => UserAction::Navigation(Navigation::Up),   // VK_UP
@@ -88,7 +102,13 @@ impl TryFrom<usize> for UserAction {
                 };
 
                 if unicode != 0 {
-                    UserAction::Input(char::from_u32(unicode as u32).context("Invalid char")?)
+                    let c = char::from_u32(unicode as u32).context("Invalid char")?;
+                    // 2026-10-20: \ を出すキーのうち、設定 input.yen_key (¥ か \) に従うのは ¥ キーだけ。
+                    // 「ろ」キーと US 配列の \ キーはいつも \ (かなで全角にするときに ￥ ではなく ＼ にする)
+                    if c == '\\' {
+                        super::full_width::note_backslash_key(is_yen_key(key_code));
+                    }
+                    UserAction::Input(c)
                 } else {
                     UserAction::Unknown
                 }
@@ -97,4 +117,9 @@ impl TryFrom<usize> for UserAction {
 
         Ok(action)
     }
+}
+
+/// JIS 配列の ¥ キー (右上、走査コード 0x7D) か。US 配列では同じ仮想キー (VK_OEM_5) が \ キー (走査コード 0x2B)
+fn is_yen_key(key_code: usize) -> bool {
+    key_code == 0xDC && unsafe { MapVirtualKeyW(0xDC, MAPVK_VK_TO_VSC) } == 0x7D
 }
