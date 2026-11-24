@@ -1,10 +1,10 @@
 ﻿# HaniWord のインストーラー (haniword-setup-<版>.exe) を作る。scripts\release\package.py で ..\release を作ってから動かす。
 # 中身が SHA256SUMS.txt のとおりか・数えていないファイルが無いか・インストーラーに埋め込む停止用のコマンドが
 # stop_ime_for_update.ps1 と同じかを確かめてから、Inno Setup 6 (ISCC.exe、署名を確かめる) でコンパイルする。
-# 使い方: .\installer\compile.ps1 [-Version 0.1.0] [-Build <数字>] [-Out <出力先>]
+# 使い方: .\installer\compile.ps1 [-Version 0.1.1] [-Build <数字>] [-Out <出力先>]
 # 2026-10-29: -Build はインストール先のフォルダの名前 (Program Files\HaniWord\Releases\<版>-<ビルド>) に使う。既定はコンパイルした時刻。
 # ビルドごとに別のフォルダに入れるので、更新で使用中の IME 本体 (azookey.dll) を入れ替えずに済み、再起動が要らない
-param([string]$Version = "0.1.0", [string]$Build = (Get-Date -Format "yyyyMMddHHmm"), [string]$Out = "")
+param([string]$Version = "0.1.1", [string]$Build = (Get-Date -Format "yyyyMMddHHmm"), [string]$Out = "")
 $ErrorActionPreference = "Stop"
 if ($Version -notmatch '^[0-9]+\.[0-9]+\.[0-9]+$') { throw "Invalid version" }
 if ($Build -notmatch '^[0-9]{1,14}$') { throw "Invalid build" }

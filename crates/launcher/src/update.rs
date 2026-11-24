@@ -338,7 +338,7 @@ mod tests {
         // 数として比べる (0.1.10 は 0.1.9 より新しい)
         assert!(parse_version("0.1.10").unwrap() > parse_version("v0.1.9").unwrap());
         assert!(parse_version("0.2.0").unwrap() > parse_version("0.1.99").unwrap());
-        assert!(parse_version("v0.1.0").unwrap() == parse_version(shared::APP_VERSION).unwrap());
+        assert!(parse_version("v0.1.1").unwrap() == parse_version(shared::APP_VERSION).unwrap());
     }
 
     #[test]

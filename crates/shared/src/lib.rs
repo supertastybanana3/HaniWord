@@ -18,7 +18,7 @@ pub const APP_DIR: &str = "HaniWord";
 
 /// 2026-10-29: この版の番号 (新しい版の知らせで、GitHub の最新のリリースと比べる。設定画面にも出す)。
 /// 版を上げるときは、ここと installer\compile.ps1 の -Version をそろえる (compile.ps1 が食い違いを止める)
-pub const APP_VERSION: &str = "0.1.0";
+pub const APP_VERSION: &str = "0.1.1";
 
 /// 2026-10-29: リリースを置く GitHub のリポジトリ (所有者/名前)。新しい版の知らせが問い合わせる先
 pub const RELEASE_REPOSITORY: &str = "supertastybanana3/HaniWord";
@@ -223,6 +223,10 @@ pub struct InputConfig {
     /// 英字のまま入れた英単語を決まった表記に直す (github → GitHub, pdf → PDF)。初期値はオン
     #[serde(default = "default_true")]
     pub english_case_fix: bool,
+    /// 2026-11-24: Flutter で作られたアプリの窓 (FLUTTERVIEW) でも学習する。初期値はオフ (Flutter は欄がパスワードかを IME に伝えないので、
+    /// オフのあいだは学習・予測の履歴・前後の文の取得・診断ログ・打ち方の数えをしない。client/src/engine/direct_field.rs の 5)
+    #[serde(default)]
+    pub learn_in_flutter: bool,
     /// 端末でシェルの入力待ち (PowerShell・コマンド プロンプト・bash) のときは英字にする
     #[serde(default = "default_true")]
     pub latin_at_shell_prompt: bool,
@@ -574,6 +578,7 @@ impl Default for InputConfig {
             space_after_latin: false,
             direct_prefixes: default_direct_prefixes(),
             english_case_fix: true,
+            learn_in_flutter: false,
             latin_at_shell_prompt: true,
             latin_at_terminal_choices: true,
             shift_ascii_mode: false,
@@ -794,6 +799,18 @@ mod config_tests {
         assert!(apply_install_choices(&mut config, &root));
         assert_eq!(config.input.domains_focus, ["law", "math"]);
         let _ = std::fs::remove_dir_all(&root);
+    }
+
+    #[test]
+    fn learn_in_flutter_defaults_off_for_new_and_legacy_configs() {
+        assert!(!InputConfig::default().learn_in_flutter);
+        assert!(!AppConfig::default().input.learn_in_flutter);
+        let empty: InputConfig = serde_json::from_str("{}").unwrap();
+        assert!(!empty.learn_in_flutter);
+        let mut value = serde_json::to_value(AppConfig::default()).unwrap();
+        value["input"].as_object_mut().unwrap().remove("learn_in_flutter");
+        let legacy: AppConfig = serde_json::from_value(value).unwrap();
+        assert!(!legacy.input.learn_in_flutter);
     }
 
     #[test]

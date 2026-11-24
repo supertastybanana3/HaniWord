@@ -16,6 +16,12 @@
 //!    上書きできない欄 (Field::Disabled) にする。かな・全角の指定と混ざっていても、半角/全角を押しても、日本語入力に戻さない。
 //!    この欄では学習・予測の履歴・前後の文の取得・診断ログも止める (private_field。README の「パスワード欄では日本語入力を使わない」)
 //!
+//! 5. 2026-11-24: 欄の種類 (パスワードか) を IME に知らせない枠組みの窓 (Flutter の FLUTTERVIEW)。Flutter の Windows の本体
+//!    (shell/platform/windows/text_input_plugin.cc・text_input_manager.cc) は IMM32 だけで文字を受け、TextInput.setClient の obscureText を読まず、
+//!    IME を切る処理も InputScope の指定も無い。パスワードの欄もふつうの欄と見分けがつかない (Flutter のアプリのパスワードの欄で、かなになり学習した)。
+//!    この窓では、欄がパスワードかもしれないので「覚えない欄」にする (学習・予測の履歴・前後の文の取得・診断ログ・打ち方の数えを止める)。
+//!    日本語の入力はそのまま使える (パスワードの欄かどうかは分からないため)
+//!
 //! どちらも、入力中でない あ のときだけ。保存している入力モードは変えない。1 の欄で半角/全角を押したら、その欄でも普通に入力する。
 //! 1・3 の欄にフォーカスがある間は、言語バーを A の絵にする (shown_latin。保存しているモードは あ のまま)
 use std::cell::Cell;
@@ -224,7 +230,40 @@ pub fn shown_latin() -> bool {
     SHOWN_LATIN.get()
 }
 
+/// 2026-11-24: 欄の種類 (パスワードか) を IME に知らせない枠組みの、キーを受ける窓のクラス (5)。窓そのもののクラスで見る (一番上の窓のクラスは
+/// アプリが替えられる (FLUTTER_RUNNER_WIN32_WINDOW のほか、アプリが付けた名前)。キーを受けるのは子の FLUTTERVIEW)
+const OPAQUE_FIELD_CLASSES: [&str; 1] = ["FLUTTERVIEW"];
+
+/// 欄の種類が IME から見えない枠組みの窓か
+pub fn class_hides_field_kind(class: &str) -> bool {
+    OPAQUE_FIELD_CLASSES.contains(&class)
+}
+
+/// 窓そのもののクラス名 (一番上の窓ではない)。読めなければ None
+pub fn window_class(hwnd: HWND) -> Option<String> {
+    if hwnd.0.is_null() {
+        return None;
+    }
+    let mut class = [0u16; 64];
+    let length = unsafe { windows::Win32::UI::WindowsAndMessaging::GetClassNameW(hwnd, &mut class) };
+    (length > 0).then(|| String::from_utf16_lossy(&class[..(length as usize).min(class.len())]))
+}
+
+/// フォーカスのある窓のクラスを知らせる (note_scopes より先に呼ぶ)。欄の種類が見えない枠組みなら、覚えない欄にする。
+/// 設定 input.learn_in_flutter (初期値はオフ) がオンなら、覚えない欄にしない
+pub fn note_window_class(class: Option<&str>) {
+    OPAQUE.set(class.is_some_and(class_hides_field_kind) && !learn_in_flutter());
+}
+
+/// 設定 input.learn_in_flutter。プロセスで 1 回だけ読む (替えたらアプリを開き直す)。試験では読まない (オフ)
+fn learn_in_flutter() -> bool {
+    static ON: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    *ON.get_or_init(|| !cfg!(test) && shared::AppConfig::read_or_default().input.learn_in_flutter)
+}
+
 thread_local! {
+    /// 2026-11-24: フォーカスのある窓が、欄の種類を IME に知らせない枠組み (Flutter) か (note_window_class)
+    static OPAQUE: Cell<bool> = const { Cell::new(false) };
     /// 2026-11-06 (仕事 25): フォーカスのある欄では言語バーを A の絵にするか (set_shown_latin)
     static SHOWN_LATIN: Cell<bool> = const { Cell::new(false) };
     /// 今の欄が IS_PRIVATE (61) を含むか。入力中でないときの最初のキーで読んだ値
@@ -238,8 +277,9 @@ thread_local! {
 /// 2026-10-14 19:30: アプリが「この欄の入力を覚えないで」と伝えている欄 (IS_PRIVATE)。Chrome はパスワード欄とシークレットの窓の欄に付ける
 /// (パスワード欄に IS_PASSWORD は付かない。実測)。直接入力にはしない (シークレットの窓のふつうの欄にも付くため) が、学習はすべて止める
 /// 2026-11-23 (Astra の点検 37): パスワード・PIN の欄も覚えない欄にする (学習・予測の履歴・前後の文の取得・診断ログを止める)
+/// 2026-11-24: 欄の種類を IME に知らせない枠組みの窓 (note_window_class) も覚えない欄にする
 pub fn note_scopes(scopes: Option<&[i32]>) {
-    PRIVATE.set(scopes.is_some_and(|s| s.contains(&IS_PRIVATE.0) || scopes_are_sensitive(s)));
+    PRIVATE.set(OPAQUE.get() || scopes.is_some_and(|s| s.contains(&IS_PRIVATE.0) || scopes_are_sensitive(s)));
 }
 
 /// 2026-10-20 (Fable の再調査 M1): 次の語の候補を出してはいけない欄か (IS_PRIVATE・パスワード・PIN・数字・メール・URL など)。
@@ -374,6 +414,25 @@ mod tests {
         assert_eq!(field_of(false, Some(&[0]), true), Field::DirectDigits);
         assert_eq!(field_of(true, Some(&[0]), false), Field::Disabled);
         assert_eq!(field_of(false, None, false), Field::Normal);
+    }
+
+    #[test]
+    fn flutter_view_is_a_private_field() {
+        assert!(class_hides_field_kind("FLUTTERVIEW"));
+        assert!(!class_hides_field_kind("Edit"));
+        assert!(!class_hides_field_kind("FLUTTER_RUNNER_WIN32_WINDOW"));
+        note_window_class(Some("FLUTTERVIEW"));
+        note_scopes(None);
+        assert!(private_field());
+        // 英数モードの道 (latin_field_private) でも、窓のクラスを先に知らせるので覚えない欄のまま
+        note_scopes(Some(&[0]));
+        assert!(private_field());
+        note_window_class(Some("Chrome_RenderWidgetHostHWND"));
+        note_scopes(Some(&[0]));
+        assert!(!private_field());
+        note_window_class(None);
+        note_scopes(None);
+        assert!(!private_field());
     }
 
     #[test]

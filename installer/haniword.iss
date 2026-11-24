@@ -5,7 +5,7 @@
   #error Compile with installer\compile.ps1, which checks ..\release against its SHA256SUMS.txt first.
 #endif
 #ifndef MyAppVersion
-  #define MyAppVersion "0.1.0"
+  #define MyAppVersion "0.1.1"
 #endif
 #ifndef MyAppBuild
   #error Compile with installer\compile.ps1, which passes the build number (MyAppBuild).

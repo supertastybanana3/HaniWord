@@ -315,10 +315,123 @@ extern "system" fn live_timer_proc(
     });
 }
 
+thread_local! {
+    /// 2026-11-24: 今の確定が、利用者が選んでいない確定 (IME が切られた・フォーカスが移った・アプリが書きかけを終えた) か
+    static FORCED_COMMIT: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
+}
+
+/// 利用者が選んでいない確定のあいだ f を走らせる (その確定では学習・予測の覚えに送らない)
+pub fn with_forced_commit<T>(f: impl FnOnce() -> T) -> T {
+    let before = FORCED_COMMIT.replace(true);
+    let result = f();
+    FORCED_COMMIT.set(before);
+    result
+}
+
+fn forced_commit() -> bool {
+    FORCED_COMMIT.get()
+}
+
+/// この確定から覚えてよいか: 覚えてよいアプリ・欄 (may_learn) で、利用者が選んだ確定 (強いられた確定でない)
+fn may_learn_from_this_commit() -> bool {
+    may_learn() && !forced_commit()
+}
+
+/// 行頭の / のあとで日本語に戻した綴りを、利用者が英字に直して確定した (F9・F10・候補の英字) → 覚えるコマンド名。
+/// 利用者が選んでいない確定 (forced_commit) では覚えない (持っている綴りは、どちらでも捨てる)
+fn slash_command_to_learn(typed_text: &str, chose_latin: bool) -> Option<String> {
+    super::slash_commands::latin_commit(typed_text, chose_latin && !forced_commit())
+}
+
+#[cfg(test)]
+mod forced_commit_tests {
+    use super::*;
+
+    /// 2026-11-24: 利用者が選んでいない確定の印は、with_forced_commit の中だけ立ち、入れ子でも元に戻る
+    #[test]
+    fn forced_commit_flag_is_scoped() {
+        assert!(!forced_commit());
+        with_forced_commit(|| {
+            assert!(forced_commit());
+            with_forced_commit(|| assert!(forced_commit()));
+            assert!(forced_commit());
+        });
+        assert!(!forced_commit());
+    }
+
+    /// 2026-11-24: 利用者が選んでいない確定では、/ のあとで日本語に戻した綴りを英字で確定していても、コマンド名として覚えない
+    #[test]
+    fn forced_commit_does_not_learn_slash_commands() {
+        super::super::slash_commands::note_switched("kyouha");
+        assert_eq!(with_forced_commit(|| slash_command_to_learn("kyouha", true)), None);
+        assert_eq!(slash_command_to_learn("kyouha", true), None, "強いられた確定で、持っている綴りを捨てた");
+        super::super::slash_commands::note_switched("kyouha");
+        assert_eq!(slash_command_to_learn("kyouha", true), Some("kyouha".to_string()), "利用者の確定では覚える");
+    }
+
+    /// 2026-11-25 (Excel の件): 行き先なしの移りで控えた打鍵 (h) は、すぐの行き先ありの移りのあと、次のキー (a) の動作の頭に戻る。
+    /// 戻すのは入力中でないときの最初のキーの動作 [StartComposition, Insert] だけ
+    #[test]
+    fn excel_refocus_puts_the_carried_key_before_the_next_key() {
+        let t = std::time::Instant::now();
+        super::super::carry::on_focus_lost(true, Some("h"), "h", t);
+        super::super::carry::on_focus_gained(true, t + std::time::Duration::from_millis(5));
+        assert!(super::super::carry::check_before(None));
+        let start = || vec![ClientAction::StartComposition, ClientAction::Insert("a".into())];
+        assert_eq!(with_carried(start()), vec![ClientAction::StartComposition, ClientAction::Insert("h".into()), ClientAction::Insert("a".into())]);
+        assert_eq!(with_carried(vec![ClientAction::Insert("a".into())]), vec![ClientAction::Insert("a".into())], "入力中のキーには足さない");
+        super::super::carry::consume();
+        assert_eq!(with_carried(start()), start(), "戻したあとは足さない");
+    }
+
+    /// 2026-11-24: 利用者が選んでいない確定では、英字・かなの打ち分け (auto_english::learn_from_commit) を覚えない
+    #[test]
+    fn forced_commit_does_not_learn_spelling_choices() {
+        assert!(!with_forced_commit(may_learn_from_this_commit));
+        assert_eq!(may_learn_from_this_commit(), may_learn(), "利用者の確定では、アプリ・欄の決まりのとおり");
+    }
+
+    /// 2026-11-24: 利用者が選んでいない確定では、ん の打ち方を数えない (record_romaji_style。数えたら style_counted が立つ)
+    #[test]
+    fn forced_commit_does_not_count_romaji_style() {
+        let mut comp = Composition { typed: "kanntann".to_string(), typed_valid: true, hiragana: "かんたん".to_string(), ..Default::default() };
+        with_forced_commit(|| record_romaji_style(&mut comp));
+        assert!(!comp.style_counted);
+        record_romaji_style(&mut comp);
+        assert_eq!(comp.style_counted, may_learn(), "利用者の確定では数える (試験の間は記録のファイルに書かない)");
+    }
+}
+
+/// 文脈の窓 (見えている所の窓。取れなければフォーカスのある窓)
+fn context_hwnd(context: &ITfContext) -> windows::Win32::Foundation::HWND {
+    unsafe { context.GetActiveView().and_then(|view| view.GetWnd()) }
+        .ok()
+        .filter(|hwnd| !hwnd.0.is_null())
+        .unwrap_or_else(|| unsafe { windows::Win32::UI::Input::KeyboardAndMouse::GetFocus() })
+}
+
+/// 2026-11-25 (Excel の件): 文脈が Excel の窓 (一番上の窓のクラスが XLMAIN) の中か (carry.rs の持ち越しは Excel の窓の中だけ)
+pub fn is_excel_context(context: &ITfContext) -> bool {
+    super::direct_field::window_facts(context_hwnd(context)).is_some_and(|w| w.class == "XLMAIN")
+}
+
+/// 2026-11-24 (Excel の件): 入力中でないときの最初のキーの動作 [StartComposition, Insert(キー)] に、控えた書きかけの打鍵があれば
+/// [StartComposition, Insert(控え), Insert(キー)] にする (carry.rs。状態は変えない)
+fn with_carried(actions: Vec<ClientAction>) -> Vec<ClientAction> {
+    match super::carry::peek(std::time::Instant::now()) {
+        Some(carried) if actions.len() == 2 => {
+            let mut actions = actions.into_iter();
+            let (start, key) = (actions.next().unwrap(), actions.next().unwrap());
+            vec![start, ClientAction::Insert(carried), key]
+        }
+        _ => actions,
+    }
+}
+
 /// 2026-10-14 (脆弱性の再調査 #3): 管理者権限・隔離されたアプリの中で確定した文は、サーバーに学習させない
 /// (学習データはふだんの権限で読める %APPDATA% に残るため)。変換はそのまま使う
 /// 2026-10-14 19:30: アプリが IS_PRIVATE を付けた欄 (パスワード欄・シークレットの窓) でも学習しない (direct_field.rs)
-fn may_learn() -> bool {
+pub(crate) fn may_learn() -> bool {
     static ALLOWED: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
     *ALLOWED.get_or_init(shared::winsec::private_data_allowed) && !super::direct_field::private_field()
 }
@@ -3973,7 +4086,8 @@ fn ends_with_pending_n(hiragana: &str) -> bool {
 
 /// ローマ字の打ち方を判断するための回数を足す (英語と判定した部分は数えない。打鍵から作ったかなが読みと合うときだけ。1 回の入力で 1 度だけ)
 fn record_romaji_style(comp: &mut Composition) {
-    if !may_learn() {
+    // 2026-11-24: 利用者が選んでいない確定 (IME が切られた・フォーカスが移った・アプリが書きかけを終えた) では数えない
+    if !may_learn_from_this_commit() {
         return;
     }
     if comp.style_counted || !comp.typed_valid || comp.typed.is_empty() {
@@ -4586,7 +4700,8 @@ impl ITfCompositionSink_Impl for TextServiceFactory_Impl {
         }
 
         let actions = vec![ClientAction::EndComposition];
-        if let Err(error) = self.handle_action(&actions, CompositionState::None) {
+        // 2026-11-24: アプリが終えた確定は覚えない (with_forced_commit)
+        if let Err(error) = with_forced_commit(|| self.handle_action(&actions, CompositionState::None)) {
             crate::debug_log::write(&format!("composition terminated: commit failed: {error:?}"));
             self.forget_composition();
         }
@@ -4870,12 +4985,13 @@ impl TextServiceFactory {
 
         let (actions, transition) = match composition.state {
             S::None => match action {
+                // 2026-11-24 (Excel の件): IME が切られてすぐつなぎ直されたときは、控えた書きかけの打鍵を頭に戻す (carry.rs)
                 UserAction::Input(char) if mode == InputMode::Kana => (
-                    vec![A::StartComposition, A::Insert(char.to_string())],
+                    with_carried(vec![A::StartComposition, A::Insert(char.to_string())]),
                     S::Composing,
                 ),
                 UserAction::Number(number) if mode == InputMode::Kana => (
-                    vec![A::StartComposition, A::Insert(number.to_string())],
+                    with_carried(vec![A::StartComposition, A::Insert(number.to_string())]),
                     S::Composing,
                 ),
                 UserAction::Space if mode == InputMode::Kana => {
@@ -5119,20 +5235,20 @@ impl TextServiceFactory {
     /// 開発の記録 (debug_log) に、欄の印 (InputScope・IME を使わない文脈か・小窓か) と判定を書く (打った中身・欄の名前は書かない)
     pub fn field_kind(&self, context: &ITfContext, when: &str) -> (super::direct_field::Field, super::direct_field::FieldId) {
         use super::direct_field as df;
-        let hwnd = unsafe { context.GetActiveView().and_then(|view| view.GetWnd()) }
-            .ok()
-            .filter(|hwnd| !hwnd.0.is_null())
-            .unwrap_or_else(|| unsafe { windows::Win32::UI::Input::KeyboardAndMouse::GetFocus() });
+        let hwnd = context_hwnd(context);
         let window = df::window_facts(hwnd);
         let disabled = df::context_disabled(context);
         let scopes = self.input_scopes_in(context);
+        // 2026-11-24: 欄の種類を IME に知らせない枠組みの窓 (Flutter) なら、覚えない欄にする (direct_field.rs の 5)
+        let class = df::window_class(hwnd);
+        df::note_window_class(class.as_deref());
         df::note_scopes(scopes.as_deref());
         let field_id = df::field_id(windows::core::Interface::as_raw(context) as usize, hwnd.0 as isize, scopes.as_deref());
         let popup = window.as_ref().is_some_and(|w| df::is_browser_popup(super::prefix_direct::host_exe(), w));
         // 2026-11-23 (Astra の点検 37): パスワード・PIN の欄は、ほかの指定より先に上書きできない Disabled (direct_field::field_of)
         let field = df::field_of(disabled, scopes.as_deref(), popup);
         crate::debug_log::write(&format!(
-            "field ({when}): scopes={scopes:?} disabled={disabled} popup={popup} window={window:?} field={field:?}"
+            "field ({when}): scopes={scopes:?} disabled={disabled} popup={popup} window={window:?} class={class:?} field={field:?}"
         ));
         (field, field_id)
     }
@@ -5346,6 +5462,10 @@ impl TextServiceFactory {
     /// 読んだ欄の種類は direct_field にも知らせる (IS_PRIVATE なら、日本語を確定しても英数モードの語を書かない)
     fn latin_field_private(&self, context: Option<&ITfContext>) -> bool {
         let scopes = context.and_then(|context| self.input_scopes_in(context));
+        // 2026-11-24: 窓のクラスも先に知らせる (英数モードでも Flutter の窓は覚えない欄)
+        if let Some(context) = context {
+            super::direct_field::note_window_class(super::direct_field::window_class(context_hwnd(context)).as_deref());
+        }
         super::direct_field::note_scopes(scopes.as_deref());
         scopes.is_some_and(|scopes| super::direct_field::scopes_block_suggestions(&scopes))
     }
@@ -5753,7 +5873,21 @@ impl TextServiceFactory {
             }
         }
 
+        // 2026-11-24 (Excel の件): 控えた打鍵があれば、戻す前に新しい文脈のキャレットの前の字を読み、行き先なしの移りで確定した字が
+        // 残っていれば (アプリが捨てなかった) 控えを捨てる。2026-11-25: 読めない文脈では戻す (控えるのは Excel の窓の中だけ。carry.rs)
+        if super::carry::peek(std::time::Instant::now()).is_some() {
+            let before = context.and_then(|context| self.preceding_text_in(context, 40)).map(|(text, _)| text);
+            super::carry::check_before(before.as_deref());
+        }
         if let Some((actions, transition)) = self.process_key(context, wparam)? {
+            // 2026-11-24 (Excel の件): 控えた打鍵を戻したなら控えを終える。戻さないキーが来たら控えを捨てる (carry.rs)
+            match (actions.as_slice(), super::carry::peek(std::time::Instant::now())) {
+                ([ClientAction::StartComposition, ClientAction::Insert(first), ClientAction::Insert(_)], Some(carried)) if *first == carried => {
+                    super::carry::consume()
+                }
+                (_, Some(_)) => super::carry::clear(),
+                _ => {}
+            }
             // 2026-11-05 (長押し): 押しっぱなしの繰り返しで、することの無いキー (長押しの候補を出したあとの同じ字・続けて入れない英字) は、
             // 飲み込むだけで描き直さない (前は繰り返しのたびに未確定の文字列と候補の窓を描き直し、変換の候補がちらついた。13:37 の報告)
             if actions.is_empty() && super::diacritics::is_repeat() {
@@ -5768,16 +5902,14 @@ impl TextServiceFactory {
                 (vec![ClientAction::Cancel], CompositionState::None)
             } else { (actions, transition) };
             crate::debug_log::write(&format!("handle {:?} -> {:?}", actions, transition));
-            // 2026-10-13: / のあとで日本語に戻した直後に、利用者がそれを全部消したら (Escape・Backspace)、英字のつもりだった綴りとして覚える
-            if actions.iter().any(|a| matches!(a, ClientAction::Cancel)) {
-                if let Some(word) = super::slash_commands::take_switched() {
-                    let typed = self.borrow()?.borrow_composition()?.typed.clone();
-                    if typed.len() <= word.len() + 3 && may_learn() { super::slash_commands::learn(&word); }
-                }
-            } else if actions.iter().any(|a| matches!(a, ClientAction::EndComposition | ClientAction::CommitFirstSegment)) {
-                let _ = super::slash_commands::take_switched();
+            // 2026-11-24: / のあとで日本語に戻した綴りは、利用者が英字に直して確定したときに覚える (確定の所の slash_commands::latin_commit)。
+            // 書きかけを消しただけ (Escape・Backspace) では覚えない。確定の所を通らない確定では、持っている綴りを捨てる
+            let commits = actions.iter().any(|a| matches!(a, ClientAction::EndComposition | ClientAction::CommitFirstSegment));
+            let result = self.handle_action(&actions, transition);
+            if commits {
+                super::slash_commands::forget_switched();
             }
-            if let Err(error) = self.handle_action(&actions, transition) {
+            if let Err(error) = result {
                 // サーバーが落ちている・返事が来ない等。キーを飲み込まずにアプリへ返し、未確定状態を片付ける
                 crate::debug_log::write(&format!("handle_action failed: {error:?}"));
                 self.discard_composition_state();
@@ -6671,7 +6803,9 @@ impl TextServiceFactory {
                     let converted = !comp.segments.is_empty()
                         && (comp.state == CompositionState::Converting || comp.live);
                     cancel_predict();
-                    if converted && !comp.from_prediction && may_learn() {
+                    // 2026-11-24: 利用者が選んでいない確定 (IME が切られた・フォーカスが移った・アプリが書きかけを終えた) は覚えない
+                    // (Excel の入力待ちのセルで、IME が切られたときの確定で、打ちかけの 1 字 h を覚えていた)
+                    if converted && !comp.from_prediction && may_learn() && !forced_commit() {
                         let readings = comp.segments.iter().map(learning_reading).collect();
                         let texts = comp.segments.iter().map(|s| s.text.clone()).collect();
                         if let Err(error) = ipc.learn(readings, texts) {
@@ -6679,7 +6813,7 @@ impl TextServiceFactory {
                         }
                     }
                     // 予測変換のために、確定した語句を読みと一緒に覚える (予測の候補を選んだときは覚え直して前に出す)
-                    if converted && comp.ivs_original.is_none() && may_learn() {
+                    if converted && comp.ivs_original.is_none() && may_learn() && !forced_commit() {
                         let reading: String = comp.segments.iter().map(learning_reading).collect();
                         super::predict::remember(&reading, &comp.converted_text());
                     }
@@ -6693,7 +6827,7 @@ impl TextServiceFactory {
                         crate::debug_log::write(&format!(
                             "commit (live): state={:?}, refined={}, mid_caret={}, short={}, chars={}, from_prediction={}, learned={}",
                             comp.state, comp.refined, mid_caret, short_live_input(&comp, &reading), reading.chars().count(),
-                            comp.from_prediction, converted && !comp.from_prediction && may_learn()));
+                            comp.from_prediction, converted && !comp.from_prediction && may_learn() && !forced_commit()));
                     }
                     let text = if mid_caret {
                         // カーソルが途中のライブ変換は、見えている (左右を別々に変換した) ものをそのまま確定
@@ -6734,8 +6868,14 @@ impl TextServiceFactory {
                     }
                     self.end_composition()?;
                     // 利用者が直した英字・かなを覚える (auto_english)。日本語を確定したら英数モードの語の学習に知らせる
-                    if comp.typed_valid && !comp.typed.is_empty() && !text.is_empty() && may_learn() {
+                    // 2026-11-24: 利用者が選んでいない確定 (IME が切られた・フォーカスが移った・アプリが書きかけを終えた) では覚えない (利用者の選びではないため)
+                    if comp.typed_valid && !comp.typed.is_empty() && !text.is_empty() && may_learn_from_this_commit() {
                         super::auto_english::learn_from_commit(&comp.typed, &typed_text, comp.latin_learning_intent);
+                    }
+                    // 行頭の / のあとで日本語に戻した綴りを、利用者が英字に直して確定した (F9・F10・候補の英字) → コマンド名として覚える
+                    let chose_latin = comp.latin_learning_intent || comp.latin_selected;
+                    if let Some(command) = slash_command_to_learn(&typed_text, chose_latin) {
+                        super::slash_commands::learn(&command);
                     }
                     if text.chars().any(|c| !c.is_ascii()) {
                         super::latin_learn::japanese_committed();

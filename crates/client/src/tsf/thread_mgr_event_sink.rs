@@ -21,12 +21,14 @@ impl ITfThreadMgrEventSink_Impl for TextServiceFactory_Impl {
     fn OnSetFocus(
         &self,
         focus: Option<&ITfDocumentMgr>,
-        _prevfocus: Option<&ITfDocumentMgr>,
+        prevfocus: Option<&ITfDocumentMgr>,
     ) -> Result<()> {
         // 終わった (Deactivate 後の) 実体に届いたイベントは無視する
         if self.borrow()?.thread_mgr.is_none() {
             return Ok(());
         }
+        // 2026-11-25 (Excel の件): 移った先 (行き先) の有り無しを記録に残す (診断ログのときだけ。字は書かない)
+        crate::debug_log::write(&format!("focus change: target={}", if focus.is_some() { "some" } else { "none" }));
         // 2026-11-08 (仕事 53 の案 1): 開け閉めの区画の替わりが、フォーカスの移りの直後かを見るため
         crate::engine::mode_keys::note_focus();
         // 2026-10-28: IME が有効になったときにつなげていなければ、ここでもつなぎ直す (裏のスレッドで。2026-10-29)。
@@ -47,9 +49,30 @@ impl ITfThreadMgrEventSink_Impl for TextServiceFactory_Impl {
             self.borrow_mut()?.advise_text_layout_sink(focus.clone())?;
         }
 
+        // 2026-11-25 (Excel の件): Excel のセルに直に打つと、最初のキーのあとにフォーカスが 行き先なし → セルの編集の文脈 と移り、
+        // 1 回目の移りの確定で頭の打鍵が抜けていた。Excel の窓の中の行き先なしの移りなら、始めてすぐの書きかけの打鍵を控え、
+        // すぐに Excel の窓の行き先ありの移りが来たら、次のキーの頭に戻す (確定は今までどおり。carry.rs)
+        let excel = |doc: Option<&ITfDocumentMgr>| {
+            doc.and_then(|doc| unsafe { doc.GetTop() }.ok()).is_some_and(|context| crate::engine::composition::is_excel_context(&context))
+        };
+        let now = std::time::Instant::now();
+        if focus.is_none() {
+            crate::engine::carry::clear();
+            if let Ok(text_service) = self.borrow() {
+                if let Ok(comp) = text_service.borrow_composition() {
+                    if comp.state == CompositionState::Composing && excel(prevfocus) {
+                        crate::engine::carry::on_focus_lost(true, comp.typed_valid.then_some(comp.typed.as_str()), &comp.display, now);
+                    }
+                }
+            }
+        } else if crate::engine::carry::waiting() {
+            crate::engine::carry::on_focus_gained(excel(focus), now);
+        }
+
         let actions = vec![ClientAction::EndComposition];
         // 2026-10-29: 確定に失敗しても (サーバーが返事をしない)、下の後片付けは続ける (レビュー L6)
-        if let Err(error) = self.handle_action(&actions, CompositionState::None) {
+        // 2026-11-24: フォーカスの移りでの確定は覚えない (with_forced_commit)
+        if let Err(error) = crate::engine::composition::with_forced_commit(|| self.handle_action(&actions, CompositionState::None)) {
             crate::debug_log::write(&format!("focus change: commit failed: {error:?}"));
         }
         crate::engine::latin_learn::focus_changed();

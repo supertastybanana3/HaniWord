@@ -142,6 +142,8 @@ impl ITfTextInputProcessor_Impl for TextServiceFactory_Impl {
         };
 
         tracing::debug!("Activate success");
+        // 2026-11-24 (Excel の入力待ちのセルで頭の 1 打鍵が抜ける件): つなぎ直しを記録に残す (字は書かない)
+        crate::debug_log::write(&format!("activate: tid={tid}"));
         crate::engine::terminal_choices::start();
 
         Ok(())
@@ -151,6 +153,18 @@ impl ITfTextInputProcessor_Impl for TextServiceFactory_Impl {
     #[tracing::instrument]
     fn Deactivate(&self) -> Result<()> {
         tracing::debug!("Deactivated");
+        // 2026-11-24 (Excel の件): 切られたときの書きかけの様子を、数と真偽だけ記録に残す (字は書かない)。
+        // (2026-11-25: Excel では切られていなかったので、打鍵の持ち越しはフォーカスの移りに移した。thread_mgr_event_sink.rs・carry.rs)
+        if crate::debug_log::enabled() {
+            if let Ok(text_service) = self.borrow() {
+                if let Ok(comp) = text_service.borrow_composition() {
+                    crate::debug_log::write(&format!(
+                        "deactivate: state={:?}, live={}, chars={}, typed={}, segments={}",
+                        comp.state, comp.live, comp.hiragana.chars().count(), comp.typed.chars().count(), comp.segments.len()
+                    ));
+                }
+            }
+        }
         let _budget = ipc_service::EventBudget::start();
 
         // remove reference to the dll instance
@@ -165,7 +179,8 @@ impl ITfTextInputProcessor_Impl for TextServiceFactory_Impl {
         };
         // 2026-10-20: 候補を出したまま別のキーボードに切り替えると、候補窓が残っていた。
         // フォーカスが移ったときと同じく、見えているものを確定して候補窓を閉じる
-        note("commit", self.handle_action(&[ClientAction::EndComposition], CompositionState::None));
+        // 2026-11-24: IME が切られたときの確定は覚えない (Excel の入力待ちのセルで、打ちかけの 1 字を覚えていた。with_forced_commit)
+        note("commit", crate::engine::composition::with_forced_commit(|| self.handle_action(&[ClientAction::EndComposition], CompositionState::None)));
         crate::engine::composition::hide_latin_suggestions();
         if let Ok(state) = IMEState::get() {
             if let Some(mut ipc) = state.ipc_service.clone() {

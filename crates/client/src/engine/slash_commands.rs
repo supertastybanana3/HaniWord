@@ -3,7 +3,9 @@
 //
 // 英字のまま: 知っているコマンドの頭 (下の一覧・%APPDATA%\HaniWord\slash_commands.txt・学習した語) か、英単語の頭か、ローマ字で読めない並び (/mnt /usr)。
 // それ以外で日本語として読めるようになったら、渡した文字を消して日本語の入力に戻す。
-// 学習: 日本語に戻したあと、その未確定文字列を全部消して同じ綴りを打ち直したら (英字のつもりだった)、その綴りを覚える
+// 学習: 日本語に戻したあと、利用者がその書きかけを英字に直して確定したら (F9・F10・候補の一覧の英字で確定した、または消して英数モードで
+// 同じ綴りを打った)、確定した綴りを覚える。2026-11-24: 学習のきっかけを確定にそろえた (前は書きかけを消しただけで覚えていた)。
+// 消しただけでは覚えない。覚えてはいけない欄 (direct_field::private_field) では覚えない
 
 use std::sync::Mutex;
 
@@ -213,20 +215,52 @@ pub fn stays_latin(word: &str) -> bool {
     auto_english::english_word_prefix(word) || !auto_english::romaji_readable_prefix(word)
 }
 
-/// 日本語に戻した綴り。直後に利用者が消して同じ綴りを打ち直したら覚える
-static LAST_SWITCH: Mutex<Option<String>> = Mutex::new(None);
-
-pub fn note_switched(word: &str) {
-    *LAST_SWITCH.lock().unwrap_or_else(|e| e.into_inner()) = Some(word.to_string());
+thread_local! {
+    /// 日本語に戻した綴り (小文字)。次の確定か、英数モードで打ち終えた次の語まで持つ
+    static LAST_SWITCH: std::cell::RefCell<Option<String>> = const { std::cell::RefCell::new(None) };
 }
 
-/// 日本語に戻したあとの未確定文字列を全部消した (Escape・Backspace)。次の / のあとで同じ綴りを英字で打ったら覚える
-pub fn take_switched() -> Option<String> {
-    LAST_SWITCH.lock().unwrap_or_else(|e| e.into_inner()).take()
+pub fn note_switched(word: &str) {
+    LAST_SWITCH.with_borrow_mut(|w| *w = Some(word.to_ascii_lowercase()));
+}
+
+/// 持っている綴りを捨てる (ほかの確定・フォーカスの移り)
+pub fn forget_switched() {
+    LAST_SWITCH.with_borrow_mut(|w| *w = None);
+}
+
+/// 覚える綴り: 利用者が英字に直したもの (`chosen`) が、日本語に戻した綴りで始まる英字のコマンド名なら、その小文字。`private` は覚えてはいけない欄
+fn word_to_learn(switched: &str, chosen: &str, private: bool) -> Option<String> {
+    let chosen = chosen.trim().to_ascii_lowercase();
+    let command_like = !chosen.is_empty() && chosen.len() <= 64 && chosen.bytes().all(|b| b.is_ascii_alphanumeric() || b"-_:".contains(&b));
+    (!private && !switched.is_empty() && command_like && chosen.starts_with(switched)).then_some(chosen)
+}
+
+/// 書きかけを確定した。`chose_latin` は利用者が英字を選んだか (F9・F10・候補の一覧の英字)。覚える綴りを返す。持っている綴りはどちらでも捨てる
+pub fn latin_commit(committed: &str, chose_latin: bool) -> Option<String> {
+    let switched = LAST_SWITCH.with_borrow_mut(|w| w.take())?;
+    if !chose_latin {
+        return None;
+    }
+    word_to_learn(&switched, committed, super::direct_field::private_field())
+}
+
+/// 英数モードで語を打ち終えた (latin_learn)。`private` はその語を打ち始めた欄が覚えてはいけない欄か。覚える綴りを返す。
+/// 空の語では持っている綴りを捨てない (/ などの記号だけで区切られたとき)
+pub fn latin_word_typed(word: &str, private: bool) -> Option<String> {
+    if word.is_empty() {
+        return None;
+    }
+    let switched = LAST_SWITCH.with_borrow_mut(|w| w.take())?;
+    word_to_learn(&switched, word, private || super::direct_field::private_field())
 }
 
 /// 英字のつもりだった綴りを slash_commands.txt に足す
+/// 覚えてはいけないとき (管理者・隔離されたアプリ、覚えてはいけない欄。composition::may_learn) は書かない
 pub fn learn(word: &str) {
+    if cfg!(test) || !super::composition::may_learn() {
+        return;
+    }
     let word = word.trim().to_ascii_lowercase();
     if word.is_empty() || word.len() > 64 || !word.bytes().all(|b| b.is_ascii_alphanumeric() || b"-_:".contains(&b)) {
         return;
@@ -280,6 +314,56 @@ mod tests {
             report += &format!("{w}\t{:?}\n", switch_at(w).map(|k| &w[..k]));
         }
         if let Ok(out) = std::env::var("AZK_SLASH_OUT") { std::fs::write(out, &report).unwrap(); }
+    }
+
+    /// 日本語に戻した書きかけを消しただけでは覚えない。消したあとの確定は、英字を選んだものだけ
+    #[test]
+    fn deleting_the_switched_composition_does_not_learn() {
+        note_switched("kyouha");
+        // 書きかけを消した (Escape・Backspace) あとに、日本語を打って確定した
+        assert_eq!(latin_commit("今日は", false), None);
+        assert_eq!(latin_commit("kyouha", true), None, "確定で持っている綴りを捨てる");
+        note_switched("kyouha");
+        assert_eq!(latin_word_typed("", false), None, "記号だけの区切りでは捨てない");
+        assert_eq!(latin_word_typed("ashita", false), None, "違う語");
+        assert_eq!(latin_word_typed("kyouha", false), None, "英数モードの次の語で捨てた");
+        assert_eq!(latin_commit("kyouha", true), None);
+    }
+
+    /// 利用者が英字に直して確定したら覚える (F9・F10・候補の英字、または消して英数モードで同じ綴りを打った)
+    #[test]
+    fn a_latin_commit_of_the_switched_spelling_learns() {
+        note_switched("kyouha");
+        assert_eq!(latin_commit("kyouha", true), Some("kyouha".to_string()));
+        note_switched("Kyouha");
+        assert_eq!(latin_commit("KYOUHA", true), Some("kyouha".to_string()), "F10 の大文字の形も小文字で覚える");
+        note_switched("kyouha");
+        assert_eq!(latin_commit("kyouharu", true), Some("kyouharu".to_string()), "続けて打った綴りごと");
+        note_switched("kyouha");
+        assert_eq!(latin_commit("kyou", true), None, "戻した綴りで始まらない");
+        note_switched("kyouha");
+        assert_eq!(latin_commit("ｋｙｏｕｈａ", true), None, "全角はコマンド名でない");
+        assert_eq!(latin_commit("kyouha", true), None, "日本語に戻していない");
+        note_switched("kyouha");
+        assert_eq!(latin_word_typed("kyouha", false), Some("kyouha".to_string()));
+    }
+
+    /// 覚えてはいけない欄 (パスワード・PIN・IS_PRIVATE など、direct_field::private_field) では、どちらの道でも覚えない
+    #[test]
+    fn private_fields_never_learn() {
+        use windows::Win32::UI::TextServices::{IS_PASSWORD, IS_PRIVATE};
+        for scope in [IS_PRIVATE.0, IS_PASSWORD.0] {
+            super::super::direct_field::note_scopes(Some(&[scope]));
+            note_switched("kyouha");
+            assert_eq!(latin_commit("kyouha", true), None, "{scope}");
+            note_switched("kyouha");
+            assert_eq!(latin_word_typed("kyouha", false), None, "{scope}");
+        }
+        super::super::direct_field::note_scopes(None);
+        note_switched("kyouha");
+        assert_eq!(latin_word_typed("kyouha", true), None, "語を打ち始めた欄が覚えてはいけない欄");
+        note_switched("kyouha");
+        assert_eq!(latin_commit("kyouha", true), Some("kyouha".to_string()), "印を外せば覚える");
     }
 
     #[test]

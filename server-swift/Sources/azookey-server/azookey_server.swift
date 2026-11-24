@@ -2857,6 +2857,10 @@ func debugWrite(_ data: Data) {
         readings: String(cString: readingsPtr).split(separator: "\u{1F}", omittingEmptySubsequences: false).map(String.init),
         texts: String(cString: textsPtr).split(separator: "\u{1F}", omittingEmptySubsequences: false).map(String.init))
     var context = leftContext(String(cString: contextPtr))
+    // 2026-11-24: パスワードらしい形の文節を含む確定からは、何も覚えない (同音語・記号の選び直し・直前の語の記録も。learning_admission.swift)
+    if texts.contains(where: looksLikeSecret) {
+        return 0
+    }
     // 2026-11-02: 難読語の同音語を替えた所で、利用者が元の語を選んで確定したら、その組は以後替えない (homophones.swift)
     noteHomophoneChoices(readings: readings.map(normalizeForConversion), texts: texts)
     // 2026-11-05 (仕事 22 の 3): ・ / ／ と 。 . の文節で、表の決めと違う形を選んで確定したら覚える (slash_dot.swift)

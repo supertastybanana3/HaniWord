@@ -34,7 +34,12 @@ thread_local! {
 
 fn finish_word(state: &mut State) {
     let word = std::mem::take(&mut state.word);
-    if std::mem::take(&mut state.word_private) {
+    let private = std::mem::take(&mut state.word_private);
+    // 2026-11-24: 行頭の / のあとで日本語に戻した綴りを、利用者が消して英数モードで打ち直した → コマンド名として覚える (slash_commands)
+    if let Some(command) = super::slash_commands::latin_word_typed(&word, private) {
+        super::slash_commands::learn(&command);
+    }
+    if private {
         return;
     }
     if note_latin_word(&word) {
@@ -109,6 +114,7 @@ pub fn japanese_committed() {
 /// フォーカスが移った・英数モードに切り替えた等で、打ちかけの語を区切る
 pub fn focus_changed() {
     STATE.with_borrow_mut(forget);
+    super::slash_commands::forget_switched();
 }
 
 /// 英数モードからかなモードに戻った (打ちかけの語はここで終わり。和文の続きかは次の確定で決まる)

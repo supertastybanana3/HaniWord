@@ -201,6 +201,8 @@ const greekUpperFirst = (greekCase: Record<string, string>, lower: string) =>
 const fromConfig = (data: any) => ({
     autoEnglish: data.input.auto_english,
     caseFix: data.input.english_case_fix ?? true,
+    // 2026-11-24: Flutter のアプリでも学習する (初期値オフ)
+    learnInFlutter: data.input.learn_in_flutter ?? false,
     // 2026-11-05 (仕事 28): 自動の直しの切り替え。項目の無い前の版の設定では今の動きのまま
     slashKey: (data.input.slash_key ?? "auto") as string,
     periodKey: (data.input.period_key ?? "auto") as string,
@@ -275,6 +277,7 @@ export const General = () => {
     const [input, setInput] = useState({
         autoEnglish: true,
         caseFix: true,
+        learnInFlutter: false,
         latinSpell: "off",
         modeIndicator: "badge",
         slashKey: "auto",
@@ -1003,6 +1006,14 @@ export const General = () => {
             <section className="space-y-2">
                 <h1 className="text-sm font-bold text-foreground">学習</h1>
                 <ResetLearningRow />
+                {/* 2026-11-24: Flutter のアプリの窓では、初期値では何も覚えない (欄がパスワードかを IME に伝えないため) */}
+                <SwitchRow
+                    icon={<ShieldAlert />}
+                    title="Flutter のアプリでも学習する"
+                    description="Flutter で作られた一部のアプリは、入力欄がパスワードの欄であることを IME に伝えません。オフのあいだは、Flutter のアプリの中では学習・予測の履歴・打ち方の数えをしません。オンにすると、パスワードを打ったときに学習に残るおそれがあります。替えたら、そのアプリを開き直してください"
+                    checked={input.learnInFlutter}
+                    onChange={() => updateInput((i) => { i.learn_in_flutter = !input.learnInFlutter; })}
+                />
             </section>
             <section className="space-y-2">
                 <h1 className="text-sm font-bold text-foreground">言葉の使い方の注記</h1>
